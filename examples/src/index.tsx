@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Button } from '../../lib';
 import './index.scss';
 
 const App = () => {
 	return <div className='app'>
-		Hello App
+		<Button/>
 	</div>;
 };
 

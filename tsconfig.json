@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "module": "commonjs",
     "target": "es5",
     "sourceMap": true,
     "removeComments": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
-    "outDir": "dist",
+    "outDir": ".",
     "allowJs": true,
     "jsx": "react",
     "allowSyntheticDefaultImports": true,
