@@ -1,12 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Header from './components/Header'
+import App from './App';
+import { HashRouter, Route, Switch } from 'react-router-dom';
+import Button from './pages/Button';
+import Form from './pages/Form';
 import './index.scss';
 
-const App = () => {
-	return <div className='app'>
-		<Header/>
-	</div>;
+const IRouter = () => {
+	return <HashRouter>
+		<App>
+			<Switch>
+				<Route path='/' render={({ match }) => {
+					return <Switch>
+						<Route path={`${match.path}button`} component={Button} />
+						<Route path={`${match.path}form`} component={Form} />
+					</Switch>;
+				}} />
+			</Switch>
+		</App>
+	</HashRouter>;
 };
 
-ReactDOM.render(<App />, document.querySelector('#app'));
+ReactDOM.render(<IRouter />, document.querySelector('#app'));

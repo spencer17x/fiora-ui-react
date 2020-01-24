@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React  from 'react';
 import classNames from 'classnames';
 import './index.scss';
 
@@ -9,7 +9,7 @@ interface ButtonProps {
 	type?: 'primary';
 }
 
-const Button: FC<ButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
 	className,
 	type,
 	...restProps
