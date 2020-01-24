@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Button } from '../../lib';
+import Header from './components/Header'
 import './index.scss';
 
 const App = () => {
 	return <div className='app'>
-		<Button/>
+		<Header/>
 	</div>;
 };
 

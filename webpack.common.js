@@ -22,6 +22,22 @@ module.exports = {
 					'css-loader', // 将 CSS 转化成 CommonJS 模块
 					'sass-loader' // 将 Sass 编译成 CSS，默认使用 Node Sass
 				]
+			},
+			{
+				test: /\.(jpg|png|gif|bmp|jpeg)$/,//正则表达式匹配图片规则
+				use: [
+					{
+						loader: 'url-loader',
+						options: {
+							limit: 500,
+							name: 'images/[name]-[hash:8].[ext]',
+						}
+					}
+				]
+			},
+			{
+				test: /\.(png|jpg|gif)$/,
+				use: ['file-loader']
 			}
 		]
 	},

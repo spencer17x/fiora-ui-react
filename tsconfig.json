@@ -17,13 +17,10 @@
       "es6"
     ]
   },
-  "files": [
-    "lib/**/*",
-    "examples/**/*"
-  ],
   "include": [
     "lib/**/*",
-    "examples/**/*"
+    "examples/**/*",
+    "typings/**/*"
   ],
   "exclude": [
     "node_modules",
