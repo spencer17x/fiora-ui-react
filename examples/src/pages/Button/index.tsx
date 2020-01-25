@@ -1,8 +1,9 @@
 import React from 'react';
+import { Button as FButton } from '../../../../lib';
 
 const Button = () => {
 	return <div>
-		Button
+		<FButton>Primary</FButton>
 	</div>;
 };
 

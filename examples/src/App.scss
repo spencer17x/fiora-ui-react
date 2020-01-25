@@ -1,0 +1,8 @@
+.page-container {
+  &_content {
+    display: flex;
+  }
+  &_sidebar {
+    flex: 0 0 280px;
+  }
+}

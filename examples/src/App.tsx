@@ -1,13 +1,21 @@
-import React  from 'react';
+import React from 'react';
 import Header from './components/Header';
+import SideBar from './components/SideBar';
+import './App.scss';
 
-const App = ({
-	children,
-	...restProps
+interface Props {
+
+}
+
+const App: React.FC<Props> = ({
+	children
 }) => {
-	return <div className='container'>
+	return <div className='page-container'>
 		<Header />
-		{children}
+		<div className='page-container_content'>
+			<SideBar className='page-container_sidebar' />
+			<div className='page-container_main'>{children}</div>
+		</div>
 	</div>;
 };
 

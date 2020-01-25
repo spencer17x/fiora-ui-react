@@ -1,0 +1,40 @@
+.example-sidebar {
+  width: 100%;
+  padding: 60px 0;
+
+  &_menu-item {
+    width: 100%;
+    height: 50px;
+    color: #314659;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .active {
+    background-color: #e6f7ff;
+    color: #1890ff;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 100%;
+      background-color: #1890ff;
+      right: 0;
+      animation: big 0.3s linear forwards;
+    }
+  }
+}
+
+@keyframes big {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%
+  }
+}
