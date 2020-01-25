@@ -1,15 +1,27 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import { tuple } from '../../_util/type';
 import './index.scss';
 
-const buttonPrefixCls: string = 'f-btn';
+const ButtonTypes = tuple('default', 'primary', 'ghost', 'dashed', 'danger', 'link');
+export type ButtonType = typeof ButtonTypes[number];
+const ButtonHTMLTypes = tuple('submit', 'button', 'reset');
+export type ButtonHTMLType = typeof ButtonHTMLTypes[number];
 
-interface ButtonProps {
-	className?: string;
-	type?: 'primary';
-	children?: string;
+export interface BaseButtonProps {
+	type?: ButtonType;
+	children?: React.ReactNode;
 }
+
+export type NativeButtonProps = {
+	htmlType?: ButtonHTMLType;
+	onClick?: React.MouseEventHandler<HTMLElement>;
+} & BaseButtonProps & Omit<React.ButtonHTMLAttributes<any>, 'type' | 'onClick'>;
+
+export type ButtonProps = Partial<NativeButtonProps>
+
+const buttonPrefixCls: string = 'f-btn';
 
 const Button: React.FC<ButtonProps> = ({
 	className,
@@ -27,12 +39,12 @@ const Button: React.FC<ButtonProps> = ({
 
 Button.propTypes = {
 	className: PropTypes.string,
-	type: PropTypes.oneOf(['primary']),
-	children: PropTypes.string
+	type: PropTypes.oneOf(ButtonTypes),
+	children: PropTypes.elementType
 };
 
 Button.defaultProps = {
-	type: 'primary'
+	type: 'default'
 };
 
 export default Button;

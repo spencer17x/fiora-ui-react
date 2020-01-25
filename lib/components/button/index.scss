@@ -1,17 +1,32 @@
 .f-btn {
-  width: 5em;
-  height: 2em;
+  width: 5.8em;
+  height: 2.4em;
   border: 1px solid #ccc;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 4px;
-  font-size: 1em;
+  font-size: 0.8em;
   border: none;
   outline: none;
   cursor: pointer;
+  border: 1px solid transparent;
+  &-default {
+    border-color: #ccc;
+  }
   &-primary {
     background-color: #1890ff;
     color: #fff;
+  }
+  &-dashed {
+    border-style: dashed;
+    border-color: #ccc;
+  }
+  &-danger {
+    background-color: #ff4d4f;
+    color: #fff;
+  }
+  &-link {
+    color: #1890ff;
   }
 }

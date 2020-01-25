@@ -1,0 +1,15 @@
+.example-button {
+  &_container {
+    > h1 {
+      font-size: 30px;
+      padding: 0 0 28px 0;
+    }
+  }
+  &_demo-1 {
+    display: flex;
+    justify-content: space-around;
+    .marginRight10 {
+      margin-right: 10px;
+    }
+  }
+}
