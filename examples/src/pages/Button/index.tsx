@@ -7,11 +7,20 @@ const ExampleButton = () => {
 		<div className='example-button_container'>
 			<h1>基本用法</h1>
 			<div className='example-button_demo-1'>
-				<Button className='marginRight10'>Primary</Button>
+				<Button className='marginRight10'>Default</Button>
 				<Button type='primary' className='marginRight10'>Primary</Button>
 				<Button type='dashed' className='marginRight10'>Dashed</Button>
 				<Button type='danger' className='marginRight10'>Danger</Button>
 				<Button type='link' className='marginRight10'>Link</Button>
+			</div>
+		</div>
+
+		<div className='example-button_container'>
+			<h1>Size 大小</h1>
+			<div className='example-button_demo-1'>
+				<Button size='small' className='marginRight10'>Default</Button>
+				<Button size='default'  type='primary' className='marginRight10'>Primary</Button>
+				<Button size='large' className='marginRight10'>Dashed</Button>
 			</div>
 		</div>
 	</div>;

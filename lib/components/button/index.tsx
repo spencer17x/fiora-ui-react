@@ -9,9 +9,12 @@ export type ButtonType = typeof ButtonTypes[number];
 const ButtonHTMLTypes = tuple('submit', 'button', 'reset');
 export type ButtonHTMLType = typeof ButtonHTMLTypes[number];
 
+export type SizeType = 'small' | 'default' | 'large';
+
 export interface BaseButtonProps {
 	type?: ButtonType;
 	children?: React.ReactNode;
+	size?: SizeType;
 }
 
 export type NativeButtonProps = {
@@ -27,10 +30,12 @@ const Button: React.FC<ButtonProps> = ({
 	className,
 	type,
 	children,
+	size,
 	...restProps
 }) => {
 	const classes = classNames(buttonPrefixCls, className, {
-		[`${buttonPrefixCls}-${type}`]: type
+		[`${buttonPrefixCls}-${type}`]: type,
+		[`${buttonPrefixCls}-${size}`]: size,
 	});
 	return <button className={classes} {...restProps}>
 		{children}

@@ -11,22 +11,38 @@
   outline: none;
   cursor: pointer;
   border: 1px solid transparent;
+  @include button-ripple();
+
   &-default {
     border-color: #ccc;
   }
+
   &-primary {
     background-color: #1890ff;
     color: #fff;
+    border: none;
   }
+
   &-dashed {
     border-style: dashed;
     border-color: #ccc;
   }
+
   &-danger {
     background-color: #ff4d4f;
     color: #fff;
+    border: none;
   }
+
   &-link {
     color: #1890ff;
+  }
+
+  &-small {
+    font-size: 0.6em;
+  }
+
+  &-large {
+    font-size: 1em;
   }
 }
