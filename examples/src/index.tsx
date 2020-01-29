@@ -5,7 +5,7 @@ import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
 import './index.scss';
 
 const Button = React.lazy(() => import('./pages/Button'));
-const Form = React.lazy(() => import('./pages/Form'));
+const Form = React.lazy(() => import('./pages/Icon'));
 
 const IRouter = () => {
 	return <HashRouter>

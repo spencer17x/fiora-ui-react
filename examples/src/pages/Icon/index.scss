@@ -1,0 +1,19 @@
+.example-icon {
+  &_container {
+    margin-top: 40px;
+    &:first-child {
+      margin-top: 0;
+    }
+    > h1 {
+      font-size: 30px;
+      padding: 0 0 28px 0;
+    }
+  }
+  &_demo-1 {
+    display: flex;
+    align-items: center;
+    .marginRight10 {
+      margin-right: 10px;
+    }
+  }
+}

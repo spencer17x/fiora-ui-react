@@ -14,9 +14,15 @@ module.exports = {
 	},
 	module: {
 		rules: [
-			{ test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
 			{
-				test: /\.scss/,
+				test: /\.m?js$/,
+				exclude: /(node_modules|bower_components)/,
+				use: { loader: 'babel-loader' } // options 在 .babelrc 定义
+			},
+			{ test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
+			{ test: /\.svg$/, loader: 'svg-sprite-loader' },
+			{
+				test: /\.s[ac]ss/,
 				use: [
 					'style-loader', // 将 JS 字符串生成为 style 节点
 					'css-loader', // 将 CSS 转化成 CommonJS 模块

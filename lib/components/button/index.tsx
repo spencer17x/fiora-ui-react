@@ -13,14 +13,14 @@ export type SizeType = 'small' | 'default' | 'large';
 
 export interface BaseButtonProps {
 	type?: ButtonType;
-	children?: React.ReactNode;
+	children?: React.ReactNode | string;
 	size?: SizeType;
 }
 
 export type NativeButtonProps = {
 	htmlType?: ButtonHTMLType;
 	onClick?: React.MouseEventHandler<HTMLElement>;
-} & BaseButtonProps & Omit<React.ButtonHTMLAttributes<any>, 'type' | 'onClick'>;
+} & BaseButtonProps & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'onClick'>;
 
 export type ButtonProps = Partial<NativeButtonProps>
 
@@ -31,25 +31,36 @@ const Button: React.FC<ButtonProps> = ({
 	type,
 	children,
 	size,
+	htmlType,
 	...restProps
 }) => {
 	const classes = classNames(buttonPrefixCls, className, {
 		[`${buttonPrefixCls}-${type}`]: type,
 		[`${buttonPrefixCls}-${size}`]: size,
 	});
-	return <button className={classes} {...restProps}>
+	return <button type={htmlType} className={classes} {...restProps}>
 		{children}
 	</button>;
+};
+
+Button.defaultProps = {
+	type: 'default',
+	htmlType: 'button',
+	children: 'default'
 };
 
 Button.propTypes = {
 	className: PropTypes.string,
 	type: PropTypes.oneOf(ButtonTypes),
-	children: PropTypes.elementType
-};
-
-Button.defaultProps = {
-	type: 'default'
+	children: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.elementType
+	]),
+	size: PropTypes.oneOf([
+		'small',
+		'default',
+		'large'
+	])
 };
 
 export default Button;

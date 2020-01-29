@@ -1,0 +1,16 @@
+.f-icon {
+  width: 2em;
+  height: 2em;
+  &-spin {
+    animation: rotate 1.8s infinite linear;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0)
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
