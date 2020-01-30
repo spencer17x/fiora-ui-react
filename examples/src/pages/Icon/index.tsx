@@ -14,7 +14,7 @@ const ExampleIcon = () => {
 				<Icon type='good' className='marginRight10' fill='green' />
 				<Icon type='auto' spin={true} className='marginRight10' />
 				<Icon type='add' spin={true} className='marginRight10' />
-				<Icon type='loading' spin={true} interval={1200} className='marginRight10' />
+				<Icon type='loading' spin={true} fill='#1890ff' interval={1200} className='marginRight10' />
 				<Icon type='atm' interval={500} className='marginRight10' />
 			</div>
 		</div>

@@ -1,6 +1,7 @@
 .f-btn {
-  width: 5.8em;
-  height: 2.4em;
+  min-width: 5.8em;
+  min-height: 2.4em;
+  padding: 0 0.8em;
   border: 1px solid #ccc;
   display: flex;
   align-items: center;
