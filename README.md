@@ -18,7 +18,7 @@ https://xuzpeng.github.io/fiona-ui/doc/example.html
 
 * [ ] eslint
 
-* [ ] css 单独文件提取
+* [x] css 单独文件提取
 
 * [ ] github/travis/circle ci/cd
 
