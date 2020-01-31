@@ -20,7 +20,8 @@
   "include": [
     "lib/**/*",
     "examples/**/*",
-    "typings/**/*"
+    "typings/**/*",
+    "tests/**/*"
   ],
   "exclude": [
     "node_modules",

@@ -8,6 +8,21 @@ https://github.com/xuzpeng/fiona-ui.git
 
 https://xuzpeng.github.io/fiona-ui/doc/example.html
 
+# 配置项
+
+* [x] typescript
+
+* [x] git-cz
+
+* [x] jest 单测
+
+* [ ] eslint
+
+* [ ] css 单独文件提取
+
+* [ ] github/travis/circle ci/cd
+
+
 # 名字由来
 
 纪念 LOL 中一个英雄 - 无双剑姬(菲奥娜)

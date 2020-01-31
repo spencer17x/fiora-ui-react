@@ -54,7 +54,7 @@ Button.propTypes = {
 	type: PropTypes.oneOf(ButtonTypes),
 	children: PropTypes.oneOfType([
 		PropTypes.string,
-		PropTypes.elementType
+		PropTypes.node,
 	]),
 	size: PropTypes.oneOf([
 		'small',
