@@ -20,7 +20,7 @@ https://xuzpeng.github.io/fiona-ui/doc/example.html
 
 * [x] css 单独文件提取
 
-* [ ] github/travis/circle ci/cd
+* [x] github/travis/circle ci/cd
 
 
 # 名字由来
@@ -51,4 +51,7 @@ const App = () => (
 );
 ```
 
+# 按需加载
+
+使用 babel-plugin-import 插件
 

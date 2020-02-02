@@ -4,16 +4,16 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const getWebpackEntries = require('./node-tools/getWebpackEntries');
 
-const componenNames = getWebpackEntries('./lib/components');
+const componentNames = getWebpackEntries('./lib/components');
 
-const entries = componenNames.reduce((result, current) => {
+const entries = componentNames.reduce((result, current) => {
 	result[current] = path.resolve(`./lib/components/${current}`);
 	return result;
 }, {});
 
 module.exports = {
 	entry: {
-		index: './lib/index.tsx',
+		//		index: './lib/index.tsx',
 		...entries
 	},
 	output: {
@@ -26,11 +26,6 @@ module.exports = {
 	},
 	module: {
 		rules: [
-			{
-				test: /\.m?js$/,
-				exclude: /(node_modules|bower_components)/,
-				use: { loader: 'babel-loader' } // options 在 .babelrc 定义
-			},
 			{ test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
 			{ test: /\.svg$/, loader: 'svg-sprite-loader' },
 			{
@@ -54,7 +49,7 @@ module.exports = {
 				]
 			},
 			{
-				test: /\.(jpg|png|gif|bmp|jpeg)$/,//正则表达式匹配图片规则
+				test: /\.(jpg|png|gif|bmp|jpeg)$/, // 正则表达式匹配图片规则
 				use: [
 					{
 						loader: 'url-loader',
