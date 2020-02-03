@@ -17,7 +17,7 @@ module.exports = {
 		...entries
 	},
 	output: {
-		path: path.join(__dirname, '/dist'),
+		path: path.join(__dirname, '/dist/lib'),
 		library: 'fiora-ui-react',
 		libraryTarget: 'umd'
 	},
