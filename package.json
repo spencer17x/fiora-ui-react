@@ -1,7 +1,8 @@
 {
   "name": "fiora-ui-react",
   "version": "1.0.8",
-  "main": "./lib/index.js",
+  "main": "dist/lib/index",
+  "types": "dist/lib/index",
   "author": "Code.X <1253478653@qq.com>",
   "license": "MIT",
   "homepage": "https://xuzpeng.github.io/fiora-ui-react/doc",
@@ -13,9 +14,7 @@
     "url": "https://github.com/xuzpeng/fiora-ui-react"
   },
   "files": [
-    "dist/**/*",
-    "README.md",
-    "package.json"
+    "dist/**/*"
   ],
   "scripts": {
     "start": "webpack-dev-server --open --progress --config webpack.dev.js",
