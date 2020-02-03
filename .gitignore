@@ -90,6 +90,6 @@ jspm_packages/
 .dynamodb/
 
 # 生产环境文件
-dist
+#dist
 doc
 
