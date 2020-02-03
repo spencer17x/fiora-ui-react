@@ -31,13 +31,13 @@ module.exports = {
 			{
 				test: /\.(sa|sc|c)ss/,
 				use: [
-					{
-						loader: MiniCssExtractPlugin.loader,
-						options: {
-							hmr: process.env.NODE_ENV === 'development',
-						},
-					},
-					// 'style-loader', // 将 JS 字符串生成为 style 节点
+//					{
+//						loader: MiniCssExtractPlugin.loader,
+//						options: {
+//							hmr: process.env.NODE_ENV === 'development',
+//						},
+//					},
+					 'style-loader', // 将 JS 字符串生成为 style 节点
 					'css-loader', // 将 CSS 转化成 CommonJS 模块
 					'sass-loader', // 将 Sass 编译成 CSS，默认使用 Node Sass
 					{
@@ -69,9 +69,9 @@ module.exports = {
 	plugins: [
 		new CheckerPlugin(),
 		new CleanWebpackPlugin(),
-		new MiniCssExtractPlugin({
-			filename: '[name].css',
-			chunkFilename: '[id].css',
-		})
+//		new MiniCssExtractPlugin({
+//			filename: '[name].css',
+//			chunkFilename: '[id].css',
+//		})
 	]
 };
