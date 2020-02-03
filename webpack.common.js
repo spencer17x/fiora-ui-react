@@ -13,7 +13,7 @@ const entries = componentNames.reduce((result, current) => {
 
 module.exports = {
 	entry: {
-		//		index: './lib/index.tsx',
+		index: './lib/index.tsx',
 		...entries
 	},
 	output: {
