@@ -1,5 +1,5 @@
 .f-btn {
-  min-width: 5.8em;
+  // min-width: 5.8em;
   height: 2.4em;
   padding: 0 0.8em;
   display: inline-flex;
@@ -10,7 +10,11 @@
   outline: none;
   cursor: pointer;
   border: 1px solid transparent;
-  @include button-ripple();
+  box-sizing: border-box;
+
+  &-ripple {
+    @include button-ripple();
+  }
 
   &-default {
     border-color: #ccc;
@@ -19,9 +23,9 @@
   &-primary {
     background-color: #1890ff;
     color: #fff;
-    border: none;
+    border-color: #1890ff;
 
-    .f-icon-spin {
+    > .f-icon {
       fill: #fff;
     }
   }
@@ -34,7 +38,7 @@
   &-danger {
     background-color: #ff4d4f;
     color: #fff;
-    border: none;
+    border-color: #ff4d4f;
   }
 
   &-link {
@@ -56,13 +60,24 @@
     border: 1px solid #ccc;
   }
 
+  &-circle {
+    border-radius: 50%;
+    min-width: 2.4em;
+    padding: 0;
+  }
+
   &-loading {
     opacity: 0.8;
   }
 
-  .f-icon-spin {
+  > .f-icon {
     width: 1.6em;
     height: 1.6em;
-    margin-right: 4px;
+  }
+
+  &-between {
+    > .f-icon {
+      margin-right: 0.6em;
+    }
   }
 }

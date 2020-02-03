@@ -12,6 +12,8 @@ export type ButtonHTMLType = typeof ButtonHTMLTypes[number];
 
 export type SizeType = 'small' | 'default' | 'large';
 
+export type Shape = 'circle'
+
 export interface BaseButtonProps {
 	type?: ButtonType;
 	children?: React.ReactNode | string;
@@ -19,6 +21,7 @@ export interface BaseButtonProps {
 	disabled?: boolean;
 	icon?: string;
 	loading?: boolean;
+	shape?: Shape
 }
 
 export type NativeButtonProps = {
@@ -39,33 +42,44 @@ const Button: React.FC<ButtonProps> = ({
 	disabled,
 	icon,
 	loading,
+	shape,
 	...restProps
 }) => {
 	const classes = classNames(buttonPrefixCls, className, {
 		[`${buttonPrefixCls}-${type}`]: type,
 		[`${buttonPrefixCls}-${size}`]: size,
 		[`${buttonPrefixCls}-disabled`]: disabled,
-		[`${buttonPrefixCls}-loading`]:  loading,
+		[`${buttonPrefixCls}-loading`]: loading,
+		[`${buttonPrefixCls}-ripple`]: !disabled,
+		[`${buttonPrefixCls}-${shape}`]: shape,
+		[`${buttonPrefixCls}-between`]: (icon || loading) && children
 	});
 	return <button disabled={disabled} type={htmlType} className={classes} {...restProps}>
-		{icon && <Icon type={icon} />}
-		{
-			loading && <Icon
-				type='loading'
-				spin={true}
-				fill='#1890ff'
-				interval={1200}
-				className={`${buttonPrefixCls}-loading`}
-			/>
-		}
-		{children}
+		<>
+			{icon && <Icon type={icon} />}
+		</>
+		<>
+			{
+				loading && <Icon
+					type='loading'
+					spin={true}
+					fill='#1890ff'
+					interval={1200}
+					className={`${buttonPrefixCls}-loading`}
+				/>
+			}
+		</>
+		<>
+			{
+				children && <span>{children}</span>
+			}
+		</>
 	</button>;
 };
 
 Button.defaultProps = {
 	type: 'default',
 	htmlType: 'button',
-	children: 'default',
 	disabled: false,
 	loading: false
 };

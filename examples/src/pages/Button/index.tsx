@@ -62,6 +62,11 @@ const ExampleButton = () => {
 					loading={buttonLoading}
 					onClick={() => setButtonLoading(!buttonLoading)}
 				>loading : ${buttonLoading}</Button>
+				<Button className='component-margin' shape='circle'>A</Button>
+				<Button className='component-margin' icon='search' shape='circle' />
+				<Button type='primary' className='component-margin' shape='circle'>A</Button>
+				<Button type='primary' className='component-margin' icon='search' shape='circle'>ABC</Button>
+				<Button shape='circle' type='dashed' className='component-margin'>D</Button>
 			`}
 		>
 			<Button className='component-margin' icon='add'>Add Button</Button>
@@ -73,6 +78,11 @@ const ExampleButton = () => {
 				loading={buttonLoading}
 				onClick={() => setButtonLoading(!buttonLoading)}
 			>loading : {`${buttonLoading}`}</Button>
+			<Button className='component-margin' shape='circle'>A</Button>
+			<Button className='component-margin' icon='search' shape='circle' />
+			<Button type='primary' className='component-margin' shape='circle'>A</Button>
+			<Button type='primary' className='component-margin' icon='search' shape='circle'>ABC</Button>
+			<Button shape='circle' type='dashed' className='component-margin'>D</Button>
 		</CodeCard>
 	</div>;
 };
