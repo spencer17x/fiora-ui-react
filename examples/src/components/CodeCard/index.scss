@@ -8,10 +8,10 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+  }
 
-    > * {
-      margin: 0 20px 20px 0;
-    }
+  .icon-code-toggle {
+    cursor: pointer;
   }
 }
 
@@ -29,7 +29,7 @@
 
 .code-enter-active {
   opacity: 1;
-  transform: scaleY(0.9);
+  transform: scaleY(1);
   transition: opacity 300ms, transform 300ms;
 }
 

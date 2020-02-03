@@ -2,11 +2,11 @@ import React, { ReactNode, ReactNodeArray, useState } from 'react';
 import classNames from 'classnames';
 import { UnControlled as CodeMirror } from 'react-codemirror2';
 import { CSSTransition } from 'react-transition-group';
+import { Icon } from '../../../../lib';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/dracula.css';
 import 'codemirror/mode/jsx/jsx';
 import './index.scss';
-import { Icon } from '../../../../lib';
 
 interface CodeShowProps extends React.HTMLAttributes<HTMLDivElement> {
 	title?: string;
@@ -28,7 +28,7 @@ const CodeShow: React.FC<CodeShowProps> = ({
 		<div className='code-card_demo'>
 			{children}
 		</div>
-		<Icon type='code' onClick={() => setShowCard(!showCard)} />
+		<Icon className='icon-code-toggle' type='code' onClick={() => setShowCard(!showCard)} />
 		<CSSTransition
 			in={showCard}
 			timeout={300}
@@ -36,7 +36,6 @@ const CodeShow: React.FC<CodeShowProps> = ({
 			unmountOnExit
 		>
 			<CodeMirror
-				autoScroll={false}
 				className='code-mirror_container'
 				value={code}
 				options={{

@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { tuple } from '../../_util/type';
 import './index.scss';
+import Icon from '../icon';
 
 const ButtonTypes = tuple('default', 'primary', 'ghost', 'dashed', 'danger', 'link');
 export type ButtonType = typeof ButtonTypes[number];
@@ -15,6 +16,9 @@ export interface BaseButtonProps {
 	type?: ButtonType;
 	children?: React.ReactNode | string;
 	size?: SizeType;
+	disabled?: boolean;
+	icon?: string;
+	loading?: boolean;
 }
 
 export type NativeButtonProps = {
@@ -32,13 +36,28 @@ const Button: React.FC<ButtonProps> = ({
 	children,
 	size,
 	htmlType,
+	disabled,
+	icon,
+	loading,
 	...restProps
 }) => {
 	const classes = classNames(buttonPrefixCls, className, {
 		[`${buttonPrefixCls}-${type}`]: type,
 		[`${buttonPrefixCls}-${size}`]: size,
+		[`${buttonPrefixCls}-disabled`]: disabled,
+		[`${buttonPrefixCls}-loading`]:  loading,
 	});
-	return <button type={htmlType} className={classes} {...restProps}>
+	return <button disabled={disabled} type={htmlType} className={classes} {...restProps}>
+		{icon && <Icon type={icon} />}
+		{
+			loading && <Icon
+				type='loading'
+				spin={true}
+				fill='#1890ff'
+				interval={1200}
+				className={`${buttonPrefixCls}-loading`}
+			/>
+		}
 		{children}
 	</button>;
 };
@@ -46,7 +65,9 @@ const Button: React.FC<ButtonProps> = ({
 Button.defaultProps = {
 	type: 'default',
 	htmlType: 'button',
-	children: 'default'
+	children: 'default',
+	disabled: false,
+	loading: false
 };
 
 Button.propTypes = {
@@ -60,7 +81,9 @@ Button.propTypes = {
 		'small',
 		'default',
 		'large'
-	])
+	]),
+	disabled: PropTypes.bool,
+	loading: PropTypes.bool
 };
 
 export default Button;
