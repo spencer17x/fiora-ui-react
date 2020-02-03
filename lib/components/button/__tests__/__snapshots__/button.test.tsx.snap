@@ -4,7 +4,7 @@ exports[`Button renders Chinese characters correctly 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "f-btn f-btn-default",
+      "class": "f-btn f-btn-default f-btn-ripple",
       "type": "button",
     },
     "children": Array [
@@ -12,11 +12,24 @@ initialize {
         "attribs": Object {},
         "children": Array [
           Object {
-            "data": "按钮",
+            "attribs": Object {},
+            "children": Array [
+              Object {
+                "data": "按钮",
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "text",
+              },
+            ],
+            "name": "span",
+            "namespace": "http://www.w3.org/1999/xhtml",
             "next": null,
             "parent": [Circular],
             "prev": null,
-            "type": "text",
+            "type": "tag",
+            "x-attribsNamespace": Object {},
+            "x-attribsPrefix": Object {},
           },
         ],
         "name": "span",
@@ -73,16 +86,29 @@ exports[`Button renders correctly 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "f-btn f-btn-default",
+      "class": "f-btn f-btn-default f-btn-ripple",
       "type": "button",
     },
     "children": Array [
       Object {
-        "data": "default",
+        "attribs": Object {},
+        "children": Array [
+          Object {
+            "data": "default",
+            "next": null,
+            "parent": [Circular],
+            "prev": null,
+            "type": "text",
+          },
+        ],
+        "name": "span",
+        "namespace": "http://www.w3.org/1999/xhtml",
         "next": null,
         "parent": [Circular],
         "prev": null,
-        "type": "text",
+        "type": "tag",
+        "x-attribsNamespace": Object {},
+        "x-attribsPrefix": Object {},
       },
     ],
     "name": "button",
@@ -129,16 +155,29 @@ exports[`Button renders correctly 2`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "f-btn f-btn-primary",
+      "class": "f-btn f-btn-primary f-btn-ripple",
       "type": "button",
     },
     "children": Array [
       Object {
-        "data": "primary",
+        "attribs": Object {},
+        "children": Array [
+          Object {
+            "data": "primary",
+            "next": null,
+            "parent": [Circular],
+            "prev": null,
+            "type": "text",
+          },
+        ],
+        "name": "span",
+        "namespace": "http://www.w3.org/1999/xhtml",
         "next": null,
         "parent": [Circular],
         "prev": null,
-        "type": "text",
+        "type": "tag",
+        "x-attribsNamespace": Object {},
+        "x-attribsPrefix": Object {},
       },
     ],
     "name": "button",
@@ -185,16 +224,29 @@ exports[`Button renders correctly 3`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "f-btn f-btn-default f-btn-large",
+      "class": "f-btn f-btn-default f-btn-large f-btn-ripple",
       "type": "button",
     },
     "children": Array [
       Object {
-        "data": "large",
+        "attribs": Object {},
+        "children": Array [
+          Object {
+            "data": "large",
+            "next": null,
+            "parent": [Circular],
+            "prev": null,
+            "type": "text",
+          },
+        ],
+        "name": "span",
+        "namespace": "http://www.w3.org/1999/xhtml",
         "next": null,
         "parent": [Circular],
         "prev": null,
-        "type": "text",
+        "type": "tag",
+        "x-attribsNamespace": Object {},
+        "x-attribsPrefix": Object {},
       },
     ],
     "name": "button",
@@ -241,16 +293,29 @@ exports[`Button should not insert space to link button 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "f-btn f-btn-link",
+      "class": "f-btn f-btn-link f-btn-ripple",
       "type": "button",
     },
     "children": Array [
       Object {
-        "data": "按钮",
+        "attribs": Object {},
+        "children": Array [
+          Object {
+            "data": "按钮",
+            "next": null,
+            "parent": [Circular],
+            "prev": null,
+            "type": "text",
+          },
+        ],
+        "name": "span",
+        "namespace": "http://www.w3.org/1999/xhtml",
         "next": null,
         "parent": [Circular],
         "prev": null,
-        "type": "text",
+        "type": "tag",
+        "x-attribsNamespace": Object {},
+        "x-attribsPrefix": Object {},
       },
     ],
     "name": "button",
