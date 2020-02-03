@@ -63,6 +63,7 @@ const ExampleIcon = () => {
 		</CodeShow>
 
 		<CodeShow
+			style={{ marginTop: 30 }}
 			title='带颜色的Icon'
 			code={`
 				<Icon fill='green' type='add' className='marginRight10' />
@@ -120,6 +121,7 @@ const ExampleIcon = () => {
 		</CodeShow>
 
 		<CodeShow
+			style={{ marginTop: 30 }}
 			title='旋转跳转我不停歇'
 			code={`
 				<Icon type='auto' spin={true} className='marginRight10' />

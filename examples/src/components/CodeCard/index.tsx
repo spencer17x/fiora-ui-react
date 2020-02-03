@@ -22,7 +22,7 @@ const CodeShow: React.FC<CodeShowProps> = ({
 	code,
 	...restProps
 }) => {
-	const [showCard, setShowCard] = useState(false);
+	const [showCard, setShowCard] = useState(true);
 	return <div className={classNames('code-card', className)} {...restProps}>
 		<h1>{title}</h1>
 		<div className='code-card_demo'>

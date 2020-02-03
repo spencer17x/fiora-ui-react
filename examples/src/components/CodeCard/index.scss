@@ -1,6 +1,14 @@
 .code-card {
+  width: 600px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+  0px 6px 10px 0px rgba(0, 0, 0, 0.14),
+  0px 1px 18px 0px rgba(0, 0, 0, .12);
+  padding: 50px;
+
+
   > h1 {
-    font-size: 30px;
+    font-size: 26px;
     margin-top: 0;
   }
 
