@@ -16,15 +16,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 10
-      - name: Cache Dependence
-        id: cache-dependence
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-dependence
-      - name: Generate Dependence
-          if: steps.cache-dependence.outputs.cache-hit != 'true'
-          run: npm install
+      - run: npm install
       - run: npm test
       - run: npm run build
 
