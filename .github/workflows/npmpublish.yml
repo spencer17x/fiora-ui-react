@@ -21,8 +21,8 @@ jobs:
         with:
           path: node_modules
       - name: Install Dependencies
-          if: steps.cache.outputs.cache-hit != 'true'
-          run: npm install
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm install
       - run: npm test
       - run: npm run build
 
