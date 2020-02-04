@@ -21,7 +21,8 @@
     "build": "webpack --config webpack.prod.js",
     "build:doc": "webpack --config webpack.doc.js",
     "commit": "git add . && git-cz",
-    "test": "jest --passWithNoTests"
+    "test": "jest --passWithNoTests",
+    "trypublish": "npm publish || true"
   },
   "devDependencies": {
     "@babel/core": "^7.8.3",
