@@ -1,8 +1,11 @@
 name: release
 on:
+  pull_request:
+    branches:
+      - master
   push:
-    tags:
-      - v*
+    branches:
+      - master
 jobs:
   test:
     runs-on: ubuntu-latest
