@@ -19,7 +19,7 @@ jobs:
           node-version: 12
       - name: npm ci and test
         run: |
-          npm i
+          npm install
           npm ci
           npm run test
         env:
@@ -34,7 +34,9 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
+      - run: npm install
       - run: npm ci
+      - run: npm run build
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
