@@ -14,9 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: setup node
-          uses: actions/setup-node@v1
-          with:
-            node-version: 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
       - name: npm ci and test
         run: |
           npm ci
