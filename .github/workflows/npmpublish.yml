@@ -19,6 +19,7 @@ jobs:
           node-version: 12
       - name: npm ci and test
         run: |
+          npm i
           npm ci
           npm run test
         env:
