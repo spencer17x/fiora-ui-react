@@ -1,0 +1,16 @@
+.f-btn-group {
+  display: inline-flex;
+  align-items: center;
+
+  .border-left-reset {
+    border-left: 0;
+    border-bottom-left-radius: initial;
+    border-top-left-radius: initial;
+  }
+
+  .border-right-reset {
+    border-right: 1px solid #ccc;
+    border-bottom-right-radius: initial;
+    border-top-right-radius: initial;
+  }
+}

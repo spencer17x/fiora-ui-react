@@ -64,7 +64,7 @@ const ExampleIcon = () => {
 
 		<CodeShow
 			style={{ marginTop: 30 }}
-			title='带颜色的Icon'
+			title='带颜色的图标'
 			code={`
 				<Icon fill='green' type='add' className='marginRight10' />
 				<Icon fill='green' type='all' className='marginRight10' />

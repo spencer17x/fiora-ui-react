@@ -13,13 +13,11 @@ interface IconProps extends React.SVGAttributes<SVGElement> {
 
 const buttonPrefixCls: string = 'f-icon';
 
-const Icon: React.FC<IconProps> = ({
-	type,
-	className,
-	spin,
-	interval,
-	...restProps
-}) => {
+const Icon: React.FC<IconProps> = props => {
+	const {
+		type, className, spin, interval,
+		...restProps
+	} = props;
 	const classes = classNames(buttonPrefixCls, className, {
 		[`${buttonPrefixCls}-spin`]: spin || Boolean(interval)
 	});

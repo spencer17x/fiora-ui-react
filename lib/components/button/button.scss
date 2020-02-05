@@ -1,7 +1,6 @@
 .f-btn {
-  // min-width: 5.8em;
+  min-width: 2.4em;
   height: 2.4em;
-  padding: 0 0.8em;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -11,6 +10,7 @@
   cursor: pointer;
   border: 1px solid transparent;
   box-sizing: border-box;
+  padding: 0 1em;
 
   &-ripple {
     @include button-ripple();
@@ -39,6 +39,10 @@
     background-color: #ff4d4f;
     color: #fff;
     border-color: #ff4d4f;
+
+    > .f-icon {
+      fill: #fff;
+    }
   }
 
   &-link {
@@ -76,8 +80,15 @@
   }
 
   &-between {
-    > .f-icon {
-      margin-right: 0.6em;
+    padding: 0 0.6em;
+
+    > span {
+      padding-left: 0.8em;
     }
+  }
+
+  > span {
+    display: inline-flex;
+    align-items: center;
   }
 }
