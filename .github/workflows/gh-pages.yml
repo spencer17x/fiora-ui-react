@@ -22,7 +22,7 @@ jobs:
           npm install
           npm ci
           npm run test
-      - Deploy to GitHub Pages
+      - name: deploy to GitHub Pages
         uses: Cecilapp/GitHub-Pages-deploy@master
         env:
           EMAIL: 1253478653@qq.com              # must be a verified email
