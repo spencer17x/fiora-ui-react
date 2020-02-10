@@ -7,3 +7,4 @@ doc
 #Use a negated ignore pattern (like "--ignore-pattern '!<relative/path/to/filename>'") to override
 !.eslintrc.js
 
+.github/**/*

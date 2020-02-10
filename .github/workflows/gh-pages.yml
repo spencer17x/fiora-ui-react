@@ -1,0 +1,32 @@
+name: Deploy gh-pages
+
+on:
+  pull_request:
+    branches:
+      - gh-pages
+  push:
+    branches:
+      - gh-pages
+
+jobs:
+  prebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: npm ci and test
+        run: |
+          npm install
+          npm ci
+          npm run test
+      - Deploy to GitHub Pages
+        uses: Cecilapp/GitHub-Pages-deploy@master
+        env:
+          EMAIL: 1253478653@qq.com              # must be a verified email
+          GH_TOKEN: ${{ secrets.access_token }} # https://github.com/settings/tokens
+          BUILD_DIR: doc                        # "_site/" by default
+          CNAME: github.com                     # in case of custom domain
+          JEKYLL_SITE: "YES"                    # only in case of a Jekyll site

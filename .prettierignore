@@ -1,0 +1,14 @@
+.gitignore
+**/*.svg
+package.json
+dist/
+doc/
+coverage/
+LICENSE
+yarn.lock
+yarn-error.log
+.npmignore
+.prettierignore
+.editorconfig
+.eslintignore
+**/*.yml
