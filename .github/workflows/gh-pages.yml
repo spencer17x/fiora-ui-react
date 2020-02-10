@@ -1,28 +1,15 @@
-name: Deploy gh-pages
-
+name: GitHub Pages deploy
 on:
-  pull_request:
-    branches:
-      - gh-pages
   push:
     branches:
       - gh-pages
-
 jobs:
-  prebuild:
+  checkout-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: setup node
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - name: npm ci and test
-        run: |
-          npm install
-          npm ci
-          npm run test
-      - name: deploy to GitHub Pages
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Deploy to GitHub Pages
         uses: Cecilapp/GitHub-Pages-deploy@master
         env:
           EMAIL: 1253478653@qq.com              # must be a verified email
