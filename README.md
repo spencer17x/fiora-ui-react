@@ -10,18 +10,17 @@ https://xuzpeng.github.io/fiona-ui/doc/example.html
 
 # 配置项
 
-* [x] typescript
+- [x] typescript
 
-* [x] git-cz
+- [x] git-cz
 
-* [x] jest 单测
+- [x] jest 单测
 
-* [ ] eslint
+- [x] eslint
 
-* [x] css 单独文件提取
+- [x] css 单独文件提取
 
-* [x] github/travis/circle ci/cd
-
+- [x] github/travis/circle ci/cd
 
 # 名字由来
 
@@ -33,20 +32,20 @@ https://xuzpeng.github.io/fiona-ui/doc/example.html
 
 # 如何安装
 
-```npm install fiora-ui-react```
+`npm install fiora-ui-react`
 
-```yarn add fiora-ui-react```
+`yarn add fiora-ui-react`
 
 # 如何使用
 
 后续会将实例补充到官方文档中...
 
 ```typescript jsx
-import { Button } from 'fiora-ui-react';
+import { Button } from "fiora-ui-react";
 
 const App = () => (
   <>
-    <Button className='marginRight10'>Default</Button>
+    <Button className="marginRight10">Default</Button>
   </>
 );
 ```
@@ -54,4 +53,3 @@ const App = () => (
 # 按需加载
 
 使用 babel-plugin-import 插件
-
