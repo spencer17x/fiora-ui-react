@@ -9,7 +9,7 @@ on:
       - gh-pages
 
 jobs:
-  prebuild:
+  deploy-doc:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -17,11 +17,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
-      - name: npm ci and test
-        run: |
-          npm install
-          npm ci
-          npm run test
       - name: deploy to GitHub Pages
         uses: Cecilapp/GitHub-Pages-deploy@master
         env:
