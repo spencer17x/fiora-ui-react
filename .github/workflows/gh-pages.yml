@@ -28,5 +28,5 @@ jobs:
           EMAIL: 1253478653@qq.com              # must be a verified email
           GH_TOKEN: ${{ secrets.access_token }} # https://github.com/settings/tokens
           BUILD_DIR: doc                        # "_site/" by default
-          CNAME: github.com                     # in case of custom domain
+          CNAME: https://xuzpeng.github.io/fiora-ui-react/doc # in case of custom domain
           JEKYLL_SITE: "YES"                    # only in case of a Jekyll site
