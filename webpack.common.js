@@ -2,20 +2,10 @@ const path = require("path");
 const { CheckerPlugin } = require("awesome-typescript-loader");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const getWebpackEntries = require("./node-tools/getWebpackEntries");
-
-const componentNames = getWebpackEntries("./lib/components");
-
-const entries = componentNames.reduce((result, current) => {
-  result[current] = path.resolve(`./lib/components/${current}`);
-  return result;
-}, {});
+const Components = require("./components.json");
 
 module.exports = {
-  entry: {
-    index: "./lib/index.tsx"
-    //		...entries
-  },
+  entry: Components,
   output: {
     path: path.join(__dirname, "/dist/lib"),
     library: "fiora-ui-react",
@@ -31,13 +21,13 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss/,
         use: [
-          //					{
-          //						loader: MiniCssExtractPlugin.loader,
-          //						options: {
-          //							hmr: process.env.NODE_ENV === 'development',
-          //						},
-          //					},
-          "style-loader", // 将 JS 字符串生成为 style 节点
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: process.env.NODE_ENV === "development"
+            }
+          },
+          // 'style-loader', // 将 JS 字符串生成为 style 节点
           "css-loader", // 将 CSS 转化成 CommonJS 模块
           "sass-loader", // 将 Sass 编译成 CSS，默认使用 Node Sass
           {
@@ -68,10 +58,9 @@ module.exports = {
   },
   plugins: [
     new CheckerPlugin(),
-    new CleanWebpackPlugin()
-    //		new MiniCssExtractPlugin({
-    //			filename: '[name].css',
-    //			chunkFilename: '[id].css',
-    //		})
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "/style/[name].css"
+    })
   ]
 };

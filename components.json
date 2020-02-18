@@ -1,0 +1,5 @@
+{
+  "button": "./lib/components/button/button.tsx",
+  "button-group": "./lib/components/button/button-group.tsx",
+  "icon": "./lib/components/button/index.tsx"
+}
