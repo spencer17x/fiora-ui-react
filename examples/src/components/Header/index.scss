@@ -3,9 +3,12 @@
   height: 60px;
   box-shadow: 0 2px 8px #f0f1f2;
   display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-sizing: border-box;
+  align-items: center;
   &_logo {
-    flex: 0 0 280px;
-    padding-left: 20px;
+    flex: 0 0 260px;
     display: flex;
     align-items: center;
     position: relative;
@@ -18,8 +21,8 @@
       padding-left: 20px;
       font-weight: 500;
     }
-    ::after {
-      content: '';
+    &::after {
+      content: "";
       width: 1px;
       height: 26px;
       background-color: #ccc;

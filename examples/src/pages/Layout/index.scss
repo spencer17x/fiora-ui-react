@@ -1,0 +1,24 @@
+.example-layout {
+  .text-center-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  }
+
+  .fill-width {
+    width: 100%;
+  }
+
+  .light {
+    background-color: #7dbcea;
+  }
+
+  .dark {
+    background-color: #1890ff;
+  }
+
+  .light-dark {
+    background-color: #3ba0e9;
+  }
+}

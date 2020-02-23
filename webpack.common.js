@@ -60,7 +60,7 @@ module.exports = {
     new CheckerPlugin(),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: "/style/[name].css"
+      filename: "[name].css"
     })
   ]
 };

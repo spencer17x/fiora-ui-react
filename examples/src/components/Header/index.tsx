@@ -1,20 +1,22 @@
-import React from 'react';
-import logo from '../../images/logo.jpeg';
-import './index.scss';
+import React from "react";
+import logo from "../../images/logo.jpeg";
+import GithubLogo from "../GithubLogo";
+import "./index.scss";
 
-interface HeaderProps {
-
-}
+interface HeaderProps {}
 
 const Header: React.FC<HeaderProps> = () => {
-	return <div className='example-header'>
-		<div className='example-header_logo'>
-			<img src={logo} className='example-header_logo-image' />
-			<div className='example-header_logo-description'>FIORA-UI OF React</div>
-		</div>
-		<div className='example-header_search'></div>
-		<div className='example-header_menu'></div>
-	</div>;
+  return (
+    <div className="example-header">
+      <div className="example-header_logo">
+        <img src={logo} className="example-header_logo-image" />
+        <div className="example-header_logo-description">FIORA-UI OF React</div>
+      </div>
+      <a href="https://github.com/xuzpeng/fiora-ui-react" target="_blank">
+        <GithubLogo />
+      </a>
+    </div>
+  );
 };
 
 export default Header;
