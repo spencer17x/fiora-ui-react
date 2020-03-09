@@ -1,9 +1,6 @@
 .f-btn {
   min-width: 2.4em;
   height: 2.4em;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   border-radius: 4px;
   font-size: 0.8em;
   outline: none;
@@ -77,6 +74,7 @@
   > .f-icon {
     width: 1.6em;
     height: 1.6em;
+    vertical-align: middle;
   }
 
   &-between {
@@ -88,7 +86,9 @@
   }
 
   > span {
-    display: inline-flex;
-    align-items: center;
+    height: 1.8em;
+    line-height: 1.8em;
+    display: inline-block;
+    vertical-align: middle;
   }
 }

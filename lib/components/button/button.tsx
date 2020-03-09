@@ -79,7 +79,11 @@ const Button: React.FC<ButtonProps> = props => {
           className={`${buttonPrefixCls}-loading`}
         />
       )}
-      {children && <span>{children}</span>}
+      {children &&
+        React.Children.map(children, childNode => {
+          if (typeof childNode === "string") return <span>{childNode}</span>;
+          return childNode;
+        })}
     </button>
   );
 };
