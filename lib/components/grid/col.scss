@@ -1,0 +1,11 @@
+@function cent24($n) {
+  @return percentage($n/24);
+}
+
+.f-col {
+  @for $i from 1 through 24 {
+    &-#{$i} {
+      width: cent24($i);
+    }
+  }
+}
