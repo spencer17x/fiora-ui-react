@@ -18,7 +18,6 @@ export default function Layout(props: LayoutProps) {
   const hasAside: boolean = children.some(el => {
     return el.type === Aside;
   });
-  console.log(hasAside);
   return (
     <div
       {...restProps}

@@ -8,9 +8,10 @@ interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const Col = (props: ColProps) => {
-  const { children, className, span } = props;
+  const { children, className, span, ...restProps } = props;
   return (
     <div
+      {...restProps}
       className={classNames(
         "f-col",
         {

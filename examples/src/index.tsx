@@ -7,7 +7,7 @@ import "./index.scss";
 const Button = React.lazy(() => import("./pages/Button"));
 const Icon = React.lazy(() => import("./pages/Icon"));
 const Layout = React.lazy(() => import("./pages/Layout"));
-const Grid = React.lazy(() => import("./pages/grid"));
+const Grid = React.lazy(() => import("./pages/Grid"));
 const Form = React.lazy(() => import("./pages/Form"));
 
 const IRouter = () => {
