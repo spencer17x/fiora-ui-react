@@ -10,8 +10,8 @@ const useWindowSize = () => {
     width: window.innerWidth,
     height: window.innerHeight
   });
-  const handleWindowSize = (event: any) => {
-    const { innerWidth: width, innerHeight: height } = event.currentTarget;
+  const handleWindowSize: (this: Window, event: UIEvent) => void = event => {
+    const { innerWidth: width, innerHeight: height } = event.target as Window;
     setSize({
       width,
       height
