@@ -1,28 +1,61 @@
 import React, { ReactElement } from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
+import { isNumber } from "../../utils";
 import "./row.scss";
 
+interface GutterObject {
+  xs: number;
+  sm: number;
+  md: number;
+  lg: number;
+}
+
 interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
-  gutter?: number;
+  gutter?: number | GutterObject;
   children: ReactElement | ReactElement[];
 }
 
 const Row = (props: RowProps) => {
   const { children, className, gutter = 0, ...restProps } = props;
+  /**
+   * 拼接class
+   * @param prefixClass
+   * @param gutter
+   */
+  const combineGutterClasses = (
+    prefixClass: string,
+    gutter: RowProps["gutter"]
+  ): string => {
+    if (isNumber(gutter) || !gutter) return "";
+    return Object.keys(gutter)
+      .map((gutterKey: keyof GutterObject) => {
+        return `${prefixClass}-${gutterKey}-${gutter[gutterKey]}`;
+      })
+      .join(" ");
+  };
   return (
     <div
-      className={classNames("f-row", className)}
-      style={{ margin: `0 -${gutter / 2}px` }}
+      className={classNames(
+        "f-row",
+        {
+          [`f-row-gutter-${gutter}`]: isNumber(gutter)
+        },
+        combineGutterClasses("f-row-gutter", gutter),
+        className
+      )}
       {...restProps}
     >
       {React.Children.map(children, child => {
-        const style = child.props.style || {};
+        const childClasses = child.props.className;
         return React.cloneElement(child, {
-          style: {
-            ...style,
-            padding: `0 ${gutter / 2}px`
-          }
+          className: classNames(
+            {
+              [`f-row--col-gutter-${gutter}`]: isNumber(gutter)
+            },
+            combineGutterClasses("f-row--col-gutter", gutter),
+            childClasses
+          )
         });
       })}
     </div>
@@ -30,7 +63,7 @@ const Row = (props: RowProps) => {
 };
 
 Row.propTypes = {
-  gutter: PropTypes.number
+  gutter: PropTypes.oneOfType([PropTypes.number, PropTypes.object])
 };
 
 export default Row;

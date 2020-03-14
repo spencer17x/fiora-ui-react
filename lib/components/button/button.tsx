@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
-import { tuple, Omit } from "../../_util/type";
+import { tuple } from "../../_util/type";
 import Icon from "../icon";
 import "./button.scss";
 

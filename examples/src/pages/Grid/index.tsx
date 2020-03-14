@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CodeShow from "../../components/CodeCard";
 import { Row, Col } from "../../../../lib";
 import "./index.scss";
+import { useWindowSize } from "../../../../lib/hoooks";
 
 export default function ExampleGrid() {
+  const size = useWindowSize();
   const style: React.CSSProperties = {
     backgroundColor: "#0092ff",
     textAlign: "center",
@@ -80,7 +82,29 @@ export default function ExampleGrid() {
         </>
       </CodeShow>
       <CodeShow title="间隔" style={{ marginTop: 30 }}>
+        <h2>基本间隔</h2>
         <Row gutter={16}>
+          <Col className="gutter-row" span={6}>
+            <div style={style}>col-6</div>
+          </Col>
+          <Col className="gutter-row" span={6}>
+            <div style={style}>col-6</div>
+          </Col>
+          <Col className="gutter-row" span={6}>
+            <div style={style}>col-6</div>
+          </Col>
+          <Col className="gutter-row" span={6}>
+            <div style={style}>col-6</div>
+          </Col>
+        </Row>
+
+        <h2>
+          响应式, width: {size.width}, height: {size.height}
+        </h2>
+        <Row
+          style={{ marginTop: 20 }}
+          gutter={{ xs: 4, sm: 8, md: 16, lg: 24 }}
+        >
           <Col className="gutter-row" span={6}>
             <div style={style}>col-6</div>
           </Col>
