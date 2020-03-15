@@ -21,17 +21,7 @@
     "build": "webpack --config webpack.prod.js",
     "build:doc": "webpack --config webpack.doc.js",
     "commit": "git add . && git-cz",
-    "test": "jest --passWithNoTests",
-    "eslint": "eslint . --ext '.js,.jsx,.ts,.tsx'",
-    "eslint:staged": "lint-staged"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
-  },
-  "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": "eslint"
+    "test": "jest --passWithNoTests"
   },
   "devDependencies": {
     "@babel/core": "^7.8.3",
@@ -44,23 +34,12 @@
     "@types/react-dom": "^16.9.4",
     "@types/react-router-dom": "^5.1.3",
     "@types/react-transition-group": "^4.2.3",
-    "@typescript-eslint/eslint-plugin": "^2.19.0",
-    "@typescript-eslint/parser": "^2.19.0",
     "awesome-typescript-loader": "^5.2.1",
     "babel-jest": "^25.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.4.2",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-plugin-babel": "^5.3.0",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-jest": "^23.7.0",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-markdown": "^1.0.1",
-    "eslint-plugin-react": "^7.18.3",
     "file-loader": "^5.0.2",
     "git-cz": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
@@ -71,7 +50,6 @@
     "node-sass": "^4.13.1",
     "pre-commit": "^1.2.2",
     "prettier": "^1.19.1",
-    "pretty-quick": "^2.0.1",
     "raw-loader": "^4.0.0",
     "sass-loader": "^8.0.2",
     "sass-resources-loader": "^2.0.1",
