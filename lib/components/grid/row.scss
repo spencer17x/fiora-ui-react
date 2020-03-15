@@ -4,6 +4,7 @@ $screen-md-max: 1200px;
 
 .f-row {
   display: flex;
+  flex-wrap: wrap;
   @for $i from 1 through 24 {
     &-gutter-#{$i} {
       margin: 0 -#{$i/2}px;

@@ -8,7 +8,8 @@ export default function debounce(
   delay: number
 ) {
   // 定时器
-  let timer: NodeJS.Timeout | null = null;
+  // https://github.com/microsoft/TypeScript/issues/842
+  let timer: number | null = null;
 
   // 将debounce处理结果当作函数返回
   return function() {
@@ -22,7 +23,7 @@ export default function debounce(
       clearTimeout(timer);
     }
     // 设立新定时器
-    timer = setTimeout(function() {
+    timer = window.setTimeout(function() {
       fn.apply(context, args);
     }, delay);
   };

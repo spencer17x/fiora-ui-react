@@ -8,9 +8,10 @@ export default function throttle(
   fn: { apply: (arg0: any, arg1: IArguments) => void },
   delay: number
 ) {
+  // https://github.com/microsoft/TypeScript/issues/842
   // last为上一次触发回调的时间, timer是定时器
   let last = 0,
-    timer: NodeJS.Timeout | null = null;
+    timer: number | null = null;
   // 将throttle处理结果当作函数返回
 
   return function() {
@@ -25,7 +26,7 @@ export default function throttle(
     if (now - last < delay && timer) {
       // 如果时间间隔小于我们设定的时间间隔阈值，则为本次触发操作设立一个新的定时器
       clearTimeout(timer);
-      timer = setTimeout(function() {
+      timer = window.setTimeout(function() {
         last = now;
         fn.apply(context, args);
       }, delay);
