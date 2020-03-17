@@ -1,0 +1,3 @@
+@function cent24($n) {
+  @return percentage($n/24);
+}

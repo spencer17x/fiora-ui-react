@@ -1,18 +1,10 @@
-$screen-xs-max: 768px;
-$screen-sm-max: 992px;
-$screen-md-max: 1200px;
-
 .f-row {
   display: flex;
   flex-wrap: wrap;
   @for $i from 1 through 24 {
     &-gutter-#{$i} {
-      margin: 0 -#{$i/2}px;
-    }
-  }
-  @for $i from 1 through 24 {
-    &--col-gutter-#{$i} {
-      padding: 0 #{$i/2}px;
+      margin-left: -#{$i/2}px;
+      margin-right: -#{$i/2}px;
     }
   }
 
@@ -20,12 +12,8 @@ $screen-md-max: 1200px;
   @media (max-width: $screen-xs-max) {
     @for $i from 1 through 24 {
       &-gutter-xs-#{$i} {
-        margin: 0 -#{$i/2}px;
-      }
-    }
-    @for $i from 1 through 24 {
-      &--col-gutter-xs-#{$i} {
-        padding: 0 #{$i/2}px;
+        margin-left: -#{$i/2}px;
+        margin-right: -#{$i/2}px;
       }
     }
   }
@@ -34,12 +22,8 @@ $screen-md-max: 1200px;
   @media (min-width: $screen-xs-max) and (max-width: $screen-sm-max) {
     @for $i from 1 through 24 {
       &-gutter-sm-#{$i} {
-        margin: 0 -#{$i/2}px;
-      }
-    }
-    @for $i from 1 through 24 {
-      &--col-gutter-sm-#{$i} {
-        padding: 0 #{$i/2}px;
+        margin-left: -#{$i/2}px;
+        margin-right: -#{$i/2}px;
       }
     }
   }
@@ -48,12 +32,8 @@ $screen-md-max: 1200px;
   @media (min-width: $screen-sm-max) and (max-width: $screen-md-max) {
     @for $i from 1 through 24 {
       &-gutter-md-#{$i} {
-        margin: 0 -#{$i/2}px;
-      }
-    }
-    @for $i from 1 through 24 {
-      &--col-gutter-md-#{$i} {
-        padding: 0 #{$i/2}px;
+        margin-left: -#{$i/2}px;
+        margin-right: -#{$i/2}px;
       }
     }
   }
@@ -62,12 +42,8 @@ $screen-md-max: 1200px;
   @media (min-width: $screen-md-max) {
     @for $i from 1 through 24 {
       &-gutter-lg-#{$i} {
-        margin: 0 -#{$i/2}px;
-      }
-    }
-    @for $i from 1 through 24 {
-      &--col-gutter-lg-#{$i} {
-        padding: 0 #{$i/2}px;
+        margin-left: -#{$i/2}px;
+        margin-right: -#{$i/2}px;
       }
     }
   }

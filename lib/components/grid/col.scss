@@ -1,12 +1,73 @@
-@function cent24($n) {
-  @return percentage($n/24);
-}
-
 .f-col {
   box-sizing: border-box;
   @for $i from 1 through 24 {
     &-#{$i} {
       width: cent24($i);
+    }
+
+    &-gutter-#{$i} {
+      padding-left: #{$i/2}px;
+      padding-right: #{$i/2}px;
+    }
+    &-gutter-vertical-#{$i} {
+      padding-top: #{$i/2}px;
+      padding-bottom: #{$i/2}px;
+    }
+  }
+
+  // xs 768
+  @media (max-width: $screen-xs-max) {
+    @for $i from 1 through 24 {
+      &-gutter-xs-#{$i} {
+        padding-left: #{$i/2}px;
+        padding-right: #{$i/2}px;
+      }
+      &-gutter-vertical-xs-#{$i} {
+        padding-top: #{$i/2}px;
+        padding-bottom: #{$i/2}px;
+      }
+    }
+  }
+
+  // sm 768 - 992
+  @media (min-width: $screen-xs-max) and (max-width: $screen-sm-max) {
+    @for $i from 1 through 24 {
+      &-gutter-sm-#{$i} {
+        padding-left: #{$i/2}px;
+        padding-right: #{$i/2}px;
+      }
+      &-gutter-vertical-sm-#{$i} {
+        padding-top: #{$i/2}px;
+        padding-bottom: #{$i/2}px;
+      }
+    }
+  }
+
+  // md 992 - 1200
+  @media (min-width: $screen-sm-max) and (max-width: $screen-md-max) {
+    @for $i from 1 through 24 {
+      &-gutter-md-#{$i} {
+        padding-left: #{$i/2}px;
+        padding-right: #{$i/2}px;
+      }
+      &-gutter-vertical-md-#{$i} {
+        padding-top: #{$i/2}px;
+        padding-bottom: #{$i/2}px;
+      }
+    }
+  }
+
+  // lg 1200
+  @media (min-width: $screen-md-max) {
+    @for $i from 1 through 24 {
+      &-gutter-lg-#{$i} {
+        padding-left: #{$i/2}px;
+        padding-right: #{$i/2}px;
+      }
+      &-gutter-vertical-lg-#{$i} {
+        padding-top: #{$i/2}px;
+        padding-bottom: #{$i/2}px;
+      }
     }
   }
 }
