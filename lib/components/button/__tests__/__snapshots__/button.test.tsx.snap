@@ -12,24 +12,11 @@ initialize {
         "attribs": Object {},
         "children": Array [
           Object {
-            "attribs": Object {},
-            "children": Array [
-              Object {
-                "data": "按钮",
-                "next": null,
-                "parent": [Circular],
-                "prev": null,
-                "type": "text",
-              },
-            ],
-            "name": "span",
-            "namespace": "http://www.w3.org/1999/xhtml",
+            "data": "按钮",
             "next": null,
             "parent": [Circular],
             "prev": null,
-            "type": "tag",
-            "x-attribsNamespace": Object {},
-            "x-attribsPrefix": Object {},
+            "type": "text",
           },
         ],
         "name": "span",

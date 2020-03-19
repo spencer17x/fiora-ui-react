@@ -1,6 +1,6 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import classNames from 'classnames';
-import PropTypes, { instanceOf } from 'prop-types';
+import PropTypes from 'prop-types';
 import { isNumber, isPlainObject, isArray } from '../../utils';
 import './row.scss';
 
@@ -13,7 +13,10 @@ export interface GutterObject {
 
 export interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
   gutter?: number | GutterObject | (GutterObject | number)[];
+  justify?: 'start' | 'center' | 'end' | 'space-between' | 'space-around';
 }
+
+const prefixCls: string = 'f-row';
 
 /**
  * 拼接class
@@ -36,14 +39,17 @@ export const combineGutterClasses = (
 };
 
 const Row = (props: RowProps) => {
-  const { children, className, gutter, ...restProps } = props;
+  const { children, className, gutter, justify, ...restProps } = props;
   return (
     <div
       className={classNames(
-        'f-row',
-        combineGutterClasses('f-row-gutter', gutter),
+        prefixCls,
+        combineGutterClasses(`${prefixCls}-gutter`, gutter),
         isArray(gutter) &&
-        combineGutterClasses('f-row-gutter', gutter[0]),
+        combineGutterClasses(`${prefixCls}-gutter`, gutter[0]),
+        {
+          [`${prefixCls}-${justify}`]: justify
+        },
         className
       )}
       {...restProps}
@@ -82,6 +88,9 @@ Row.propTypes = {
         ]
       )
     )
+  ]),
+  justify: PropTypes.oneOf([
+    'start', 'center', 'end', 'space-between', 'space-around'
   ])
 };
 

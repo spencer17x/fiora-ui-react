@@ -1,6 +1,27 @@
 .f-row {
   display: flex;
   flex-wrap: wrap;
+
+  &-start {
+    justify-content: flex-start;
+  }
+
+  &-center {
+    justify-content: center;
+  }
+
+  &-end {
+    justify-content: flex-end;
+  }
+
+  &-space-between {
+    justify-content: space-between;
+  }
+
+  &-space-around {
+    justify-content: space-around;
+  }
+
   @for $i from 1 through 24 {
     &-gutter-#{$i} {
       margin-left: -#{$i/2}px;
