@@ -14,6 +14,7 @@ export interface GutterObject {
 export interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
   gutter?: number | GutterObject | (GutterObject | number)[];
   justify?: 'start' | 'center' | 'end' | 'space-between' | 'space-around';
+  align?: 'top' | 'middle' | 'bottom';
 }
 
 const prefixCls: string = 'f-row';
@@ -39,7 +40,7 @@ export const combineGutterClasses = (
 };
 
 const Row = (props: RowProps) => {
-  const { children, className, gutter, justify, ...restProps } = props;
+  const { children, className, gutter, justify, align, ...restProps } = props;
   return (
     <div
       className={classNames(
@@ -48,7 +49,8 @@ const Row = (props: RowProps) => {
         isArray(gutter) &&
         combineGutterClasses(`${prefixCls}-gutter`, gutter[0]),
         {
-          [`${prefixCls}-${justify}`]: justify
+          [`${prefixCls}-${justify}`]: justify,
+          [`${prefixCls}-${align}`]: align
         },
         className
       )}
@@ -91,6 +93,9 @@ Row.propTypes = {
   ]),
   justify: PropTypes.oneOf([
     'start', 'center', 'end', 'space-between', 'space-around'
+  ]),
+  align: PropTypes.oneOf([
+    'top', 'middle', 'bottom'
   ])
 };
 

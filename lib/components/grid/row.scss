@@ -22,6 +22,18 @@
     justify-content: space-around;
   }
 
+  &-top {
+    align-items: flex-start;
+  }
+
+  &-middle {
+    align-items: center;
+  }
+
+  &-bottom {
+    align-items: flex-end;
+  }
+
   @for $i from 1 through 24 {
     &-gutter-#{$i} {
       margin-left: -#{$i/2}px;
