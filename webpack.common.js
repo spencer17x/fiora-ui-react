@@ -2,12 +2,13 @@ const path = require("path");
 const { CheckerPlugin } = require("awesome-typescript-loader");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const Components = require("./components.json");
+//const Components = require("./components.json");
 
 module.exports = {
-  entry: Components,
+  entry: './lib/index.tsx',
   output: {
     path: path.join(__dirname, "/dist/lib"),
+    filename: 'index.js',
     library: "fiora-ui-react",
     libraryTarget: "umd"
   },
