@@ -219,6 +219,7 @@ export default function ExampleGrid() {
       </CodeShow>
       <CodeShow
         title='通过 Order 来改变元素的排序'
+        style={{ marginBottom: 30 }}
       >
         <Row>
           <Col style={{
@@ -238,6 +239,26 @@ export default function ExampleGrid() {
           </Col>
           <Col style={style} span={6} order={1}>
             4 col-order-1
+          </Col>
+        </Row>
+      </CodeShow>
+
+      <CodeShow title='宽度响应式'>
+        <Row>
+          <Col style={{
+            ...style,
+            backgroundColor: '#0092ffbf'
+          }} xs={2} sm={4} md={6} lg={10}>
+            Col
+          </Col>
+          <Col style={style} xs={20} sm={16} md={12} lg={4}>
+            Col
+          </Col>
+          <Col style={{
+            ...style,
+            backgroundColor: '#0092ffbf'
+          }} xs={2} sm={4} md={6} lg={10}>
+            Col
           </Col>
         </Row>
       </CodeShow>

@@ -8,10 +8,14 @@ import './col.scss';
 interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
   span?: number;
   order?: number;
+  xs?: number;
+  sm?: number;
+  md?: number;
+  lg?: number;
 }
 
 const Col = (props: ColProps & RowProps) => {
-  const { children, className, span, gutter, order, ...restProps } = props;
+  const { children, className, span, gutter, order, xs, sm, md, lg, ...restProps } = props;
   return (
     <div
       {...restProps}
@@ -19,6 +23,10 @@ const Col = (props: ColProps & RowProps) => {
         'f-col',
         {
           [`f-col-span-${span}`]: span,
+          [`f-col-span-xs-${xs}`]: xs,
+          [`f-col-span-sm-${sm}`]: sm,
+          [`f-col-span-md-${md}`]: md,
+          [`f-col-span-lg-${lg}`]: lg,
           [`f-col-order-${order}`]: order,
         },
         combineGutterClasses('f-col-gutter', gutter),
@@ -36,11 +44,11 @@ const Col = (props: ColProps & RowProps) => {
 
 Col.propTypes = {
   span: PropTypes.number,
-  order: PropTypes.number
-};
-
-Col.defaultProps = {
-  span: 24
+  order: PropTypes.number,
+  xs: PropTypes.number,
+  sm: PropTypes.number,
+  md: PropTypes.number,
+  lg: PropTypes.number,
 };
 
 export default Col;

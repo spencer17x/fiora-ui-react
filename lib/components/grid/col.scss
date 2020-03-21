@@ -1,8 +1,9 @@
 .f-col {
   box-sizing: border-box;
+  flex: 1;
   @for $i from 1 through 24 {
     &-span-#{$i} {
-      width: cent24($i);
+      flex: 0 0 cent24($i);
     }
 
     &-order-#{$i} {
@@ -22,6 +23,9 @@
   // xs 768
   @media (max-width: $screen-xs-max) {
     @for $i from 1 through 24 {
+      &-span-xs-#{$i} {
+        flex: 0 0 cent24($i);
+      }
       &-gutter-xs-#{$i} {
         padding-left: #{$i/2}px;
         padding-right: #{$i/2}px;
@@ -36,6 +40,9 @@
   // sm 768 - 992
   @media (min-width: $screen-xs-max) and (max-width: $screen-sm-max) {
     @for $i from 1 through 24 {
+      &-span-sm-#{$i} {
+        flex: 0 0 cent24($i);
+      }
       &-gutter-sm-#{$i} {
         padding-left: #{$i/2}px;
         padding-right: #{$i/2}px;
@@ -50,6 +57,9 @@
   // md 992 - 1200
   @media (min-width: $screen-sm-max) and (max-width: $screen-md-max) {
     @for $i from 1 through 24 {
+      &-span-md-#{$i} {
+        flex: 0 0 cent24($i);
+      }
       &-gutter-md-#{$i} {
         padding-left: #{$i/2}px;
         padding-right: #{$i/2}px;
@@ -64,6 +74,9 @@
   // lg 1200
   @media (min-width: $screen-md-max) {
     @for $i from 1 through 24 {
+      &-span-lg-#{$i} {
+        flex: 0 0 cent24($i);
+      }
       &-gutter-lg-#{$i} {
         padding-left: #{$i/2}px;
         padding-right: #{$i/2}px;
