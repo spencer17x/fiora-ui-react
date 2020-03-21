@@ -10,7 +10,7 @@ module.exports = merge(common, {
   output: {
     path: path.join(__dirname, '/dist/lib'),
     library: 'fiora-ui-react',
-    filename: '[name]/[name].js',
+    filename: '[name].js',
     libraryTarget: 'umd'
   },
   module: {
