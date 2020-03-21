@@ -1,8 +1,0 @@
-.example-header{width:100%;height:60px;box-shadow:0 2px 8px #f0f1f2;display:flex;justify-content:space-between;padding:0 20px;box-sizing:border-box;align-items:center}.example-header_logo{flex:0 0 260px;display:flex;align-items:center;position:relative;box-sizing:border-box}.example-header_logo-image{width:40px;border-radius:50%}.example-header_logo-description{padding-left:20px;font-weight:500}.example-header_logo::after{content:"";width:1px;height:26px;background-color:#ccc;position:absolute;right:0;top:50%;transform:translateY(-50%)}
-
-.example-sidebar{width:100%;padding:60px 0}.example-sidebar_menu-item{width:100%;height:50px;color:#314659;display:flex;align-items:center;justify-content:center;font-size:14px;position:relative;cursor:pointer}.example-sidebar .active{background-color:#e6f7ff;color:#1890ff}.example-sidebar .active::after{content:'';position:absolute;width:2px;height:100%;background-color:#1890ff;right:0;animation:big 0.3s linear forwards}@keyframes big{from{height:0}to{height:100%}}
-
-.page-container_content{display:flex}.page-container_sidebar{flex:0 0 280px}.page-container_main{padding:30px;flex:1}
-
-body{margin:0}
-
