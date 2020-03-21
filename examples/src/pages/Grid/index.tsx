@@ -172,6 +172,7 @@ export default function ExampleGrid() {
       </CodeShow>
       <CodeShow
         title='子元素垂直对齐'
+        style={{ marginBottom: 30 }}
       >
         <Row justify='center' align='top' style={{ backgroundColor: 'rgba(128, 128, 128, 0.08)', marginBottom: 20 }}>
           <Col span={4}>
@@ -213,6 +214,30 @@ export default function ExampleGrid() {
           </Col>
           <Col span={4}>
             <DemoBox value={80}>col-4</DemoBox>
+          </Col>
+        </Row>
+      </CodeShow>
+      <CodeShow
+        title='通过 Order 来改变元素的排序'
+      >
+        <Row>
+          <Col style={{
+            ...style,
+            backgroundColor: '#0092ffbf'
+          }} span={6} order={4}>
+            1 col-order-4
+          </Col>
+          <Col style={style} span={6} order={3}>
+            2 col-order-3
+          </Col>
+          <Col style={{
+            ...style,
+            backgroundColor: '#0092ffbf'
+          }} span={6} order={2}>
+            3 col-order-2
+          </Col>
+          <Col style={style} span={6} order={1}>
+            4 col-order-1
           </Col>
         </Row>
       </CodeShow>

@@ -7,17 +7,19 @@ import './col.scss';
 
 interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
   span?: number;
+  order?: number;
 }
 
 const Col = (props: ColProps & RowProps) => {
-  const { children, className, span, gutter, ...restProps } = props;
+  const { children, className, span, gutter, order, ...restProps } = props;
   return (
     <div
       {...restProps}
       className={classNames(
         'f-col',
         {
-          [`f-col-${span}`]: span
+          [`f-col-span-${span}`]: span,
+          [`f-col-order-${order}`]: order,
         },
         combineGutterClasses('f-col-gutter', gutter),
         isArray(gutter) &&
@@ -33,7 +35,8 @@ const Col = (props: ColProps & RowProps) => {
 };
 
 Col.propTypes = {
-  span: PropTypes.number
+  span: PropTypes.number,
+  order: PropTypes.number
 };
 
 Col.defaultProps = {

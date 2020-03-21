@@ -1,8 +1,12 @@
 .f-col {
   box-sizing: border-box;
   @for $i from 1 through 24 {
-    &-#{$i} {
+    &-span-#{$i} {
       width: cent24($i);
+    }
+
+    &-order-#{$i} {
+      order: $i;
     }
 
     &-gutter-#{$i} {
