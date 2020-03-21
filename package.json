@@ -20,6 +20,7 @@
     "start": "webpack-dev-server --open --progress --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "build:doc": "webpack --config webpack.doc.js",
+    "build:components": "webpack --config webpack.components.js",
     "commit": "git add . && git-cz",
     "test": "jest --passWithNoTests"
   },

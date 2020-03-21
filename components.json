@@ -1,6 +1,6 @@
 {
   "index": "./lib/components/index.tsx",
-  "button/index": "./lib/components/button/button.tsx",
-  "button-group/index": "./lib/components/button/button-group.tsx",
-  "icon/index": "./lib/components/button/index.tsx"
+  "button": "./lib/components/button/button.tsx",
+  "button-group": "./lib/components/button/button-group.tsx",
+  "icon": "./lib/components/button/index.tsx"
 }
