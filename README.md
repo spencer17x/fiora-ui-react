@@ -16,13 +16,13 @@ https://xuzpeng.github.io/fiona-ui/doc/example.html
 
 - [x] jest 单测
 
-- [x] eslint 配置
+- [ ] eslint 配置
 
 - [ ] stylint 配置
 
-- [x] css 单独文件提取
+- [ ] 支持按需加载
 
-- [x] github/travis/circle ci/cd
+- [x] CI/CD
 
 # 名字由来
 
