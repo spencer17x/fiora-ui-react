@@ -20,7 +20,7 @@ https://xuzpeng.github.io/fiona-ui/doc/example.html
 
 - [ ] stylint 配置
 
-- [ ] 支持按需加载
+- [x] 支持按需加载
 
 - [x] CI/CD
 
@@ -54,4 +54,20 @@ const App = () => (
 
 # 按需加载
 
-使用 babel-plugin-import 插件
+使用 babel-plugin-component 插件
+
+配置如下:
+
+```js
+[
+  'component', {
+    'libraryName': 'fiora-ui-react',
+    'styleLibrary': {
+      'name': 'css',
+      'base': false, // no base.css file
+      'path': '[module].css'
+    },
+    libDir: 'dist/lib'
+  }
+]
+```
