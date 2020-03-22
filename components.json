@@ -1,7 +1,12 @@
 {
   "button": "./lib/components/button/button.tsx",
   "button-group": "./lib/components/button/button-group.tsx",
-  "icon": "./lib/components/button/index.tsx",
-  "layout": "./lib/components/layout/index.tsx",
-  "grid": "./lib/components/grid/index.tsx"
+  "icon": "./lib/components/icon/index.tsx",
+  "aside": "./lib/components/layout/aside.tsx",
+  "content": "./lib/components/layout/content.tsx",
+  "footer": "./lib/components/layout/footer.tsx",
+  "header": "./lib/components/layout/header.tsx",
+  "layout": "./lib/components/layout/layout.tsx",
+  "col": "./lib/components/grid/col.tsx",
+  "row": "./lib/components/grid/row.tsx"
 }
