@@ -14,7 +14,8 @@
     "url": "https://github.com/xuzpeng/fiora-ui-react"
   },
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "@types/**/*"
   ],
   "scripts": {
     "start": "webpack-dev-server --open --progress --config webpack.dev.js",

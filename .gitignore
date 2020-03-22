@@ -92,4 +92,5 @@ jspm_packages/
 # 生产环境文件
 dist
 doc
+@types
 
