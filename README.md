@@ -42,8 +42,11 @@ https://xuzpeng.github.io/fiona-ui/doc/example.html
 
 后续会将实例补充到官方文档中...
 
+该方式为全量引入
+
 ```typescript jsx
 import { Button } from "fiora-ui-react";
+import "fiora-ui-react/dist/lib/css/index.css"
 
 const App = () => (
   <>
