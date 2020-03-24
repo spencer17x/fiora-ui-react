@@ -10,9 +10,7 @@
 
 - [x] jest 单测
 
-- [ ] eslint 配置
-
-- [ ] stylint 配置
+- [x] eslint 配置
 
 - [x] 支持按需加载
 
