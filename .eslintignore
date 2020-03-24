@@ -8,3 +8,4 @@ doc
 !.eslintrc.js
 
 .github/**/*
+lib/**/*.test.tsx

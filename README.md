@@ -1,12 +1,6 @@
 # fiora-ui-react
 
-fiona-ui 重写版
-
-fiona-ui 地址：
-
-https://github.com/xuzpeng/fiona-ui.git
-
-https://xuzpeng.github.io/fiona-ui/doc/example.html
+一个基于 React 开发的 UI 库
 
 # 配置项
 
@@ -27,10 +21,6 @@ https://xuzpeng.github.io/fiona-ui/doc/example.html
 # 名字由来
 
 纪念 LOL 中一个英雄 - 无双剑姬(菲奥娜)
-
-# 用途
-
-一个基于 React 的 UI 库
 
 # 如何安装
 
