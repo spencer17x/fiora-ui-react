@@ -15,8 +15,8 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
-      { test: /\.svg$/, loader: 'svg-sprite-loader' },
+      { test: /\.tsx?$/, loader: 'awesome-typescript-loader?cacheDirectory=true', exclude: /node_modules/ },
+      { test: /\.svg$/, loader: 'svg-sprite-loader?cacheDirectory=true', exclude: /node_modules/ },
       {
         test: /\.(sa|sc|c)ss/,
         use: [
@@ -24,7 +24,7 @@ module.exports = {
           'css-loader', // 将 CSS 转化成 CommonJS 模块
           'sass-loader', // 将 Sass 编译成 CSS，默认使用 Node Sass
           {
-            loader: 'sass-resources-loader',
+            loader: 'sass-resources-loader?cacheDirectory=true',
             options: {
               resources: './lib/style/index.scss'
             }
@@ -35,17 +35,19 @@ module.exports = {
         test: /\.(jpg|png|gif|bmp|jpeg)$/, // 正则表达式匹配图片规则
         use: [
           {
-            loader: 'url-loader',
+            loader: 'url-loader?cacheDirectory=true',
             options: {
               limit: 500,
               name: 'images/[name]-[hash:8].[ext]'
             }
           }
-        ]
+        ],
+				exclude: /node_modules/
       },
       {
         test: /\.(png|jpg|gif)$/,
-        use: ['file-loader']
+        use: ['file-loader?cacheDirectory=true'],
+				exclude: /node_modules/
       }
     ]
   },

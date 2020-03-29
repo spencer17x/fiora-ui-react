@@ -1,50 +1,50 @@
-import React, { useEffect, useState } from "react";
-import classNames from "classnames";
-import "./index.scss";
-import { useHistory, useLocation } from "react-router";
+import React, { useEffect, useState } from 'react';
+import classNames from 'classnames';
+import './index.scss';
+import { useHistory, useLocation } from 'react-router';
 
 interface SideBarProps {
-  className?: string;
+	className?: string;
 }
 
 interface MenuItem {
-  path: string;
-  title: string;
+	path: string;
+	title: string;
 }
 
 const SideBar: React.FC<SideBarProps> = ({ className }) => {
-  const history = useHistory();
-  const [menuList] = useState<Array<MenuItem>>([
-    { path: "/button", title: "Button 按钮" },
-    { path: "/icon", title: "Icon 图标" },
-    { path: "/layout", title: "Layout 布局" },
-    { path: "/grid", title: "Grid 栅格" },
-    { path: "/form", title: "Form 表单" },
-    { path: "/affix", title: "Affix 固钉" }
-  ]);
-  const [path, setPath] = useState("/components/button");
-  const location = useLocation();
-  useEffect(() => {
-    setPath(location.pathname);
-  }, [location]);
-  return (
-    <div className={classNames("example-sidebar", className)}>
-      {menuList.map((menuItem, menuItemKey) => {
-        const menuRoutePath = `/components${menuItem.path}`;
-        return (
-          <div
-            key={menuItemKey}
-            className={classNames("example-sidebar_menu-item", {
-              active: menuRoutePath === path
-            })}
-            onClick={() => history.push(menuRoutePath)}
-          >
-            {menuItem.title}
-          </div>
-        );
-      })}
-    </div>
-  );
+	const history = useHistory();
+	const [menuList] = useState<Array<MenuItem>>([
+		{ path: '/button', title: 'Button 按钮' },
+		{ path: '/icon', title: 'Icon 图标' },
+		{ path: '/layout', title: 'Layout 布局' },
+		{ path: '/grid', title: 'Grid 栅格' },
+		{ path: '/affix', title: 'Affix 固钉' }
+		// { path: "/form", title: "Form 表单" },
+	]);
+	const [path, setPath] = useState('/components/button');
+	const location = useLocation();
+	useEffect(() => {
+		setPath(location.pathname);
+	}, [location]);
+	return (
+		<div className={classNames('example-sidebar', className)}>
+			{menuList.map((menuItem, menuItemKey) => {
+				const menuRoutePath = `/components${menuItem.path}`;
+				return (
+					<div
+						key={menuItemKey}
+						className={classNames('example-sidebar_menu-item', {
+							active: menuRoutePath === path
+						})}
+						onClick={() => history.push(menuRoutePath)}
+					>
+						{menuItem.title}
+					</div>
+				);
+			})}
+		</div>
+	);
 };
 
 export default SideBar;
