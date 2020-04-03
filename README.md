@@ -57,8 +57,7 @@ const App = () => (
       'name': 'css',
       'base': false, // no base.css file
       'path': '[module].css'
-    },
-    libDir: 'dist/lib'
+    }
   }
 ]
 ```
