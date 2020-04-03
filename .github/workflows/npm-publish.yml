@@ -34,9 +34,14 @@ jobs:
         with:
           node-version: '10.x'
           registry-url: https://registry.npmjs.org/
-      - run: npm install
-      - run: npm ci
-      - run: npm run build:components
-      - run: npm publish --access public
+      - name: build components
+        run: |
+          npm install
+          npm run build:components
+      - name: publish package
+        run: |
+          cp package.json ./dist
+          cd dist
+          npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
