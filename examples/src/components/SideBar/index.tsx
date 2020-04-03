@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
-import './index.scss';
 import { useHistory, useLocation } from 'react-router';
+import './index.scss';
 
 interface SideBarProps {
 	className?: string;
@@ -19,8 +19,7 @@ const SideBar: React.FC<SideBarProps> = ({ className }) => {
 		{ path: '/icon', title: 'Icon 图标' },
 		{ path: '/layout', title: 'Layout 布局' },
 		{ path: '/grid', title: 'Grid 栅格' },
-		{ path: '/affix', title: 'Affix 固钉' }
-		// { path: "/form", title: "Form 表单" },
+		{ path: '/breadcrumb', title: 'Breadcrumb 面包屑' },
 	]);
 	const [path, setPath] = useState('/components/button');
 	const location = useLocation();

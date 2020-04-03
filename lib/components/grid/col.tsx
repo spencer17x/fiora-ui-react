@@ -5,7 +5,7 @@ import { combineGutterClasses, RowProps } from './row';
 import { isArray } from '../../utils';
 import './col.scss';
 
-interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
+interface BaseColProps extends React.HTMLAttributes<HTMLDivElement> {
   span?: number;
   order?: number;
   xs?: number;
@@ -14,7 +14,9 @@ interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
   lg?: number;
 }
 
-const Col = (props: ColProps & RowProps) => {
+export type ColProps = BaseColProps & Pick<RowProps, 'gutter'>;
+
+const Col = (props: ColProps) => {
   const { children, className, span, gutter, order, xs, sm, md, lg, ...restProps } = props;
   return (
     <div
