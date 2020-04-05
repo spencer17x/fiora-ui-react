@@ -1,11 +1,10 @@
-const common = require('./webpack.common');
+const prod = require('./webpack.prod');
 const merge = require('webpack-merge');
 const components = require('./components');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-module.exports = merge(common, {
-  mode: 'production',
+module.exports = merge(prod, {
   entry: components,
   output: {
     path: path.join(__dirname, '/dist/lib'),
@@ -40,19 +39,5 @@ module.exports = merge(common, {
     new MiniCssExtractPlugin({
       filename: 'css/[name].css'
     })
-  ],
-  externals: {
-    react: {
-      commonjs: 'react',
-      commonjs2: 'react',
-      amd: 'react',
-      root: 'React'
-    },
-    'react-dom': {
-      commonjs: 'react-dom',
-      commonjs2: 'react-dom',
-      amd: 'react-dom',
-      root: 'ReactDOM'
-    }
-  }
+  ]
 });
