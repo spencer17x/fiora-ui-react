@@ -5,7 +5,7 @@ import './breadcrumb-separator.scss';
 
 const prefixCls = 'f-breadcrumb-separator';
 
-const BreadcrumbSeparator = (props: BaseBreadcrumbProps) => {
+const BreadcrumbSeparator: React.FC<BaseBreadcrumbProps> = props => {
 	const { children, className, ...restProps } = props;
 	return <span className={classNames(prefixCls, className)} {...restProps}>
 		{children}

@@ -18,7 +18,7 @@ export interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
 	align?: 'top' | 'middle' | 'bottom';
 }
 
-const prefixCls: string = 'f-row';
+const prefixCls = 'f-row';
 
 /**
  * 拼接class
@@ -42,31 +42,29 @@ export const combineGutterClasses = (
 
 const Row = (props: RowProps) => {
 	const { children, className, gutter, justify, align, ...restProps } = props;
-	return (
-		<div
-			className={classNames(
-				prefixCls,
-				combineGutterClasses(`${prefixCls}-gutter`, gutter),
-				isArray(gutter) &&
-				combineGutterClasses(`${prefixCls}-gutter`, gutter[0]),
-				{
-					[`${prefixCls}-${justify}`]: justify,
-					[`${prefixCls}-${align}`]: align
-				},
-				className
-			)}
-			{...restProps}
-		>
+	return <div
+		className={classNames(
+			prefixCls,
+			combineGutterClasses(`${prefixCls}-gutter`, gutter),
+			isArray(gutter) &&
+			combineGutterClasses(`${prefixCls}-gutter`, gutter[0]),
 			{
-				isArray(children) ? React.Children.map(children, child => {
-					if (React.isValidElement(child) && gutter) {
-						return React.cloneElement<ColProps>(child, { gutter });
-					}
-					return child;
-				}) : children
-			}
-		</div>
-	);
+				[`${prefixCls}-${justify}`]: justify,
+				[`${prefixCls}-${align}`]: align
+			},
+			className
+		)}
+		{...restProps}
+	>
+		{
+			isArray(children) ? React.Children.map(children, child => {
+				if (React.isValidElement(child) && gutter) {
+					return React.cloneElement<ColProps>(child, { gutter });
+				}
+				return child;
+			}) : children
+		}
+	</div>;
 };
 
 Row.propTypes = {

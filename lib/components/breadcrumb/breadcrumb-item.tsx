@@ -7,9 +7,9 @@ import './breadcrumb-item.scss';
 
 const prefixCls = 'f-breadcrumb-item';
 
-type BreadcrumbItemProps = BaseBreadcrumbProps & { href?: string }
+type BreadcrumbItemProps = BaseBreadcrumbProps & { href?: string; }
 
-const BreadcrumbItem = (props: BreadcrumbItemProps) => {
+const BreadcrumbItem: React.FC<BreadcrumbItemProps> = props => {
 	const { children, className, href, ...restProps } = props;
 	return <div className={classNames(prefixCls, className)} {...restProps}>
 		{
