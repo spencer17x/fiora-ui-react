@@ -9,4 +9,3 @@ doc
 
 .github/**/*
 lib/**/*.test.tsx
-lib/**/*
