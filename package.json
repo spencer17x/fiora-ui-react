@@ -18,7 +18,7 @@
     "@types/**/*"
   ],
   "scripts": {
-    "start": "webpack-dev-server --open --progress --profile --config webpack.dev.js",
+    "start": "webpack-dev-server --progress --profile --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "build:doc": "webpack --config webpack.doc.js",
     "build:components": "webpack --config webpack.components.js",

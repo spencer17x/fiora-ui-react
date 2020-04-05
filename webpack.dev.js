@@ -18,7 +18,9 @@ module.exports = merge(common, {
 		})
 	],
 	devServer: {
-		contentBase: './doc',
+		contentBase: path.join(__dirname, 'doc'),
+		compress: true,
+		open: true,
 		port: 3000
 	}
 });

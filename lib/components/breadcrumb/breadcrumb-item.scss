@@ -1,0 +1,40 @@
+.f-breadcrumb-item {
+  color: #00000073;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+
+  a {
+    text-decoration: none;
+    color: #00000073;
+
+    &:hover {
+      color: #008dff;
+    }
+  }
+
+  &:last-child {
+    color: #000;
+
+    .f-icon {
+      fill: #000;
+    }
+  }
+
+  &-link {
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      color: #008dff;
+
+      .f-icon {
+        fill: #008dff;
+      }
+    }
+  }
+
+  .f-icon {
+    fill: #00000073;
+  }
+}

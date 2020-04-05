@@ -1,4 +1,5 @@
 {
+  "index": "./lib/index.tsx",
   "button": "./lib/components/button/button.tsx",
   "button-group": "./lib/components/button/button-group.tsx",
   "icon": "./lib/components/icon/index.tsx",
@@ -9,5 +10,7 @@
   "layout": "./lib/components/layout/layout.tsx",
   "col": "./lib/components/grid/col.tsx",
   "row": "./lib/components/grid/row.tsx",
-  "index": "./lib/index.tsx"
+  "breadcrumb": "./lib/components/breadcrumb/breadcrumb.tsx",
+  "breadcrumb-item": "./lib/components/breadcrumb/breadcrumb-item.tsx",
+  "breadcrumb-separator": "./lib/components/breadcrumb/breadcrumb-separator.tsx"
 }
