@@ -1,7 +1,9 @@
-import React from 'react';
+import React  from 'react';
 import classNames from 'classnames';
 import { isArray } from '../../utils';
 import PropTypes from 'prop-types';
+import BreadcrumbItem from './breadcrumb-item';
+import BreadcrumbSeparator from './breadcrumb-separator';
 import './breadcrumb.scss';
 
 const prefixCls = 'f-breadcrumb';
@@ -12,15 +14,18 @@ export interface BaseBreadcrumbProps extends React.HTMLAttributes<HTMLDivElement
 
 type BreadcrumbProps = BaseBreadcrumbProps & { separator?: string; }
 
-const Breadcrumb = (props: BreadcrumbProps) => {
+const Breadcrumb: React.FC<BreadcrumbProps> = props => {
 	const { children, separator, ...restProps } = props;
 	return <div className={classNames(prefixCls, classNames)} {...restProps}>
 		{
 			isArray(children) ? React.Children.map(children, (child, index) => {
+				const nextChild = children[index + 1];
 				if (
 					index < children.length - 1 &&
-					child.type.name === 'BreadcrumbItem' &&
-					children[index + 1].type.name !== 'BreadcrumbSeparator'
+					React.isValidElement(child) &&
+					child.type === BreadcrumbItem &&
+					React.isValidElement(nextChild) &&
+					nextChild.type !== BreadcrumbSeparator
 				) {
 					return <>
 						{child}
