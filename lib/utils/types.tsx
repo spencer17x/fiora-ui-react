@@ -3,7 +3,7 @@
  * @param value
  */
 export function isPlainObject<T>(value: any): value is T {
-  return Object.prototype.toString.call(value) === '[object Object]';
+	return Object.prototype.toString.call(value) === '[object Object]';
 }
 
 /**
@@ -11,7 +11,7 @@ export function isPlainObject<T>(value: any): value is T {
  * @param value
  */
 export function isArray<T>(value: any): value is T[] {
-  return Object.prototype.toString.call(value) === '[object Array]';
+	return Array.isArray(value);
 }
 
 /**
@@ -19,7 +19,7 @@ export function isArray<T>(value: any): value is T[] {
  * @param value
  */
 export function isString(value: any): value is String {
-  return typeof value === 'string';
+	return typeof value === 'string';
 }
 
 /**
@@ -27,5 +27,5 @@ export function isString(value: any): value is String {
  * @param value
  */
 export function isNumber(value: any): value is Number {
-  return typeof value === 'number';
+	return typeof value === 'number';
 }
