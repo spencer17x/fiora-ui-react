@@ -26,7 +26,8 @@
   },
   "include": [
     "lib/**/*",
-    "typings/**/*"
+    "typings/**/*",
+    "examples/**/*"
   ],
   "exclude": [
     "node_modules",
