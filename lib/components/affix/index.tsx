@@ -15,6 +15,7 @@ const Affix: React.FC<AffixProps> = props => {
 	const [baseStyle, setBaseStyle] = useState<CSSProperties | undefined>(undefined);
 	const [lock, setLock] = useState(false);
 	const [scrollTopVal, setScrollTopVal] = useState(0);
+	const [placeholderElementStyle, setPlaceholderElementStyle] = useState<undefined | CSSProperties>(undefined);
 	const handleScroll: (event: UIEvent) => void = event => {
 		const targetEle = event.currentTarget as Window;
 		if (!lock && affixRef.current && offsetTop && affixRef.current.getClientRects()[0].top <= offsetTop) {
@@ -23,14 +24,21 @@ const Affix: React.FC<AffixProps> = props => {
 		}
 		if (lock && targetEle.scrollY <= scrollTopVal) {
 			setLock(false);
+			setScrollTopVal(0);
 		}
 	};
 	useEffect(() => {
-		if (offsetTop && affixRef.current && affixRef.current.getClientRects()[0].top <= offsetTop) {
+		const affixDom = affixRef.current;
+		if (offsetTop && affixDom && affixDom.getClientRects()[0].top <= offsetTop) {
+			console.log(offsetTop);
 			setBaseStyle({
 				position: 'fixed',
 				top: `${offsetTop}px`
 			});
+		}
+		if (affixDom) {
+			const { width, height } = getComputedStyle(affixDom);
+			setPlaceholderElementStyle({ width, height });
 		}
 	}, [offsetTop]);
 	useEffect(() => {
@@ -40,14 +48,17 @@ const Affix: React.FC<AffixProps> = props => {
 		};
 	}, [lock, scrollTopVal]);
 	const lockStyle: CSSProperties | undefined = lock ? { position: 'fixed', top: `${offsetTop}px` } : baseStyle;
-	return <div
-		ref={affixRef}
-		style={{ ...lockStyle, ...style }}
-		className={classNames(prefixCls, className)}
-		{...restProps}
-	>
-		{children}
-	</div>;
+	return <>
+		{lockStyle && lockStyle.position === 'fixed' && <div style={placeholderElementStyle}></div>}
+		<div
+			ref={affixRef}
+			style={{ ...lockStyle, ...style }}
+			className={classNames(prefixCls, className)}
+			{...restProps}
+		>
+			{children}
+		</div>
+	</>;
 };
 
 Affix.propTypes = {
