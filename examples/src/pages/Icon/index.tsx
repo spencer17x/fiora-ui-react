@@ -32,7 +32,7 @@ const ExampleIcon = () => {
 				<Icon type='pic' className='marginRight10' />
 				<Icon type='play' className='marginRight10' />
 				<Icon type='search' className='marginRight10' />
-				<Icon type='seleted' className='marginRight10' />
+				<Icon type='selected' className='marginRight10' />
 			`}
 		>
 			<Icon type='add' className='marginRight10' />
@@ -59,7 +59,7 @@ const ExampleIcon = () => {
 			<Icon type='pic' className='marginRight10' />
 			<Icon type='play' className='marginRight10' />
 			<Icon type='search' className='marginRight10' />
-			<Icon type='seleted' className='marginRight10' />
+			<Icon type='selected' className='marginRight10' />
 		</CodeShow>
 
 		<CodeShow
