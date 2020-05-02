@@ -15,5 +15,5 @@
   "breadcrumb-separator": "./lib/components/breadcrumb/breadcrumb-separator.tsx",
   "affix": "./lib/components/affix/index.tsx",
   "steps": "./lib/components/steps/steps.tsx",
-  "steps-item": "./lib/components/steps/steps-item.tsx"
+  "steps-item": "./lib/components/steps/step-item.tsx"
 }

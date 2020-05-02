@@ -24,11 +24,11 @@
       "es6"
     ]
   },
-  "include": [
-    "examples/**/*",
-    "typings/**/*"
-  ],
+  "include": [],
   "exclude": [
+    "typings/**/*",
+    "examples/**/*",
+    "lib/**/*",
     "node_modules",
     "**/*.spec.ts",
     "**/*.test.ts",

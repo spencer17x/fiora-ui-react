@@ -10,11 +10,11 @@ module.exports = merge(common, {
 		filename: 'bundle.[hash].js',
 		path: path.join(__dirname, '/doc')
 	},
-	module: {
-		rules: [
-			{ test: /\.tsx?$/, loader: 'awesome-typescript-loader?configFileName=tsconfig.doc.json', exclude: /node_modules/ },
-		]
-	},
+	//	module: {
+	//		rules: [
+	//			{ test: /\.tsx?$/, loader: 'awesome-typescript-loader?configFileName=tsconfig.doc.json', exclude: /node_modules/ },
+	//		]
+	//	},
 	plugins: [
 		new HtmlWebpackPlugin({
 			title: 'fiora-ui-react',
