@@ -12,5 +12,8 @@
   "row": "./lib/components/grid/row.tsx",
   "breadcrumb": "./lib/components/breadcrumb/breadcrumb.tsx",
   "breadcrumb-item": "./lib/components/breadcrumb/breadcrumb-item.tsx",
-  "breadcrumb-separator": "./lib/components/breadcrumb/breadcrumb-separator.tsx"
+  "breadcrumb-separator": "./lib/components/breadcrumb/breadcrumb-separator.tsx",
+  "affix": "./lib/components/affix/index.tsx",
+  "steps": "./lib/components/steps/steps.tsx",
+  "steps-item": "./lib/components/steps/steps-item.tsx"
 }
