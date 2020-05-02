@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import CodeShow from '../../components/CodeCard';
-import './index.scss';
 import { Affix, Button } from '../../../../lib';
+import './index.scss';
 
 const ExpAffix = () => {
 	const [top1, setTop1] = useState(100);

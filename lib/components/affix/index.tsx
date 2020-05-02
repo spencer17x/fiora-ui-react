@@ -16,6 +16,7 @@ const Affix: React.FC<AffixProps> = props => {
 	const [lock, setLock] = useState(false);
 	const [scrollTopVal, setScrollTopVal] = useState(0);
 	const [placeholderElementStyle, setPlaceholderElementStyle] = useState<undefined | CSSProperties>(undefined);
+	const [] = useState();
 	const handleScroll: (event: UIEvent) => void = event => {
 		const targetEle = event.currentTarget as Window;
 		if (!lock && affixRef.current && offsetTop && affixRef.current.getClientRects()[0].top <= offsetTop) {

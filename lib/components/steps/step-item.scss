@@ -1,0 +1,65 @@
+.f-step-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &-icon {
+    width: 2em;
+    height: 2em;
+    flex: 0 0 2em;
+    margin: 0 10px;
+    border-radius: 50%;
+    line-height: 2em;
+    text-align: center;
+    color: #fff;
+    border: 1px solid #1890ff;
+    box-sizing: border-box;
+
+    &-passed {
+      background-color: #fff;
+      color: #1890ff;
+      border-color: #1890ff;
+    }
+
+    &-active {
+      background-color: #1890ff;
+      color: #fff;
+    }
+
+    &-inactivated {
+      color: #00000040;
+      border-color: #00000040;
+    }
+  }
+
+  &-content {
+    &-head {
+      display: flex;
+    }
+  }
+
+  &-title {
+    color: #00000073;
+    &-active {
+      color: #000000d9;
+    }
+  }
+
+  &-sub-title {
+    color: #00000073;
+    margin: 0 5px;
+  }
+
+  &-description {
+    color: #00000073;
+  }
+
+  &-line {
+    width: 100px;
+    height: 1px;
+    background-color: #f0f0f0;
+    &-blue {
+      background-color: #1890ff;
+    }
+  }
+}

@@ -21,6 +21,7 @@ const SideBar: React.FC<SideBarProps> = ({ className }) => {
 		{ path: '/grid', title: 'Grid 栅格' },
 		{ path: '/breadcrumb', title: 'Breadcrumb 面包屑' },
 		{ path: '/affix', title: 'Affix 固钉' },
+		{ path: '/steps', title: 'Steps 步骤条' },
 	]);
 	const [path, setPath] = useState('/components/button');
 	const location = useLocation();
