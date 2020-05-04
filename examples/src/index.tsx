@@ -11,6 +11,7 @@ const Grid = React.lazy(() => import('./pages/Grid'));
 const Breadcrumb = React.lazy(() => import('./pages/Breadcrumb'));
 const Affix = React.lazy(() => import('./pages/Affix'));
 const Steps = React.lazy(() => import('./pages/Steps'));
+const Message = React.lazy(() => import('./pages/Message'));
 
 const IRouter = () => {
 	return (
@@ -30,6 +31,7 @@ const IRouter = () => {
 										<Route path={`${match.path}/breadcrumb`} component={Breadcrumb} />
 										<Route path={`${match.path}/affix`} component={Affix} />
 										<Route path={`${match.path}/steps`} component={Steps} />
+										<Route path={`${match.path}/message`} component={Message} />
 										<Redirect to={`${match.path}/button`} />
 									</Switch>
 								);
