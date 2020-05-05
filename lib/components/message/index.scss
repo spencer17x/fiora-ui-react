@@ -1,4 +1,12 @@
 .f-message {
+
+  &-container {
+    position: fixed;
+    left: 50%;
+    top: 0;
+    z-index: 999;
+  }
+
   &-wrapper {
     padding: 5px 10px;
     font-size: 14px;
@@ -6,11 +14,8 @@
     background-color: #fff;
     display: flex;
     align-items: center;
-    position: fixed;
-    left: 50%;
-    top: 0;
-    z-index: 999;
-    animation: top-to-remove 1s cubic-bezier(0, 1.13, .73, .96) forwards;
+    margin-top: 20px;
+    animation: top-to-remove 3s cubic-bezier(0, 1.13, .73, .96) forwards;
     & > .f-icon {
       margin-right: 5px;
     }
@@ -19,14 +24,14 @@
 
 @keyframes top-to-remove {
   0% {
-    transform: translate(-50%, -50px);
+    transform: translate(-50%, -20px);
   }
 
   50% {
-    transform: translate(-50%, 60px);
+    transform: translate(-50%, 0);
   }
 
   100% {
-    transform: translate(-50%, 60px);
+    transform: translate(-50%, 0);
   }
 }

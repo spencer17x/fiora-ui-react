@@ -7,17 +7,17 @@ import './index.scss';
 type MessageWindowType = 'info' | 'success' | 'error' | 'warning';
 
 interface MessageWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
-	msg?: string;
+	content?: string;
 	type: MessageWindowType;
 }
 
 interface Message {
 	(): void;
 
-	info: (msg: string) => void;
-	success: (msg: string) => void;
-	error: (msg: string) => void;
-	warning: (msg: string) => void;
+	info: (content: string) => void;
+	success: (content: string) => void;
+	error: (content: string) => void;
+	warning: (content: string) => void;
 }
 
 export const message: Message = () => {
@@ -28,7 +28,7 @@ export const MessageWrapper: React.FC<MessageWrapperProps> = props => {
 	const { children, type } = props;
 	const messageWrapper = useRef(null);
 	const handleAnimationEnd = (event: any) => {
-		event.currentTarget.remove();
+		event.target.parentNode.remove();
 	};
 	return <div ref={messageWrapper} className='f-message-wrapper' onAnimationEnd={handleAnimationEnd}>
 		{type === 'info' && <Icon type='info' fill='#1890ff' />}
@@ -39,27 +39,36 @@ export const MessageWrapper: React.FC<MessageWrapperProps> = props => {
 	</div>;
 };
 
-const createMessageWindow = (msg: string, type: MessageWindowType) => {
+const createMessageWindow = (content: string, type: MessageWindowType) => {
+	const messageContainer = document.querySelector('.f-message-container');
 	const div = document.createElement('div');
 	document.body.append(div);
 	ReactDOM.render(
-		<MessageWrapper type={type}>{msg}</MessageWrapper>,
+		<MessageWrapper type={type}>{content}</MessageWrapper>,
 		div
 	);
+	if (messageContainer) {
+		messageContainer.append(div);
+	} else {
+		const messageContainerDom = document.createElement('div');
+		messageContainerDom.className = 'f-message-container';
+		document.body.append(messageContainerDom);
+		messageContainerDom.append(div);
+	}
 };
 
-message.info = (msg: string) => {
-	createMessageWindow(msg, 'info');
+message.info = (content: string) => {
+	createMessageWindow(content, 'info');
 };
 
-message.success = (msg: string) => {
-	createMessageWindow(msg, 'success');
+message.success = (content: string) => {
+	createMessageWindow(content, 'success');
 };
 
-message.error = (msg: string) => {
-	createMessageWindow(msg, 'error');
+message.error = (content: string) => {
+	createMessageWindow(content, 'error');
 };
 
-message.warning = (msg: string) => {
-	createMessageWindow(msg, 'warning');
+message.warning = (content: string) => {
+	createMessageWindow(content, 'warning');
 };
