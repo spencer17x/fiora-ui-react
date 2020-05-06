@@ -36,6 +36,15 @@ const ExpMessage = () => {
 			<Button style={{ marginLeft: 20 }} onClick={error}>Error</Button>
 			<Button style={{ marginLeft: 20 }} onClick={warning}>Warning</Button>
 		</CodeShow>
+
+		<CodeShow
+			style={{ marginTop: 30 }}
+			title='修改延时'
+		>
+			<Button onClick={() => {
+				message.info('info 1 s', 1);
+			}}>info 1 s</Button>
+		</CodeShow>
 	</div>;
 };
 

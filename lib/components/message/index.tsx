@@ -9,15 +9,16 @@ type MessageWindowType = 'info' | 'success' | 'error' | 'warning';
 interface MessageWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
 	content?: string;
 	type: MessageWindowType;
+	duration: number;
 }
 
 interface Message {
 	(): void;
 
-	info: (content: string) => void;
-	success: (content: string) => void;
-	error: (content: string) => void;
-	warning: (content: string) => void;
+	info: (content: string, duration?: number) => void;
+	success: (content: string, duration?: number) => void;
+	error: (content: string, duration?: number) => void;
+	warning: (content: string, duration?: number) => void;
 }
 
 export const message: Message = () => {
@@ -25,12 +26,14 @@ export const message: Message = () => {
 };
 
 export const MessageWrapper: React.FC<MessageWrapperProps> = props => {
-	const { children, type } = props;
+	const { children, type, duration } = props;
 	const messageWrapper = useRef(null);
 	const handleAnimationEnd = (event: any) => {
 		event.target.parentNode.remove();
 	};
-	return <div ref={messageWrapper} className='f-message-wrapper' onAnimationEnd={handleAnimationEnd}>
+	return <div ref={messageWrapper} style={{
+		animationDuration: `${duration}s`
+	}} className='f-message-wrapper' onAnimationEnd={handleAnimationEnd}>
 		{type === 'info' && <Icon type='info' fill='#1890ff' />}
 		{type === 'success' && <Icon type='selected' fill='#52C41A' />}
 		{type === 'error' && <Icon type='close' fill='#FF4D4F' />}
@@ -39,12 +42,12 @@ export const MessageWrapper: React.FC<MessageWrapperProps> = props => {
 	</div>;
 };
 
-const createMessageWindow = (content: string, type: MessageWindowType) => {
+const createMessageWindow = (content: string, type: MessageWindowType, duration: number) => {
 	const messageContainer = document.querySelector('.f-message-container');
 	const div = document.createElement('div');
 	document.body.append(div);
 	ReactDOM.render(
-		<MessageWrapper type={type}>{content}</MessageWrapper>,
+		<MessageWrapper type={type} duration={duration}>{content}</MessageWrapper>,
 		div
 	);
 	if (messageContainer) {
@@ -57,18 +60,18 @@ const createMessageWindow = (content: string, type: MessageWindowType) => {
 	}
 };
 
-message.info = (content: string) => {
-	createMessageWindow(content, 'info');
+message.info = (content: string, duration: number = 3) => {
+	createMessageWindow(content, 'info', duration);
 };
 
-message.success = (content: string) => {
-	createMessageWindow(content, 'success');
+message.success = (content: string, duration: number = 3) => {
+	createMessageWindow(content, 'success', duration);
 };
 
-message.error = (content: string) => {
-	createMessageWindow(content, 'error');
+message.error = (content: string, duration: number = 3) => {
+	createMessageWindow(content, 'error', duration);
 };
 
-message.warning = (content: string) => {
-	createMessageWindow(content, 'warning');
+message.warning = (content: string, duration: number = 3) => {
+	createMessageWindow(content, 'warning', duration);
 };
