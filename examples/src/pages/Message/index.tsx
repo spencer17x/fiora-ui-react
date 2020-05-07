@@ -45,6 +45,27 @@ const ExpMessage = () => {
 				message.info('info 1 s', 1);
 			}}>info 1 s</Button>
 		</CodeShow>
+
+		<CodeShow
+			style={{ marginTop: 30 }}
+			title='message 动画结束时回调'
+		>
+			<Button
+				style={{ marginRight: 20 }}
+				onClick={() => {
+					message.info('message 动画结束时回调1', 1, () => {
+						console.log('message 动画结束时回调1');
+					});
+				}}
+			>message 动画结束时回调1</Button>
+			<Button
+				onClick={() => {
+					message.info('message 动画结束时回调2', () => {
+						console.log('message 动画结束时回调2');
+					});
+				}}
+			>message 动画结束时回调2</Button>
+		</CodeShow>
 	</div>;
 };
 

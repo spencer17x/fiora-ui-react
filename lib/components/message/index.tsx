@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import ReactDOM from 'react-dom';
-import { isString } from '../../utils';
+import { isFunction, isNumber, isString } from '../../utils';
 import Icon from '../icon';
 import './index.scss';
 
@@ -10,15 +10,20 @@ interface MessageWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
 	content?: string;
 	type: MessageWindowType;
 	duration: number;
+	onClose: (event?: Event) => void;
+}
+
+interface MessageFunction {
+	(content: string, duration?: number | Function, callback?: (event?: Event) => void): void;
 }
 
 interface Message {
 	(): void;
 
-	info: (content: string, duration?: number) => void;
-	success: (content: string, duration?: number) => void;
-	error: (content: string, duration?: number) => void;
-	warning: (content: string, duration?: number) => void;
+	info: MessageFunction;
+	success: MessageFunction;
+	error: MessageFunction;
+	warning: MessageFunction;
 }
 
 export const message: Message = () => {
@@ -26,10 +31,11 @@ export const message: Message = () => {
 };
 
 export const MessageWrapper: React.FC<MessageWrapperProps> = props => {
-	const { children, type, duration } = props;
+	const { children, type, duration, onClose } = props;
 	const messageWrapper = useRef(null);
 	const handleAnimationEnd = (event: any) => {
 		event.target.parentNode.remove();
+		onClose(event);
 	};
 	return <div ref={messageWrapper} style={{
 		animationDuration: `${duration}s`
@@ -42,12 +48,18 @@ export const MessageWrapper: React.FC<MessageWrapperProps> = props => {
 	</div>;
 };
 
-const createMessageWindow = (content: string, type: MessageWindowType, duration: number) => {
+const createMessageWindow = (content: string, type: MessageWindowType, duration?: number | Function, callback?: () => void) => {
 	const messageContainer = document.querySelector('.f-message-container');
 	const div = document.createElement('div');
+	const onClose = isFunction(duration) ? duration :
+		callback ? callback : () => {};
 	document.body.append(div);
 	ReactDOM.render(
-		<MessageWrapper type={type} duration={duration}>{content}</MessageWrapper>,
+		<MessageWrapper
+			onClose={onClose}
+			type={type}
+			duration={isNumber(duration) ? duration : 3}
+		>{content}</MessageWrapper>,
 		div
 	);
 	if (messageContainer) {
@@ -60,18 +72,18 @@ const createMessageWindow = (content: string, type: MessageWindowType, duration:
 	}
 };
 
-message.info = (content: string, duration: number = 3) => {
-	createMessageWindow(content, 'info', duration);
+message.info = (content, duration, callback) => {
+	createMessageWindow(content, 'info', duration, callback);
 };
 
-message.success = (content: string, duration: number = 3) => {
-	createMessageWindow(content, 'success', duration);
+message.success = (content, duration, callback) => {
+	createMessageWindow(content, 'success', duration, callback);
 };
 
-message.error = (content: string, duration: number = 3) => {
-	createMessageWindow(content, 'error', duration);
+message.error = (content, duration, callback) => {
+	createMessageWindow(content, 'error', duration, callback);
 };
 
-message.warning = (content: string, duration: number = 3) => {
-	createMessageWindow(content, 'warning', duration);
+message.warning = (content, duration, callback) => {
+	createMessageWindow(content, 'warning', duration, callback);
 };

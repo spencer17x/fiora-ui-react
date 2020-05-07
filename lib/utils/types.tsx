@@ -7,6 +7,14 @@ export function isPlainObject<T>(value: any): value is T {
 }
 
 /**
+ * 判断是否为函数
+ * @param value
+ */
+export function isFunction(value: any): value is () => void {
+	return Object.prototype.toString.call(value) === '[object Function]';
+}
+
+/**
  * 判断是否为数组
  * @param value
  */
