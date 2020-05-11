@@ -5,12 +5,8 @@ const path = require('path');
 
 module.exports = merge(common, {
 	mode: 'development',
-	devtool: 'inline-source-map',
+	devtool: 'eval-cheap-source-map',
 	entry: './examples/src/index.tsx',
-	output: {
-		filename: 'bundle.[hash].js',
-		path: path.join(__dirname, '/doc')
-	},
 	plugins: [
 		new HtmlWebpackPlugin({
 			title: 'fiora-ui-react',
