@@ -1,6 +1,6 @@
 {
   "name": "fiora-ui-react",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "main": "lib/index",
   "types": "lib/index",
   "author": "Code.X <1253478653@qq.com>",
