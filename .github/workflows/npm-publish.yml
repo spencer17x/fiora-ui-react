@@ -40,7 +40,7 @@ jobs:
           npm run build:components
       - name: publish package
         run: |
-          cp package.json LICENSE README.md ./dist
+          cp package.json README.md ./dist
           cd dist
           npm publish --access public
         env:
