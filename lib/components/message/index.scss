@@ -15,21 +15,18 @@
     display: flex;
     align-items: center;
     margin-top: 20px;
-    animation: top-to-remove 3s cubic-bezier(0, 1.13, .73, .96) forwards;
+    animation: message-out 3s cubic-bezier(0, 1.13, .73, .96) forwards;
     & > .f-icon {
       margin-right: 5px;
     }
   }
 }
 
-@keyframes top-to-remove {
+@keyframes message-out {
   0% {
     transform: translate(-50%, -20px);
   }
 
-  50% {
-    transform: translate(-50%, 0);
-  }
 
   100% {
     transform: translate(-50%, 0);

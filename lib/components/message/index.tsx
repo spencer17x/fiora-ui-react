@@ -53,7 +53,6 @@ const createMessageWindow = (content: string, type: MessageWindowType, duration?
 	const div = document.createElement('div');
 	const onClose = isFunction(duration) ? duration :
 		callback ? callback : () => {};
-	document.body.append(div);
 	ReactDOM.render(
 		<MessageWrapper
 			onClose={onClose}
