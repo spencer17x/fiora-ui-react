@@ -26,16 +26,6 @@
     "commit": "git add . && git-cz",
     "test": "jest --passWithNoTests"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "lib/**/*.tsx": [
-      "eslint"
-    ]
-  },
   "devDependencies": {
     "@babel/core": "^7.8.3",
     "@types/classnames": "^2.2.9",
@@ -62,10 +52,8 @@
     "html-webpack-plugin": "^3.2.0",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
-    "lint-staged": "^10.0.9",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.1",
-    "pre-commit": "^1.2.2",
     "prettier": "^1.19.1",
     "raw-loader": "^4.0.0",
     "sass-loader": "^8.0.2",
