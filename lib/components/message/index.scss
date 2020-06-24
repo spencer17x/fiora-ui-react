@@ -15,20 +15,30 @@
     display: flex;
     align-items: center;
     margin-top: 20px;
-    animation: message-out 3s cubic-bezier(0, 1.13, .73, .96) forwards;
+    animation: message-in-out ease-in-out forwards;
+
     & > .f-icon {
       margin-right: 5px;
     }
   }
 }
 
-@keyframes message-out {
+@keyframes message-in-out {
   0% {
-    transform: translate(-50%, -20px);
+    opacity: 0;
+    transform: translateY(-100%);
   }
 
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  90% {
+    opacity: 1;
+  }
 
   100% {
-    transform: translate(-50%, 0);
+    opacity: 0;
   }
 }
