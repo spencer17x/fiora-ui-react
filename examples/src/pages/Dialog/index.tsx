@@ -11,7 +11,6 @@ const DemoDialog = () => {
 			<Dialog
 				title='Dialog 对话框'
 				visible={v}
-				showClose
 				onClose={onCloseV}
 				buttons={[
 					<Button onClick={onCloseV}>取消</Button>,
