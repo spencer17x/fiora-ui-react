@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, ButtonGroup, Icon } from '../../../../lib';
 import CodeCard from '../../components/CodeCard';
 
-const ExampleButton = () => {
+const DemoButton = () => {
 	const [buttonLoading, setButtonLoading] = useState(false);
 
 	return (
@@ -226,4 +226,4 @@ const ExampleButton = () => {
 	);
 };
 
-export default ExampleButton;
+export default DemoButton;

@@ -3,7 +3,7 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbSeparator, Icon } from '../../../
 import CodeShow from '../../components/CodeCard';
 import './index.scss';
 
-const ExpBreadcrumb = () => {
+const DemoBreadcrumb = () => {
 	return <div className='exp-breadcrumb'>
 		<CodeShow
 			title='基本用法'
@@ -108,4 +108,4 @@ const ExpBreadcrumb = () => {
 	</div>;
 };
 
-export default ExpBreadcrumb;
+export default DemoBreadcrumb;

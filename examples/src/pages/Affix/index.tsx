@@ -3,7 +3,7 @@ import CodeShow from '../../components/CodeCard';
 import { Affix, Button } from '../../../../lib';
 import './index.scss';
 
-const ExpAffix = () => {
+const DemoAffix = () => {
 	const [top1, setTop1] = useState(100);
 	return <div className='exp-affix'>
 		<CodeShow
@@ -77,4 +77,4 @@ const ExpAffix = () => {
 	</div>;
 };
 
-export default ExpAffix;
+export default DemoAffix;

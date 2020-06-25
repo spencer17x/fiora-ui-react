@@ -3,7 +3,7 @@ import CodeShow from '../../components/CodeCard';
 import { Button, message } from '../../../../lib';
 import './index.scss';
 
-const ExpMessage = () => {
+const DemoMessage = () => {
 	const info = () => {
 		message.info('This is a normal message');
 	};
@@ -69,4 +69,4 @@ const ExpMessage = () => {
 	</div>;
 };
 
-export default ExpMessage;
+export default DemoMessage;

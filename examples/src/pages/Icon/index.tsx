@@ -3,7 +3,7 @@ import { Icon } from '../../../../lib';
 import CodeShow from '../../components/CodeCard';
 import './index.scss';
 
-const ExampleIcon = () => {
+const DemoIcon = () => {
 	return <div className='example-icon'>
 		<CodeShow
 			title='基本用法'
@@ -150,4 +150,4 @@ const ExampleIcon = () => {
 	</div>;
 };
 
-export default ExampleIcon;
+export default DemoIcon;

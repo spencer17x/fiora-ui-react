@@ -2,7 +2,7 @@ import React from 'react';
 import CodeShow from '../../components/CodeCard';
 import { Steps, StepItem } from '../../../../lib/components';
 
-const ExpSteps = () => {
+const DemoSteps = () => {
 	return <div>
 		<CodeShow
 			title='基本用法'
@@ -35,4 +35,4 @@ const ExpSteps = () => {
 	</div>;
 };
 
-export default ExpSteps;
+export default DemoSteps;
