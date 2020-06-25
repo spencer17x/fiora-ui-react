@@ -5,6 +5,7 @@ import { CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
 import Icon from '../icon';
 import './index.scss';
+import { Button } from '../button';
 
 interface DialogProps {
 	visible: boolean;
@@ -16,9 +17,17 @@ interface DialogProps {
 	maskClosable?: boolean;
 }
 
+type AlertOptions = Omit<DialogProps, 'visible'> & {
+	content?: string
+}
+
+type CloseAction = 'cancel' | 'confirm'
+
 const prefixCls = 'f-dialog';
 
-const Dialog: React.FC<DialogProps> = props => {
+const Dialog: React.FC<DialogProps> & {
+	alert: (options: AlertOptions) => Promise<CloseAction>
+} = props => {
 	const {
 		children, showClose, visible,
 		title, className, buttons,
@@ -59,6 +68,34 @@ const Dialog: React.FC<DialogProps> = props => {
 			</CSSTransition>
 		</Fragment>, document.body
 	);
+};
+
+Dialog.alert = options => {
+	return new Promise(resolve => {
+		const { title, content } = options;
+		const div = document.createElement('div');
+		const onClose = (action: CloseAction) => {
+			ReactDOM.render(
+				<Dialog
+					title={title}
+					visible={false}
+					onClose={() => onClose('cancel')}
+					buttons={[<Button onClick={() => onClose('confirm')} type='primary'>确 认</Button>]}
+				>{content}</Dialog>, div
+			);
+			ReactDOM.unmountComponentAtNode(div);
+			div.remove();
+			resolve(action);
+		};
+		const Component = <Dialog
+			title={title}
+			visible={true}
+			onClose={() => onClose('cancel')}
+			buttons={[<Button onClick={() => onClose('confirm')} type='primary'>确 认</Button>]}
+		>{content}</Dialog>;
+		ReactDOM.render(Component, div);
+		document.body.append(div);
+	});
 };
 
 Dialog.propTypes = {
