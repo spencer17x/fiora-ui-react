@@ -1,0 +1,9 @@
+[class^=f-] {
+  &::before {
+    box-sizing: border-box;
+  }
+  &::after {
+    box-sizing: border-box;
+  }
+  box-sizing: border-box;
+}

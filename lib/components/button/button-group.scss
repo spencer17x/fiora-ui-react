@@ -1,6 +1,11 @@
 .f-btn-group {
   display: inline-flex;
   align-items: center;
+  margin: 0 10px 10px 0;
+
+  .f-btn {
+    margin: 0;
+  }
 
   .border-left-reset {
     border-left: 0;

@@ -1,7 +1,6 @@
 import React, { CSSProperties, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import './index.scss';
 
 interface AffixProps extends React.HTMLAttributes<HTMLDivElement> {
 	offsetTop?: number;
