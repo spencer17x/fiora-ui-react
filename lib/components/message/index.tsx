@@ -18,17 +18,11 @@ interface MessageFunction {
 }
 
 interface Message {
-	(): void;
-
 	info: MessageFunction;
 	success: MessageFunction;
 	error: MessageFunction;
 	warning: MessageFunction;
 }
-
-export const message: Message = () => {
-	console.log('message');
-};
 
 export const MessageWrapper: React.FC<MessageWrapperProps> = props => {
 	const { children, type, duration, onClose } = props;
@@ -48,7 +42,9 @@ export const MessageWrapper: React.FC<MessageWrapperProps> = props => {
 	</div>;
 };
 
-const createMessageWindow = (content: string, type: MessageWindowType, duration?: number | Function, callback?: () => void) => {
+const createMessageWindow = (
+	content: string, type: MessageWindowType, duration?: number | Function, callback?: () => void
+) => {
 	const messageContainer = document.querySelector('.f-message-container');
 	const div = document.createElement('div');
 	const onClose = isFunction(duration) ? duration :
@@ -71,18 +67,17 @@ const createMessageWindow = (content: string, type: MessageWindowType, duration?
 	}
 };
 
-message.info = (content, duration, callback) => {
-	createMessageWindow(content, 'info', duration, callback);
-};
-
-message.success = (content, duration, callback) => {
-	createMessageWindow(content, 'success', duration, callback);
-};
-
-message.error = (content, duration, callback) => {
-	createMessageWindow(content, 'error', duration, callback);
-};
-
-message.warning = (content, duration, callback) => {
-	createMessageWindow(content, 'warning', duration, callback);
+export const message: Message = {
+	info(content, duration, callback) {
+		createMessageWindow(content, 'info', duration, callback);
+	},
+	success(content, duration, callback) {
+		createMessageWindow(content, 'success', duration, callback);
+	},
+	error(content, duration, callback) {
+		createMessageWindow(content, 'error', duration, callback);
+	},
+	warning(content, duration, callback) {
+		createMessageWindow(content, 'warning', duration, callback);
+	}
 };

@@ -3,11 +3,7 @@ import Header from './components/Header';
 import SideBar from './components/SideBar';
 import './App.scss';
 
-interface Props {
-
-}
-
-const App: React.FC<Props> = ({
+const App: React.FC<{}> = ({
 	children
 }) => {
 	return <div className='page-container'>
