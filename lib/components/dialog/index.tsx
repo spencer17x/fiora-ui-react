@@ -78,14 +78,7 @@ Dialog.alert = options => {
 		const { title, content } = options;
 		const div = document.createElement('div');
 		const onClose = (action: CloseAction) => {
-			ReactDOM.render(
-				<Dialog
-					title={title}
-					visible={false}
-					onClose={() => onClose('cancel')}
-					buttons={[<Button onClick={() => onClose('confirm')} type='primary'>确 认</Button>]}
-				>{content}</Dialog>, div
-			);
+			ReactDOM.render(<div></div>, div);
 			ReactDOM.unmountComponentAtNode(div);
 			div.remove();
 			resolve(action);
@@ -114,14 +107,7 @@ Dialog.confirm = options => {
 		const { title, content } = options;
 		const div = document.createElement('div');
 		const onClose = (action: CloseAction) => {
-			ReactDOM.render(
-				<Dialog
-					title={title}
-					visible={false}
-					onClose={() => onClose('cancel')}
-					buttons={[<Button onClick={() => onClose('confirm')} type='primary'>确 认</Button>]}
-				>{content}</Dialog>, div
-			);
+			ReactDOM.render(<div></div>, div);
 			ReactDOM.unmountComponentAtNode(div);
 			div.remove();
 			resolve(action);
@@ -157,15 +143,7 @@ Dialog.prompt = options => {
 		};
 		const div = document.createElement('div');
 		const onClose = (action: CloseAction) => {
-			ReactDOM.render(
-				<Dialog
-					title={title}
-					visible={false}
-					onClose={() => onClose('cancel')}
-					buttons={[<Button onClick={() => onClose('confirm')} type='primary'>确 认</Button>]}
-				>{content}</Dialog>,
-				div
-			);
+			ReactDOM.render(<div></div>, div);
 			ReactDOM.unmountComponentAtNode(div);
 			div.remove();
 			resolve({ action, value: inputValue });
