@@ -15,6 +15,7 @@ interface DialogProps {
 	className?: string;
 	onClose?: () => void;
 	maskClosable?: boolean;
+	mask?: boolean;
 }
 
 type AlertOptions = Omit<DialogProps, 'visible'> & {
@@ -26,21 +27,23 @@ type CloseAction = 'cancel' | 'confirm'
 const prefixCls = 'f-dialog';
 
 const Dialog: React.FC<DialogProps> & {
-	alert: (options: AlertOptions) => Promise<CloseAction>
+	alert: (options: AlertOptions) => Promise<CloseAction>;
+	confirm: (options: AlertOptions) => Promise<CloseAction>;
+	prompt: (options: AlertOptions) => Promise<{ action: CloseAction, value?: string }>;
 } = props => {
 	const {
 		children, showClose, visible,
 		title, className, buttons,
-		onClose, maskClosable,
+		onClose, maskClosable, mask,
 		...restProps
 	} = props;
 	return ReactDOM.createPortal(
 		<Fragment>
 			{
-				visible && <div
+				visible && mask ? <div
 					className={`${prefixCls}-mask`}
 					onClick={() => maskClosable && onClose && onClose()}
-				></div>
+				></div> : null
 			}
 			<CSSTransition
 				in={visible}
@@ -94,9 +97,46 @@ Dialog.alert = options => {
 			buttons={
 				[
 					<Button
-						onClick={() => onClose('cancel')}
-					>取消</Button>,
+						onClick={() => onClose('confirm')}
+						type='primary'
+						style={{marginRight: 0}}
+					>确 认</Button>
+				]
+			}
+		>{content}</Dialog>;
+		ReactDOM.render(Component, div);
+		document.body.append(div);
+	});
+};
+
+Dialog.confirm = options => {
+	return new Promise(resolve => {
+		const { title, content } = options;
+		const div = document.createElement('div');
+		const onClose = (action: CloseAction) => {
+			ReactDOM.render(
+				<Dialog
+					title={title}
+					visible={false}
+					onClose={() => onClose('cancel')}
+					buttons={[<Button onClick={() => onClose('confirm')} type='primary'>确 认</Button>]}
+				>{content}</Dialog>, div
+			);
+			ReactDOM.unmountComponentAtNode(div);
+			div.remove();
+			resolve(action);
+		};
+		const Component = <Dialog
+			title={title}
+			visible={true}
+			onClose={() => onClose('cancel')}
+			buttons={
+				[
 					<Button
+						onClick={() => onClose('cancel')}
+					>取 消</Button>,
+					<Button
+						style={{marginRight: 0}}
 						onClick={() => onClose('confirm')}
 						type='primary'
 					>确 认</Button>
@@ -108,19 +148,71 @@ Dialog.alert = options => {
 	});
 };
 
+Dialog.prompt = options => {
+	return new Promise(resolve => {
+		const { title, content } = options;
+		let inputValue: undefined;
+		const onChange = (event: any) => {
+			inputValue = event.target.value;
+		};
+		const div = document.createElement('div');
+		const onClose = (action: CloseAction) => {
+			ReactDOM.render(
+				<Dialog
+					title={title}
+					visible={false}
+					onClose={() => onClose('cancel')}
+					buttons={[<Button onClick={() => onClose('confirm')} type='primary'>确 认</Button>]}
+				>{content}</Dialog>,
+				div
+			);
+			ReactDOM.unmountComponentAtNode(div);
+			div.remove();
+			resolve({ action, value: inputValue });
+		};
+		const Component = <Dialog
+			title={title}
+			visible={true}
+			onClose={() => onClose('cancel')}
+			buttons={
+				[
+					<Button
+						onClick={() => onClose('cancel')}
+					>取 消</Button>,
+					<Button
+						onClick={() => onClose('confirm')}
+						type='primary'
+						style={{marginRight: 0}}
+					>确 认</Button>
+				]
+			}
+		>
+			<div>{content}</div>
+			<input
+				style={{width: '96%', height: '28px', marginTop: '20px'}}
+				onChange={onChange}
+			/>
+		</Dialog>;
+		ReactDOM.render(Component, div);
+		document.body.append(div);
+	});
+};
+
 Dialog.propTypes = {
 	visible: PropTypes.bool.isRequired,
 	showClose: PropTypes.bool,
 	title: PropTypes.string,
 	buttons: PropTypes.arrayOf(PropTypes.element.isRequired),
 	onClose: PropTypes.func,
-	maskClosable: PropTypes.bool
+	maskClosable: PropTypes.bool,
+	mask: PropTypes.bool
 };
 
 Dialog.defaultProps = {
 	onClose: () => {},
 	showClose: true,
-	maskClosable: true
+	maskClosable: true,
+	mask: true
 };
 
 export default Dialog;

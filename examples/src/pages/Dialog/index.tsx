@@ -5,11 +5,23 @@ import { Button, Dialog } from '../../../../lib';
 const DemoDialog = () => {
 	const [v, setV] = useState(false);
 	const onCloseV = () => setV(false);
-	const onModal = () => {
+	const onDialogAlert = () => {
 		Dialog.alert({
 			title: '标题',
 			content: '内容内容内容内容'
 		}).then(action => console.log(action));
+	};
+	const onDialogConfirm = () => {
+		Dialog.confirm({
+			title: '标题',
+			content: '内容内容内容内容'
+		}).then(action => console.log(action));
+	};
+	const onDialogPrompt = () => {
+		Dialog.prompt({
+			title: '标题',
+			content: '内容内容内容内容'
+		}).then(value => console.log(value));
 	};
 	return <>
 		<CodeShow title='基本用法' style={{ marginBottom: '20px' }}>
@@ -27,7 +39,9 @@ const DemoDialog = () => {
 			</Dialog>
 		</CodeShow>
 		<CodeShow title='编码式弹窗'>
-			<Button onClick={onModal}>Modal</Button>
+			<Button onClick={onDialogAlert}>Dialog Alert</Button>
+			<Button onClick={onDialogConfirm}>Dialog Confirm</Button>
+			<Button onClick={onDialogPrompt}>Dialog Prompt</Button>
 		</CodeShow>
 	</>;
 };
