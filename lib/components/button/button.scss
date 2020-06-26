@@ -9,6 +9,7 @@
   box-sizing: border-box;
   padding: 0 1em;
   margin: 0 10px 10px 0;
+  background-color: #fff;
 
   &-ripple {
     @include button-ripple();

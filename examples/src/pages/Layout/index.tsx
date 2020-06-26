@@ -9,7 +9,7 @@ const DemoLayout = () => {
 			<CodeShow
 				title="示例1"
 				code={`
-        <Layout className='fill-width'>
+        <Layout>
           <Header
             className='text-center-center light'
             style={{ height: '60px' }}
@@ -50,7 +50,7 @@ const DemoLayout = () => {
 			<CodeShow
 				title="示例2"
 				code={`
-        <Layout className='fill-width'>
+        <Layout>
           <Header
             style={{ height: '60px' }}
             className='text-center-center light'
@@ -94,7 +94,7 @@ const DemoLayout = () => {
 			<CodeShow
 				title="示例3"
 				code={`
-        <Layout className='fill-width'>
+        <Layout>
           <Header
             style={{ height: '60px' }}
             className='text-center-center light'
@@ -138,7 +138,7 @@ const DemoLayout = () => {
 			<CodeShow
 				title="示例4"
 				code={`
-        <Layout style={{ height: '240px' }} className='fill-width'>
+        <Layout style={{ height: '240px' }}>
           <Aside className='text-center-center light-dark'>Aside</Aside>
           <Layout>
             <Header style={{ height: '60px' }} className='text-center-center light'>Header</Header>

@@ -12,7 +12,7 @@ const DemoDialog = () => {
 		}).then(action => console.log(action));
 	};
 	return <>
-		<CodeShow title='基本用法'>
+		<CodeShow title='基本用法' style={{ marginBottom: '20px' }}>
 			<Button onClick={() => setV(true)}>打开dialog</Button>
 			<Dialog
 				title='Dialog 对话框'
@@ -20,11 +20,13 @@ const DemoDialog = () => {
 				onClose={onCloseV}
 				buttons={[
 					<Button onClick={onCloseV}>取消</Button>,
-					<Button onClick={onCloseV}>确认</Button>,
+					<Button type='primary' onClick={onCloseV}>确认</Button>,
 				]}
 			>
 				<span>这是一段信息</span>
 			</Dialog>
+		</CodeShow>
+		<CodeShow title='编码式弹窗'>
 			<Button onClick={onModal}>Modal</Button>
 		</CodeShow>
 	</>;

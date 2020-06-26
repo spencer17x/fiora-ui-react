@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { Omit, tuple } from '../../_util/type';
+import { tuple } from '../../_util/type';
 import Icon from '../icon';
 import './button.scss';
 
@@ -42,16 +42,9 @@ const buttonPrefixCls: string = 'f-btn';
 
 const Button: React.FC<ButtonProps> = props => {
 	const {
-		className,
-		type,
-		children,
-		size,
-		htmlType,
-		disabled,
-		icon,
-		loading,
-		shape,
-		...restProps
+		className, type, children, size,
+		htmlType, disabled, icon, loading,
+		shape, ...restProps
 	} = props;
 	const classes: string = classNames(buttonPrefixCls, className, {
 		[`${buttonPrefixCls}-${type}`]: type,
@@ -70,15 +63,17 @@ const Button: React.FC<ButtonProps> = props => {
 			{...restProps}
 		>
 			{icon && <Icon type={icon} />}
-			{loading && (
-				<Icon
-					type="loading"
-					spin={true}
-					fill="#1890ff"
-					interval={1200}
-					className={`${buttonPrefixCls}-loading`}
-				/>
-			)}
+			{
+				loading && (
+					<Icon
+						type="loading"
+						spin={true}
+						fill="#1890ff"
+						interval={1200}
+						className={`${buttonPrefixCls}-loading`}
+					/>
+				)
+			}
 			{
 				children &&
 				React.Children.map(children, childNode => {
