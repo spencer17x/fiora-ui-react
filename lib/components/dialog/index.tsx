@@ -1,4 +1,4 @@
-import React, { ChangeEvent, Fragment, ReactElement, ReactEventHandler } from 'react';
+import React, { Fragment, ReactElement } from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
