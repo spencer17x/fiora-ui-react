@@ -1,18 +1,22 @@
 import React from 'react';
-import Header from './components/Header';
-import SideBar from './components/SideBar';
-import './App.scss';
+import CommonHeader from './components/Header';
+import CommonSideBar from './components/SideBar';
+import { Layout, Header, Aside, Content } from '../../lib';
 
-const App: React.FC<{}> = ({
+const App: React.FC = ({
 	children
 }) => {
-	return <div className='page-container'>
-		<Header />
-		<div className='page-container_content'>
-			<SideBar className='page-container_sidebar' />
-			<div className='page-container_main'>{children}</div>
-		</div>
-	</div>;
+	return <Layout>
+		<Header>
+			<CommonHeader />
+		</Header>
+		<Layout>
+			<Aside style={{flex: '0 0 280px'}}>
+				<CommonSideBar />
+			</Aside>
+			<Content style={{padding: '30px'}}>{children}</Content>
+		</Layout>
+	</Layout>
 };
 
 export default App;

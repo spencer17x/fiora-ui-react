@@ -3,21 +3,19 @@ import classNames from 'classnames';
 import Aside from './aside';
 import './layout.scss';
 
-interface LayoutProps extends React.HTMLAttributes<HTMLDivElement> {
-	children: ReactElement[];
+interface LayoutProps extends BasicLayoutProps {
+	children: ReactElement[] | ReactElement;
 }
 
-export interface BasicLayoutProps extends React.HTMLAttributes<HTMLDivElement> {
-	children: string;
-}
+export interface BasicLayoutProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export const layoutPrefixCls: string = 'f-layout';
 
 export default function Layout(props: LayoutProps) {
 	const { children, className, ...restProps } = props;
-	const hasAside: boolean = children.some(el => {
+	const hasAside: boolean = children && 'length' in children ? children.some(el => {
 		return el.type === Aside;
-	});
+	}) : false;
 	return (
 		<div
 			{...restProps}

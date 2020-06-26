@@ -1,11 +1,11 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { HashRouter, HashRouterProps, Redirect, Route, Switch } from 'react-router-dom';
 import { menuConfig } from './config';
 import './index.scss';
 
-const IRouter = () => {
+const IRouter: React.FC<HashRouterProps> = () => {
 	return (
 		<HashRouter>
 			<App>
