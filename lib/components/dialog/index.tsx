@@ -1,4 +1,4 @@
-import React, { Fragment, ReactElement } from 'react';
+import React, { ChangeEvent, Fragment, ReactElement, ReactEventHandler } from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
@@ -6,6 +6,12 @@ import PropTypes from 'prop-types';
 import Icon from '../icon';
 import { Button } from '../button';
 import './index.scss';
+
+type AlertOptions = Omit<DialogProps, 'visible'> & {
+	content?: string
+}
+
+type CloseAction = 'cancel' | 'confirm'
 
 interface DialogProps {
 	visible: boolean;
@@ -18,18 +24,21 @@ interface DialogProps {
 	mask?: boolean;
 }
 
-type AlertOptions = Omit<DialogProps, 'visible'> & {
-	content?: string
+interface RenderDialogToBodyRes {
+	action: CloseAction;
+	value?: string
 }
 
-type CloseAction = 'cancel' | 'confirm'
+interface BaseDialogAlert {
+	(options: AlertOptions): Promise<RenderDialogToBodyRes>
+}
 
 const prefixCls = 'f-dialog';
 
 const Dialog: React.FC<DialogProps> & {
-	alert: (options: AlertOptions) => Promise<CloseAction>;
-	confirm: (options: AlertOptions) => Promise<CloseAction>;
-	prompt: (options: AlertOptions) => Promise<{ action: CloseAction, value?: string }>;
+	alert: BaseDialogAlert;
+	confirm: BaseDialogAlert;
+	prompt: BaseDialogAlert;
 } = props => {
 	const {
 		children, showClose, visible,
@@ -73,107 +82,88 @@ const Dialog: React.FC<DialogProps> & {
 	);
 };
 
-Dialog.alert = options => {
+const renderDialogToBody = (
+	options: AlertOptions,
+	buttons?: DialogProps['buttons'],
+	hasInput?: boolean
+): Promise<RenderDialogToBodyRes> => {
 	return new Promise(resolve => {
+		let inputValue:string;
+		const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+			inputValue = event.currentTarget.value;
+		};
 		const { title, content } = options;
 		const div = document.createElement('div');
 		const onClose = (action: CloseAction) => {
+			const res = hasInput ?
+				{ action, value: inputValue } :
+				{ action };
 			ReactDOM.render(<div></div>, div);
 			ReactDOM.unmountComponentAtNode(div);
 			div.remove();
-			resolve(action);
+			resolve(res);
 		};
 		const Component = <Dialog
 			title={title}
 			visible={true}
 			onClose={() => onClose('cancel')}
 			buttons={
-				[
-					<Button
-						onClick={() => onClose('confirm')}
-						type='primary'
-						style={{marginRight: 0}}
-					>确 认</Button>
-				]
-			}
-		>{content}</Dialog>;
-		ReactDOM.render(Component, div);
-		document.body.append(div);
-	});
-};
-
-Dialog.confirm = options => {
-	return new Promise(resolve => {
-		const { title, content } = options;
-		const div = document.createElement('div');
-		const onClose = (action: CloseAction) => {
-			ReactDOM.render(<div></div>, div);
-			ReactDOM.unmountComponentAtNode(div);
-			div.remove();
-			resolve(action);
-		};
-		const Component = <Dialog
-			title={title}
-			visible={true}
-			onClose={() => onClose('cancel')}
-			buttons={
-				[
-					<Button
-						onClick={() => onClose('cancel')}
-					>取 消</Button>,
-					<Button
-						style={{marginRight: 0}}
-						onClick={() => onClose('confirm')}
-						type='primary'
-					>确 认</Button>
-				]
-			}
-		>{content}</Dialog>;
-		ReactDOM.render(Component, div);
-		document.body.append(div);
-	});
-};
-
-Dialog.prompt = options => {
-	return new Promise(resolve => {
-		const { title, content } = options;
-		let inputValue: undefined;
-		const onChange = (event: any) => {
-			inputValue = event.target.value;
-		};
-		const div = document.createElement('div');
-		const onClose = (action: CloseAction) => {
-			ReactDOM.render(<div></div>, div);
-			ReactDOM.unmountComponentAtNode(div);
-			div.remove();
-			resolve({ action, value: inputValue });
-		};
-		const Component = <Dialog
-			title={title}
-			visible={true}
-			onClose={() => onClose('cancel')}
-			buttons={
-				[
-					<Button
-						onClick={() => onClose('cancel')}
-					>取 消</Button>,
-					<Button
-						onClick={() => onClose('confirm')}
-						type='primary'
-						style={{marginRight: 0}}
-					>确 认</Button>
-				]
+				buttons && buttons.map(button => {
+					return React.cloneElement(button, {
+						onClick: () => {
+							const action = button.props.type === 'primary' ? 'confirm' : 'cancel';
+							onClose(action);
+						}
+					});
+				})
 			}
 		>
-			<div>{content}</div>
-			<input
-				style={{width: '96%', height: '28px', marginTop: '20px'}}
-				onChange={onChange}
-			/>
+			{
+				hasInput ? <Fragment>
+					<div>{content}</div>
+					<div>
+						<input
+							style={{ width: '100%', height: '28px', marginTop: '20px' }}
+							onChange={onChange}
+						/>
+					</div>
+				</Fragment> : content
+			}
 		</Dialog>;
 		ReactDOM.render(Component, div);
 		document.body.append(div);
 	});
+};
+
+Dialog.alert = options => {
+	return renderDialogToBody(options, [
+		<Button
+			type='primary'
+			style={{ marginRight: 0 }}
+		>确 认</Button>
+	]);
+};
+
+Dialog.confirm = options => {
+	return renderDialogToBody(options, [
+		<Button
+		>取 消</Button>,
+		<Button
+			style={{ marginRight: 0 }}
+			type='primary'
+		>确 认</Button>
+	]);
+};
+
+Dialog.prompt = options => {
+	return renderDialogToBody(options, [
+		<Button
+		>取 消</Button>,
+		<Button
+			type='primary'
+			style={{ marginRight: 0 }}
+		>确 认</Button>
+	], true);
 };
 
 Dialog.propTypes = {
