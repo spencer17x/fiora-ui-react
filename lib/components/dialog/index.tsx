@@ -88,10 +88,7 @@ const renderDialogToBody = (
 	hasInput?: boolean
 ): Promise<RenderDialogToBodyRes> => {
 	return new Promise(resolve => {
-		let inputValue:string;
-		const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-			inputValue = event.currentTarget.value;
-		};
+		let inputValue: string;
 		const { title, content } = options;
 		const div = document.createElement('div');
 		const onClose = (action: CloseAction) => {
@@ -124,7 +121,11 @@ const renderDialogToBody = (
 					<div>
 						<input
 							style={{ width: '100%', height: '28px', marginTop: '20px' }}
-							onChange={onChange}
+							onChange={
+								event => {
+									inputValue = event.currentTarget.value;
+								}
+							}
 						/>
 					</div>
 				</Fragment> : content
