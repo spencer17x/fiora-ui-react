@@ -32,12 +32,12 @@
     justify-content: flex-end;
   }
 
-  &-enter {
+  &-enter, &-appear {
     opacity: 0;
     transform: translate(-50%, -80%);
   }
 
-  &-enter-active {
+  &-enter-active, &-appear-active {
     opacity: 1;
     transform: translate(-50%, -50%);
     transition: all 200ms;

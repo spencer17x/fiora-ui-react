@@ -55,6 +55,7 @@ const Dialog: React.FC<DialogProps> & {
 				></div> : null
 			}
 			<CSSTransition
+				appear
 				in={visible}
 				unmountOnExit
 				timeout={200}
@@ -95,7 +96,11 @@ const renderDialogToBody = (
 			const res = hasInput ?
 				{ action, value: inputValue } :
 				{ action };
-			ReactDOM.render(<div></div>, div);
+			ReactDOM.render(
+				React.cloneElement(Component, {
+					visible: false
+				}), div
+			);
 			ReactDOM.unmountComponentAtNode(div);
 			div.remove();
 			resolve(res);
