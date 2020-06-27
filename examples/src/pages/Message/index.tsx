@@ -1,7 +1,6 @@
 import React from 'react';
 import CodeShow from '../../components/CodeCard';
 import { Button, message } from '../../../../lib';
-import './index.scss';
 
 const DemoMessage = () => {
 	const info = () => {
@@ -33,8 +32,8 @@ const DemoMessage = () => {
 			title='其他类型用法'
 		>
 			<Button onClick={success}>Success</Button>
-			<Button style={{ marginLeft: 20 }} onClick={error}>Error</Button>
-			<Button style={{ marginLeft: 20 }} onClick={warning}>Warning</Button>
+			<Button onClick={error}>Error</Button>
+			<Button onClick={warning}>Warning</Button>
 		</CodeShow>
 
 		<CodeShow
@@ -51,7 +50,6 @@ const DemoMessage = () => {
 			title='message 动画结束时回调'
 		>
 			<Button
-				style={{ marginRight: 20 }}
 				onClick={() => {
 					message.info('message 动画结束时回调1', 1, () => {
 						console.log('message 动画结束时回调1');

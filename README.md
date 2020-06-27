@@ -34,7 +34,7 @@
 
 ```typescript jsx
 import { Button } from "fiora-ui-react";
-import "fiora-ui-react/dist/lib/css/index.css"
+import "fiora-ui-react/lib/css/index.css"
 
 const App = () => (
   <>
