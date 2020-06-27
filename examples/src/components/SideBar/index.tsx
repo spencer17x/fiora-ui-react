@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import classNames from 'classnames';
-import { useHistory, useLocation } from 'react-router';
 import { menuConfig } from '../../config';
+import { NavLink } from 'react-router-dom';
 import './index.scss';
 
 interface SideBarProps {
@@ -9,27 +9,19 @@ interface SideBarProps {
 }
 
 const SideBar: React.FC<SideBarProps> = ({ className }) => {
-	const history = useHistory();
-	const [currentPath, setPath] = useState('/components/button');
-	const location = useLocation();
-	useEffect(() => {
-		setPath(location.pathname);
-	}, [location]);
 	return (
 		<div className={classNames('example-sidebar', className)}>
 			{
 				menuConfig.map(menu => {
 					const menuRoutePath = `/components/${menu.component.toLocaleLowerCase()}`;
 					return (
-						<div
+						<NavLink
 							key={menu.component}
-							className={classNames('example-sidebar_menu-item', {
-								active: menuRoutePath === currentPath
-							})}
-							onClick={() => history.push(menuRoutePath)}
+							to={menuRoutePath}
+							className='example-sidebar_menu-item'
 						>
 							{menu.title}
-						</div>
+						</NavLink>
 					);
 				})
 			}
