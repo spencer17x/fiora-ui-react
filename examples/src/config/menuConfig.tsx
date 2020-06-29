@@ -13,6 +13,7 @@ const menuConfig: Array<MenuItem> = [
 	{ component: 'Steps', title: 'Steps 步骤条' },
 	{ component: 'Message', title: 'Message 全局提示' },
 	{ component: 'Dialog', title: 'Dialog 对话框' },
+	{ component: 'Input', title: 'Input 输入框' },
 ];
 
 export default menuConfig;

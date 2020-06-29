@@ -1,0 +1,23 @@
+.f-input {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 14px;
+  color: #000000a6;
+  border: 1px solid #d9d9d9;
+  outline: none;
+  border-radius: 4px;
+  transition: border-color 500ms;
+
+  &:hover, &:active {
+    transition: border-color 500;
+    border-color: #1890ff;
+  }
+
+  &-small {
+    padding: 4px 10px;
+  }
+
+  &-large {
+    padding: 12px 10px;
+  }
+}
