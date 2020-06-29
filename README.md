@@ -38,7 +38,7 @@ import "fiora-ui-react/lib/css/index.css"
 
 const App = () => (
   <>
-    <Button className="marginRight10">Default</Button>
+    <Button>Default</Button>
   </>
 );
 ```
