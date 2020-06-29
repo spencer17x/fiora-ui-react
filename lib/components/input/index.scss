@@ -9,7 +9,7 @@
   transition: border-color 500ms;
 
   &:hover, &:active {
-    transition: border-color 500;
+    transition: border-color 500ms;
     border-color: #1890ff;
   }
 
