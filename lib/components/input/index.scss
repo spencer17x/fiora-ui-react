@@ -9,9 +9,14 @@
   transition: border-color 500ms;
 
   &:not(&-disabled) {
-    &:hover, &:focus {
+    &:hover {
       transition: border-color 500ms;
       border-color: #1890ff;
+    }
+    &:focus {
+      transition: box-shadow 500ms;
+      border-color: #1890ff;
+      box-shadow: 0 0 0 2px rgba(24,144,255,.2);
     }
   }
 

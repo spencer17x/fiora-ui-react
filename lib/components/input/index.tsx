@@ -1,4 +1,4 @@
-import React  from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import './index.scss';
@@ -6,26 +6,25 @@ import './index.scss';
 type baseInputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>
 
 interface InputProps extends baseInputProps {
-	size?: 'large' | 'middle' | 'small';
-
+  size?: 'large' | 'middle' | 'small';
 }
 
 const prefixCls = 'f-input';
 
 const Input: React.FC<InputProps> = props => {
-	const { size, disabled, ...restProps } = props;
-	return <input
+  const {size, disabled, className, ...restProps} = props;
+  return <input
     disabled={disabled}
-		className={classNames(prefixCls, {
-			[`${prefixCls}-${size}`]: size,
+    className={classNames(prefixCls, className, {
+      [`${prefixCls}-${size}`]: size,
       [`${prefixCls}-disabled`]: disabled
-		})}
-		{...restProps}
-	/>;
+    })}
+    {...restProps}
+  />;
 };
 
 Input.propTypes = {
-	size: PropTypes.oneOf(['large', 'middle', 'small'])
+  size: PropTypes.oneOf(['large', 'middle', 'small'])
 };
 
 export default Input;
