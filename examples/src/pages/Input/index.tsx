@@ -15,6 +15,7 @@ const DemoInput = () => {
 		</CodeShow>
 
 		<CodeShow
+      style={{ marginBottom: 20 }}
 			title='三种大小'
 			code={`
 <>
@@ -54,6 +55,12 @@ const DemoInput = () => {
 				/>
 			</>
 		</CodeShow>
+
+    <CodeShow
+      title='禁用'
+    >
+      <Input disabled/>
+    </CodeShow>
 	</>;
 };
 

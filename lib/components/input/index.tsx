@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React  from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import './index.scss';
@@ -7,21 +7,19 @@ type baseInputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>
 
 interface InputProps extends baseInputProps {
 	size?: 'large' | 'middle' | 'small';
+
 }
 
 const prefixCls = 'f-input';
 
 const Input: React.FC<InputProps> = props => {
-	const { defaultValue, size, ...restProps } = props;
-	const [inputValue, setInputValue] = useState(() => {
-		return defaultValue || '';
-	});
+	const { size, disabled, ...restProps } = props;
 	return <input
-		value={inputValue}
+    disabled={disabled}
 		className={classNames(prefixCls, {
-			[`${prefixCls}-${size}`]: size
+			[`${prefixCls}-${size}`]: size,
+      [`${prefixCls}-disabled`]: disabled
 		})}
-		onChange={event => setInputValue(event.target.value)}
 		{...restProps}
 	/>;
 };
