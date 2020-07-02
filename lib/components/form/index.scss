@@ -1,10 +1,23 @@
 .f-form {
   &-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: 10px;
+    &--section {
+      display: flex;
+    }
     &--label {
       margin-right: 20px;
+      padding-top: 6px;
+    }
+    &--input {
+      width: 100%;
+    }
+    &--error {
+      min-height: 20px;
+      color: #ff4d4f;
+      font-size: 12px;
+      &-item {
+        margin-right: 10px;
+      }
     }
   }
 }
