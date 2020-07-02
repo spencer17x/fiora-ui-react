@@ -9,3 +9,5 @@ export { default as Affix } from './affix';
 export { default as Icon } from './icon';
 export { default as Dialog } from './dialog';
 export { default as Input } from './input';
+export { default as Form } from './form';
+export * from './form';
