@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import { menuConfig } from '../../config';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import './index.scss';
 
 interface SideBarProps {
@@ -9,6 +9,12 @@ interface SideBarProps {
 }
 
 const SideBar: React.FC<SideBarProps> = ({ className }) => {
+	const location = useLocation();
+	useEffect(() => {
+		window.scroll({
+			top: 0
+		});
+	}, [location]);
 	return (
 		<div className={classNames('example-sidebar', className)}>
 			{
