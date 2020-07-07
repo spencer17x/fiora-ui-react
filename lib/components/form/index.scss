@@ -1,36 +1,16 @@
 .f-form {
   &-item {
-    margin-bottom: 10px;
-    &--section {
-      display: flex;
-    }
     &--label {
-      margin-right: 20px;
-      padding-top: 6px;
-    }
-    &--input {
-      width: 100%;
-    }
-    &--error {
-      min-height: 20px;
-      color: #ff4d4f;
-      font-size: 12px;
-      &-item {
-        margin-right: 10px;
-      }
-      &-enter {
-        opacity: 0;
-      }
-      &-enter-active {
-        opacity: 1;
-        transition: opacity 300ms;
-      }
-      &-exit {
-        opacity: 1;
-      }
-      &-exit-active {
-        opacity: 0;
-        transition: opacity 300ms;
+      display: flex;
+      align-items: center;
+      margin-bottom: 24px;
+      .label {
+        &-text {
+          margin-right: 20px;
+        }
+        &-value {
+          flex: 1;
+        }
       }
     }
   }
