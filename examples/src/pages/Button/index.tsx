@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, ButtonGroup, Icon } from '../../../../lib';
+import { Button, Icon } from '../../../../lib';
 import CodeCard from '../../components/CodeCard';
 
 const DemoButton = () => {
@@ -135,14 +135,14 @@ const DemoButton = () => {
 				title="按钮组合"
 				style={{ marginTop: 30 }}
 				code={`
-			<ButtonGroup className='component-margin'>
+			<Button.Group className='component-margin'>
 \t\t\t\t<Button>Cancel</Button>
 \t\t\t\t<Button>OK</Button>
 \t\t\t\t<Button>OK</Button>
 \t\t\t\t<Button>OK</Button>
-\t\t\t</ButtonGroup>
+\t\t\t</Button.Group>
 
-\t\t\t<ButtonGroup className='component-margin'>
+\t\t\t<Button.Group className='component-margin'>
 \t\t\t\t<Button disabled>L</Button>
 \t\t\t\t<Button disabled>M</Button>
 \t\t\t\t<Button disabled>R</Button>
@@ -150,15 +150,15 @@ const DemoButton = () => {
 \t\t\t\t<Button disabled>R</Button>
 \t\t\t\t<Button disabled>R</Button>
 \t\t\t\t<Button disabled>R</Button>
-\t\t\t</ButtonGroup>
+\t\t\t</Button.Group>
 
-\t\t\t<ButtonGroup className='component-margin'>
+\t\t\t<Button.Group className='component-margin'>
 \t\t\t\t<Button>L</Button>
 \t\t\t\t<Button>M</Button>
 \t\t\t\t<Button>R</Button>
-\t\t\t</ButtonGroup>
+\t\t\t</Button.Group>
 
-\t\t\t<ButtonGroup className='component-margin'>
+\t\t\t<Button.Group className='component-margin'>
 \t\t\t\t<Button type="primary">
 \t\t\t\t\t<Icon type="add" fill='#fff'/>
 \t\t\t\t\tGo back
@@ -167,26 +167,26 @@ const DemoButton = () => {
 \t\t\t\t\tGo forward
 \t\t\t\t\t<Icon type="add" fill='#fff'/>
 \t\t\t\t</Button>
-\t\t\t</ButtonGroup>
+\t\t\t</Button.Group>
 
-\t\t\t<ButtonGroup className='component-margin'>
+\t\t\t<Button.Group className='component-margin'>
 \t\t\t\t<Button type="primary" icon='add'>
 \t\t\t\t\tGo back
 \t\t\t\t</Button>
 \t\t\t\t<Button type="primary" icon='add'>
 \t\t\t\t\tGo forward
 \t\t\t\t</Button>
-\t\t\t</ButtonGroup>
+\t\t\t</Button.Group>
 			`}
 			>
-				<ButtonGroup>
+				<Button.Group>
 					<Button>Cancel</Button>
 					<Button>OK</Button>
 					<Button>OK</Button>
 					<Button>OK</Button>
-				</ButtonGroup>
+				</Button.Group>
 
-				<ButtonGroup>
+				<Button.Group>
 					<Button disabled>L</Button>
 					<Button disabled>M</Button>
 					<Button disabled>R</Button>
@@ -194,15 +194,15 @@ const DemoButton = () => {
 					<Button disabled>R</Button>
 					<Button disabled>R</Button>
 					<Button disabled>R</Button>
-				</ButtonGroup>
+				</Button.Group>
 
-				<ButtonGroup>
+				<Button.Group>
 					<Button>L</Button>
 					<Button>M</Button>
 					<Button>R</Button>
-				</ButtonGroup>
+				</Button.Group>
 
-				<ButtonGroup>
+				<Button.Group>
 					<Button type="primary">
 						<Icon type="add" fill="#fff" />
 						Go back
@@ -211,16 +211,16 @@ const DemoButton = () => {
 						Go forward
 						<Icon type="add" fill="#fff" />
 					</Button>
-				</ButtonGroup>
+				</Button.Group>
 
-				<ButtonGroup>
+				<Button.Group>
 					<Button type="primary" icon="add">
 						Go back
 					</Button>
 					<Button type="primary" icon="add">
 						Go forward
 					</Button>
-				</ButtonGroup>
+				</Button.Group>
 			</CodeCard>
 		</div>
 	);
