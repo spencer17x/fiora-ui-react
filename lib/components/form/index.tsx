@@ -15,18 +15,20 @@ export interface Rule {
   required?: boolean;
   minlength?: number;
   maxlength?: number;
+  message: string;
 }
 
 export interface FormProps {
-  data: {[k: string]: string | number};
+  data: {[k: string]: string};
   fields: Array<Field>;
   onChange: (data: FormProps['data']) => void;
   buttons?: Array<ReactElement>;
   rules?: Array<Rule>;
+  errors?: {[k: string]: Array<string>;}
 }
 
 const Form: React.FC<FormProps> = props => {
-  const { data, buttons, fields, onChange, ...restProps } = props;
+  const { data, buttons, fields, onChange, errors, ...restProps } = props;
   const onInputChange = (name: keyof FormProps['data'], event: React.ChangeEvent<HTMLInputElement>) => {
     onChange({
       ...data,
@@ -44,7 +46,13 @@ const Form: React.FC<FormProps> = props => {
                 onChange={event => onInputChange(field.name, event)}
                 type={field.type}
               />
-              {/*<div className='f-form-item--error'>错误</div>*/}
+              <div className='f-form-item--error'>
+                {
+                  errors && errors[field.name].map((error, index) => {
+                    return <span key={index} className='error-item'>{error}</span>;
+                  })
+                }
+              </div>
             </div>
           </label>;
         })
@@ -63,6 +71,31 @@ const Form: React.FC<FormProps> = props => {
       </div>
     </div>
   </form>;
+};
+
+/**
+ * 表单校验
+ * @param formData
+ * @param rules
+ */
+export const validate = (formData: FormProps['data'], rules: FormProps['rules']): FormProps['errors'] => {
+  const errors: FormProps['errors'] = {};
+  if (rules) {
+    rules.map(rule => {
+      const curVal = formData[rule.name];
+      errors[rule.name] = errors[rule.name] || [];
+      if (rule.required && !curVal) {
+        errors[rule.name].push(rule.message);
+      }
+      if (rule.minlength !== undefined && curVal.length < rule.minlength) {
+        errors[rule.name].push(rule.message);
+      }
+      if (rule.maxlength !== undefined && curVal.length > rule.maxlength) {
+        errors[rule.name].push(rule.message);
+      }
+    });
+  }
+  return errors;
 };
 
 export default Form;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CodeShow from '../../components/CodeCard';
-import { Button, Form, FormProps } from '../../../../lib';
+import { Button, Form, FormProps, validate } from '../../../../lib';
 
 const DemoForm = () => {
   const [formData, setFormData] = useState<FormProps['data']>({
@@ -12,11 +12,17 @@ const DemoForm = () => {
     { name: 'password', type: 'password', label: 'Password' }
   ]);
   const [rules] = useState<FormProps['rules']>([
-    { name: 'username', required: true, minlength: 5, maxlength: 15 },
-    { name: 'password', required: true, minlength: 5, maxlength: 15 }
+    { name: 'username', required: true, message: '必填' },
+    { name: 'username', minlength: 5, message: '不得小于5' },
+    { name: 'username', maxlength: 15, message: '不得大于15' },
+    { name: 'password', required: true, message: '必填' },
+    { name: 'password', minlength: 5, message: '不得小于5' },
+    { name: 'password', maxlength: 15, message: '不得大于15' }
   ]);
+  const [errors, setErrors] = useState<FormProps['errors']>();
   const onSubmit = () => {
-    console.log(formData);
+    const errors = validate(formData, rules);
+    setErrors(errors);
   };
   return <div>
     <CodeShow
@@ -27,6 +33,7 @@ const DemoForm = () => {
         fields={fields}
         rules={rules}
         onChange={data => setFormData(data)}
+        errors={errors}
         buttons={[
           <Button type='primary' onClick={onSubmit}>提交</Button>
         ]}

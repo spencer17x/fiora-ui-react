@@ -17,6 +17,9 @@
     &--error {
       color: #ff4d4f;
       font-size: 12px;
+      .error-item {
+        margin-right: 5px;
+      }
     }
   }
 }
