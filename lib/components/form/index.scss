@@ -1,17 +1,22 @@
 .f-form {
   &-item {
+    display: flex;
+    margin-bottom: 5px;
+
     &--label {
-      display: flex;
-      align-items: center;
-      margin-bottom: 24px;
-      .label {
-        &-text {
-          margin-right: 20px;
-        }
-        &-value {
-          flex: 1;
-        }
-      }
+      flex: 0 0 80px;
+      line-height: 34px;
+      margin-right: 20px;
+      padding-bottom: 24px;
+    }
+
+    &--content {
+      flex: 1;
+    }
+
+    &--error {
+      color: #ff4d4f;
+      font-size: 12px;
     }
   }
 }

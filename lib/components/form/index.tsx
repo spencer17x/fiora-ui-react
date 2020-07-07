@@ -1,40 +1,68 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
+import Input from '../input';
 import './index.scss';
 
-interface Rule {
-  required: boolean;
-  message: string;
-}
+type FieldType = 'text' | 'password';
 
-interface FormProps {
-
-}
-
-interface FormItemProps {
+interface Field {
   name: string;
-  label: string;
-  rules: Array<Rule>
+  type?: FieldType;
+  label?: string;
 }
 
-const Form: React.FC<FormProps> & {
-  Item: React.FC<FormItemProps>
-} = props => {
-  const { children, ...restProps } = props;
-  return <form {...restProps}>
-    {children}
+export interface Rule {
+  name: string;
+  required?: boolean;
+  minlength?: number;
+  maxlength?: number;
+}
+
+export interface FormProps {
+  data: {[k: string]: string | number};
+  fields: Array<Field>;
+  onChange: (data: FormProps['data']) => void;
+  buttons?: Array<ReactElement>;
+  rules?: Array<Rule>;
+}
+
+const Form: React.FC<FormProps> = props => {
+  const { data, buttons, fields, onChange, ...restProps } = props;
+  const onInputChange = (name: keyof FormProps['data'], event: React.ChangeEvent<HTMLInputElement>) => {
+    onChange({
+      ...data,
+      [name]: event.target.value
+    });
+  };
+  return <form className='f-form'>
+    <div className='f-form-fields'>
+      {
+        fields.map(field => {
+          return <label key={field.name} className='f-form-item'>
+            <div className='f-form-item--label'>{field.label}</div>
+            <div className='f-form-item--content'>
+              <Input
+                onChange={event => onInputChange(field.name, event)}
+                type={field.type}
+              />
+              {/*<div className='f-form-item--error'>错误</div>*/}
+            </div>
+          </label>;
+        })
+      }
+    </div>
+    <div className='f-form-item'>
+      <div className='f-form-item--label'></div>
+      <div className='f-form-item--content'>
+        {
+          buttons && buttons.map((button, index) => {
+            return React.cloneElement(button, {
+              key: index
+            });
+          })
+        }
+      </div>
+    </div>
   </form>;
 };
-
-export const FormItem: React.FC<FormItemProps> = props => {
-  const { children, label, rules, ...restProps } = props;
-  return <div {...restProps}>
-    <label className={'f-form-item--label'}>
-      <span className='label-text'>{label}</span>
-      <span className='label-value'>{children}</span>
-    </label>
-  </div>;
-};
-
-Form.Item = FormItem;
 
 export default Form;
