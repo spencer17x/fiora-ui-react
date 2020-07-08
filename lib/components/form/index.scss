@@ -23,3 +23,18 @@
     }
   }
 }
+
+.error-enter {
+  opacity: 0;
+}
+.error-enter-active {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+.error-exit {
+  opacity: 1;
+}
+.error-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}

@@ -5,11 +5,13 @@ import { Button, Form, FormProps, validate } from '../../../../lib';
 const DemoForm = () => {
   const [formData, setFormData] = useState<FormProps['data']>({
     username: '',
-    password: ''
+    password: '',
+    text: ''
   });
   const [fields] = useState<FormProps['fields']>([
     { name: 'username', type: 'text', label: 'Username' },
-    { name: 'password', type: 'password', label: 'Password' }
+    { name: 'password', type: 'password', label: 'Password' },
+    { name: 'text', type: 'text', label: 'Text' },
   ]);
   const [rules] = useState<FormProps['rules']>([
     { name: 'username', required: true, message: '必填' },
@@ -22,6 +24,7 @@ const DemoForm = () => {
   const [errors, setErrors] = useState<FormProps['errors']>();
   const onSubmit = () => {
     const errors = validate(formData, rules);
+    console.log(errors);
     setErrors(errors);
   };
   return <div>

@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react';
 import Input from '../input';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import './index.scss';
 
 type FieldType = 'text' | 'password';
@@ -28,7 +29,7 @@ export interface FormProps {
 }
 
 const Form: React.FC<FormProps> = props => {
-  const { data, buttons, fields, onChange, errors, ...restProps } = props;
+  const { data, buttons, fields, onChange, errors } = props;
   const onInputChange = (name: keyof FormProps['data'], event: React.ChangeEvent<HTMLInputElement>) => {
     onChange({
       ...data,
@@ -46,13 +47,25 @@ const Form: React.FC<FormProps> = props => {
                 onChange={event => onInputChange(field.name, event)}
                 type={field.type}
               />
-              <div className='f-form-item--error'>
                 {
-                  errors && errors[field.name].map((error, index) => {
-                    return <span key={index} className='error-item'>{error}</span>;
-                  })
+                  <div className='f-form-item--error'>
+                    <TransitionGroup>
+                      {
+                        errors && errors[field.name] && errors[field.name].map((error, index) => {
+                          return <CSSTransition
+                            in={Boolean(errors)}
+                            timeout={300}
+                            classNames="error"
+                            unmountOnExit
+                            key={index}
+                          >
+                            <span key={index} className='error-item'>{error}</span>
+                          </CSSTransition>
+                        })
+                      }
+                    </TransitionGroup>
+									</div>
                 }
-              </div>
             </div>
           </label>;
         })
@@ -71,6 +84,14 @@ const Form: React.FC<FormProps> = props => {
       </div>
     </div>
   </form>;
+};
+
+/**
+ * 判断是否有错误
+ * @param errors
+ */
+const noError = (errors: FormProps['errors'] = {}): boolean => {
+  return Object.keys(errors).filter(errorKey => errors[errorKey].length > 0).length <= 0;
 };
 
 /**
@@ -95,6 +116,7 @@ export const validate = (formData: FormProps['data'], rules: FormProps['rules'])
       }
     });
   }
+  if (noError(errors)) return;
   return errors;
 };
 
