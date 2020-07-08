@@ -38,9 +38,12 @@ const DemoForm = () => {
         rules={rules}
         onChange={data => setFormData(data)}
         errors={errors}
-      >
-        <Button type='primary' onClick={onSubmit}>提交</Button>
-      </Form>
+        buttons={
+          [
+            <Button type='primary' onClick={onSubmit}>提交</Button>
+          ]
+        }
+      ></Form>
     </CodeShow>
 
     <CodeShow
@@ -55,9 +58,12 @@ const DemoForm = () => {
         onChange={data => setFormData(data)}
         errors={errors}
         style={{ marginBottom: 20 }}
-      >
-        <Button type='primary' onClick={onSubmit}>提交</Button>
-      </Form>
+        buttons={
+          [
+            <Button type='primary' onClick={onSubmit}>提交</Button>
+          ]
+        }
+      ></Form>
 
       <h3>inline</h3>
       <Form
@@ -67,8 +73,12 @@ const DemoForm = () => {
         rules={rules}
         onChange={data => setFormData(data)}
         errors={errors}
+        buttons={
+          [
+            <Button type='primary' onClick={onSubmit}>提交</Button>
+          ]
+        }
       >
-        <Button type='primary' onClick={onSubmit}>提交</Button>
       </Form>
     </CodeShow>
   </div>;
