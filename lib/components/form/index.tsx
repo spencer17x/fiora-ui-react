@@ -54,6 +54,7 @@ const Form: React.FC<FormProps> = props => {
             <div className='f-form-item--label'>{field.label}</div>
             <div className='f-form-item--content'>
               <Input
+                error={Boolean(errors && errors[field.name] && errors[field.name].length)}
                 value={data[field.name]}
                 onChange={event => onInputChange(field.name, event)}
                 type={field.type}

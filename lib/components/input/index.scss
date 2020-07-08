@@ -8,18 +8,6 @@
   border-radius: 4px;
   transition: border-color 500ms;
 
-  &:not(&-disabled) {
-    &:hover {
-      transition: border-color 500ms;
-      border-color: #1890ff;
-    }
-    &:focus {
-      transition: box-shadow 500ms;
-      border-color: #1890ff;
-      box-shadow: 0 0 0 2px rgba(24,144,255,.2);
-    }
-  }
-
   &-small {
     padding: 4px 10px;
   }
@@ -44,5 +32,30 @@
   &-disabled {
     cursor: not-allowed;
     background-color: #f5f5f5;
+  }
+
+  &:not(&-disabled, &-error) {
+    &:hover {
+      transition: border-color 500ms;
+      border-color: #1890ff;
+    }
+    &:focus {
+      transition: box-shadow 500ms;
+      border-color: #1890ff;
+      box-shadow: 0 0 0 2px rgba(24,144,255,.2);
+    }
+  }
+
+  &-error {
+    border-color: #ff4d4f;
+    &:hover {
+      transition: border-color 500ms;
+      border-color: #ff4d4f;
+    }
+    &:focus {
+      transition: box-shadow 500ms;
+      border-color: #ff4d4f;
+      box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.2);
+    }
   }
 }
