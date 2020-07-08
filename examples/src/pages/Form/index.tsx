@@ -8,10 +8,11 @@ const DemoForm = () => {
     password: '',
     text: ''
   });
+
   const [fields] = useState<FormProps['fields']>([
     { name: 'username', type: 'text', label: 'Username' },
     { name: 'password', type: 'password', label: 'Password' },
-    { name: 'text', type: 'text', label: 'Text' },
+    { name: 'text', type: 'text', label: 'Text' }
   ]);
   const [rules] = useState<FormProps['rules']>([
     { name: 'username', required: true, message: '必填' },
@@ -24,12 +25,12 @@ const DemoForm = () => {
   const [errors, setErrors] = useState<FormProps['errors']>();
   const onSubmit = () => {
     const errors = validate(formData, rules);
-    console.log(errors);
     setErrors(errors);
   };
   return <div>
     <CodeShow
       title='基础用法'
+      style={{ marginBottom: 20 }}
     >
       <Form
         data={formData}
@@ -37,10 +38,38 @@ const DemoForm = () => {
         rules={rules}
         onChange={data => setFormData(data)}
         errors={errors}
-        buttons={[
-          <Button type='primary' onClick={onSubmit}>提交</Button>
-        ]}
-      />
+      >
+        <Button type='primary' onClick={onSubmit}>提交</Button>
+      </Form>
+    </CodeShow>
+
+    <CodeShow
+      title='layout 布局'
+    >
+      <h3>vertical</h3>
+      <Form
+        layout='vertical'
+        data={formData}
+        fields={fields}
+        rules={rules}
+        onChange={data => setFormData(data)}
+        errors={errors}
+        style={{ marginBottom: 20 }}
+      >
+        <Button type='primary' onClick={onSubmit}>提交</Button>
+      </Form>
+
+      <h3>inline</h3>
+      <Form
+        layout='inline'
+        data={formData}
+        fields={fields}
+        rules={rules}
+        onChange={data => setFormData(data)}
+        errors={errors}
+      >
+        <Button type='primary' onClick={onSubmit}>提交</Button>
+      </Form>
     </CodeShow>
   </div>;
 };

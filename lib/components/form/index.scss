@@ -17,8 +17,35 @@
     &--error {
       color: #ff4d4f;
       font-size: 12px;
+      height: 16px;
+      line-height: 16px;
+
       .error-item {
         margin-right: 5px;
+      }
+    }
+  }
+
+  &-fields--inline {
+    display: flex;
+    flex-wrap: wrap;
+    .f-form-item--inline {
+      margin-right: 20px;
+      .f-form-item--label {
+        padding-bottom: 10px;
+        margin-right: 10px;
+        flex-basis: auto;
+      }
+    }
+  }
+
+  &-fields--verical {
+    .f-form-item--vertical {
+      display: block;
+
+      > .f-form-item--label {
+        margin: 0;
+        padding: 0;
       }
     }
   }
@@ -27,13 +54,16 @@
 .error-enter {
   opacity: 0;
 }
+
 .error-enter-active {
   opacity: 1;
   transition: opacity 300ms;
 }
+
 .error-exit {
   opacity: 1;
 }
+
 .error-exit-active {
   opacity: 0;
   transition: opacity 300ms;

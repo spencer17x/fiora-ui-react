@@ -1,6 +1,7 @@
-import React, { ReactElement } from 'react';
+import React, { CSSProperties, ReactNode } from 'react';
 import Input from '../input';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import classNames from 'classnames';
 import './index.scss';
 
 type FieldType = 'text' | 'password';
@@ -23,49 +24,56 @@ export interface FormProps {
   data: {[k: string]: string};
   fields: Array<Field>;
   onChange: (data: FormProps['data']) => void;
-  buttons?: Array<ReactElement>;
   rules?: Array<Rule>;
   errors?: {[k: string]: Array<string>;}
+  layout?: 'horizontal' | 'vertical' | 'inline';
+  children?: ReactNode;
+  style?: CSSProperties;
 }
 
 const Form: React.FC<FormProps> = props => {
-  const { data, buttons, fields, onChange, errors } = props;
+  const { data, fields, onChange, errors, children, layout, rules, ...restProps } = props;
   const onInputChange = (name: keyof FormProps['data'], event: React.ChangeEvent<HTMLInputElement>) => {
     onChange({
       ...data,
       [name]: event.target.value
     });
   };
-  return <form className='f-form'>
-    <div className='f-form-fields'>
+  return <form className='f-form' {...restProps}>
+    <div className={classNames('f-form-fields', {
+      [`f-form-fields--${layout}`]: layout
+    })}>
       {
         fields.map(field => {
-          return <label key={field.name} className='f-form-item'>
+          return <label key={field.name} className={classNames('f-form-item', {
+            [`f-form-item--${layout}`]: layout
+          })}>
             <div className='f-form-item--label'>{field.label}</div>
             <div className='f-form-item--content'>
               <Input
+                value={data[field.name]}
                 onChange={event => onInputChange(field.name, event)}
                 type={field.type}
               />
-                {
-                  <div className='f-form-item--error'>
-                    <TransitionGroup>
-                      {
-                        errors && errors[field.name] && errors[field.name].map((error, index) => {
-                          return <CSSTransition
-                            in={Boolean(errors)}
-                            timeout={300}
-                            classNames="error"
-                            unmountOnExit
-                            key={index}
-                          >
-                            <span key={index} className='error-item'>{error}</span>
-                          </CSSTransition>
-                        })
-                      }
-                    </TransitionGroup>
-									</div>
-                }
+              {
+                <div className='f-form-item--error'>
+                  <TransitionGroup>
+                    {
+                      errors && errors[field.name] && errors[field.name].map((error, index) => {
+                        return <CSSTransition
+                          in={Boolean(errors)}
+                          timeout={300}
+                          classNames="error"
+                          unmountOnExit
+                          key={index}
+                        >
+                          <span key={index} className='error-item'>{error}</span>
+                        </CSSTransition>;
+                      })
+                    }
+                  </TransitionGroup>
+                </div>
+              }
             </div>
           </label>;
         })
@@ -73,15 +81,7 @@ const Form: React.FC<FormProps> = props => {
     </div>
     <div className='f-form-item'>
       <div className='f-form-item--label'></div>
-      <div className='f-form-item--content'>
-        {
-          buttons && buttons.map((button, index) => {
-            return React.cloneElement(button, {
-              key: index
-            });
-          })
-        }
-      </div>
+      <div className='f-form-item--content'>{children}</div>
     </div>
   </form>;
 };
