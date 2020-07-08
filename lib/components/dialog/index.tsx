@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import Icon from '../icon';
 import { Button } from '../button';
 import './index.scss';
+import Input from '../input';
 
 type AlertOptions = Omit<DialogProps, 'visible'> & {
 	content?: string
@@ -124,7 +125,7 @@ const renderDialogToBody = (
 				hasInput ? <Fragment>
 					<div>{content}</div>
 					<div>
-						<input
+						<Input
 							style={{ width: '100%', height: '28px', marginTop: '20px' }}
 							onChange={
 								event => {
