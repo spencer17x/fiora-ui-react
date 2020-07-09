@@ -9,7 +9,7 @@ type FieldType = 'text' | 'password';
 
 interface Field {
   name: string;
-  type?: FieldType;
+  type: FieldType;
   label?: string;
 }
 
@@ -136,21 +136,23 @@ export const validate = (formData: FormProps['data'], rules: FormProps['rules'])
 };
 
 Form.propTypes = {
-  data: PropTypes.objectOf(PropTypes.string.isRequired).isRequired,
+  data: PropTypes.objectOf(
+    PropTypes.string.isRequired
+  ).isRequired,
   fields: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      type: PropTypes.oneOf(['text', 'password']),
-      label: PropTypes.string
+      type: PropTypes.oneOf<FieldType>(['password', 'text']).isRequired,
+      label: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,
   onChange: PropTypes.func.isRequired,
   rules: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      required: PropTypes.bool,
-      minlength: PropTypes.number,
-      maxlength: PropTypes.number,
+      required: PropTypes.bool.isRequired,
+      minlength: PropTypes.number.isRequired,
+      maxlength: PropTypes.number.isRequired,
       message: PropTypes.string.isRequired
     }).isRequired
   ),
