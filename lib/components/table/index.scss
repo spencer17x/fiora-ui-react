@@ -1,0 +1,21 @@
+.f-table {
+  border-collapse: collapse;
+  width: 100%;
+
+  &-tr {
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 360ms;
+    &:hover {
+      background-color: #fafafa;
+    }
+  }
+
+  &-thead {
+    background-color: #fafafa;
+  }
+
+  &-th, &-td {
+    text-align: left;
+    padding: 16px;
+  }
+}

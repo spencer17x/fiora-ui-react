@@ -15,6 +15,7 @@ const menuConfig: Array<MenuItem> = [
 	{ component: 'Dialog', title: 'Dialog 对话框' },
 	{ component: 'Input', title: 'Input 输入框' },
 	{ component: 'Form', title: 'Form 表单' },
+	{ component: 'Table', title: 'Table 表格' },
 ];
 
 export default menuConfig;
