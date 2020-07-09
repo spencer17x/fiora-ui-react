@@ -1,12 +1,16 @@
 .f-table {
   border-collapse: collapse;
+  table-layout: fixed;
   width: 100%;
 
   &-tr {
     border-bottom: 1px solid #f0f0f0;
-    transition: background-color 360ms;
+
     &:hover {
-      background-color: #fafafa;
+      > td {
+        transition: background-color 360ms;
+        background-color: #fafafa;
+      }
     }
   }
 
@@ -14,8 +18,36 @@
     background-color: #fafafa;
   }
 
+  &-th {
+    background-color: #fafafa;
+  }
+
+  &-td {
+    background-color: #fff;
+  }
+
   &-th, &-td {
     text-align: left;
     padding: 16px;
+  }
+
+  &-container {
+    width: 100%;
+    overflow-x: scroll;
+  }
+
+  .fixed-left, .fixed-right {
+    position: sticky;
+    z-index: 1;
+  }
+
+  .fixed-left {
+    left: 0;
+    box-shadow: 6px 0 6px -4px rgba(0, 0, 0, .2);
+  }
+
+  .fixed-right {
+    right: 0;
+    box-shadow: -6px 0 6px -4px rgba(0, 0, 0, .2);
   }
 }

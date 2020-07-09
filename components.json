@@ -19,5 +19,6 @@
   "layout": "./lib/components/layout/layout.tsx",
   "message": "./lib/components/message/index.tsx",
   "steps": "./lib/components/steps/steps.tsx",
-  "steps-item": "./lib/components/steps/step-item.tsx"
+  "steps-item": "./lib/components/steps/step-item.tsx",
+  "table": "./lib/components/table/index.tsx"
 }

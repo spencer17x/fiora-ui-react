@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import './index.scss';
 
 export type TableDataItem = {
@@ -10,7 +11,9 @@ export interface TableColumn {
   key: string;
   title?: string;
   dataIndex?: string;
-  render?: (v: any) => any;
+  width?: number;
+  render?: (v: any, row: TableDataItem) => any;
+  fixed?: 'left' | 'right'
 }
 
 export interface TableProps {
@@ -20,37 +23,56 @@ export interface TableProps {
 
 const Table: React.FC<TableProps> = props => {
   const { data, columns } = props;
-  return <table className='f-table'>
-    <thead className='f-table-thead'>
-      <tr className='f-table-tr'>
+  return <div className='f-table-container'>
+    <table className='f-table'>
+      <colgroup>
         {
-          columns.map(col => {
-            return <th className='f-table-th' key={col.key}>{col.title}</th>;
+          columns.map((col, index) => {
+            const { width = 'auto' } = col;
+            return <col key={index} style={{ width, minWidth: width }} />;
           })
         }
-      </tr>
-    </thead>
-    <tbody>
-      {
-        data.map(dataItem => {
-          return <tr className='f-table-tr' key={dataItem.key}>
-            {
-              columns.map(col => {
-                const { key, dataIndex = '' } = col;
-                return <td className='f-table-td' key={key}>
-                  {
-                    col.render === undefined ?
-                      dataItem[dataIndex] :
-                      col.render(dataItem[dataIndex])
-                  }
-                </td>;
-              })
-            }
-          </tr>;
-        })
-      }
-    </tbody>
-  </table>;
+      </colgroup>
+      <thead className='f-table-thead'>
+        <tr className='f-table-tr'>
+          {
+            columns.map(col => {
+              const { fixed, title, key } = col;
+              return <th
+                className={classNames('f-table-th', {
+                  [`fixed-${fixed}`]: fixed
+                })}
+                key={key}
+              >{title}</th>;
+            })
+          }
+        </tr>
+      </thead>
+      <tbody>
+        {
+          data.map(dataItem => {
+            return <tr className='f-table-tr' key={dataItem.key}>
+              {
+                columns.map(col => {
+                  const { key, dataIndex = '', fixed } = col;
+                  const renderValue = dataItem[dataIndex];
+                  return <td className={classNames('f-table-td', {
+                    [`fixed-${col.fixed}`]: fixed
+                  })} key={key}>
+                    {
+                      col.render === undefined ?
+                        renderValue :
+                        col.render(renderValue, dataItem)
+                    }
+                  </td>;
+                })
+              }
+            </tr>;
+          })
+        }
+      </tbody>
+    </table>
+  </div>;
 };
 
 Table.propTypes = {
@@ -62,7 +84,9 @@ Table.propTypes = {
       title: PropTypes.string.isRequired,
       key: PropTypes.string.isRequired,
       dataIndex: PropTypes.string.isRequired,
-      render: PropTypes.func.isRequired
+      render: PropTypes.func.isRequired,
+      width: PropTypes.number.isRequired,
+      fixed: PropTypes.oneOf<'left' | 'right'>(['left', 'right']).isRequired
     }).isRequired
   ).isRequired
 };
