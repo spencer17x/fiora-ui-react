@@ -25,7 +25,6 @@ jobs:
             ${{ runner.os }}-node-
 
       - run: yarn install
-      - run: yarn ci
       - run: yarn run build:doc
 
       - name: Deploy
