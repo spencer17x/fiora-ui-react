@@ -3,10 +3,10 @@ import { mount, render } from 'enzyme';
 import mountTest from '../../../../tests/shared/mountTest';
 import { Button } from '..';
 
-describe('Button', () => {
+describe('button', () => {
   mountTest(Button);
-  mountTest(() => <Button size='large' />);
-  mountTest(() => <Button size='small' />);
+  mountTest(() => <Button size='large'/>);
+  mountTest(() => <Button size='small'/>);
 
   it('renders correctly', () => {
     const wrapper = render(<Button>default</Button>);
