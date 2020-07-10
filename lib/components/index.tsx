@@ -11,5 +11,7 @@ export { default as Dialog } from './dialog';
 export { default as Input } from './input';
 export { default as Form } from './form';
 export { default as Table } from './table';
+export { default as Menu } from './menu';
 export * from './form';
 export * from './table';
+export * from './menu';
