@@ -17,11 +17,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '10.x'
-      - name: npm ci and test
+      - name: yarn ci and test
         run: |
-          npm install
-          npm ci
-          npm run test
+          yarn install
+          yarn ci
+          yarn run test
         env:
           CI: true
 
@@ -36,8 +36,8 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: build components
         run: |
-          npm install
-          npm run build:components
+          yarn install
+          yarn run build:components
       - name: publish package
         run: |
           cp package.json README.md ./dist

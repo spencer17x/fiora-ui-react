@@ -14,7 +14,7 @@ module.exports = {
 		'node_modules'
 	],
 	testMatch: [
-		'<rootDir>/**/?(*.)+(spec|test).[jt]s?(x)',
+		'<rootDir>/**/?(*.)+(spec|test).[jt]s?(x)'
 	],
 	transform: {
 		'^.+\\.jsx?$': 'babel-jest',
