@@ -22,7 +22,7 @@
     "build": "webpack --config webpack.prod.js",
     "build:doc": "webpack --config webpack.doc.js",
     "build:components": "webpack --config webpack.components.js",
-    "lint": "eslint --ext lib/**/*.tsx",
+    "lint": "eslint --fix",
     "commit": "git add . && git-cz",
     "test": "jest --passWithNoTests"
   },
@@ -54,8 +54,9 @@
     "git-cz": "^4.2.0",
     "hard-source-webpack-plugin": "^0.13.1",
     "html-webpack-plugin": "^3.2.0",
-    "husky": "^4.2.3",
+    "husky": "^4.2.5",
     "jest": "^26.1.0",
+    "lint-staged": "^10.2.11",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.1",
     "prettier": "^1.19.1",
@@ -84,5 +85,18 @@
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "lib/**/*.tsx": [
+      "yarn lint"
+    ],
+    "lib/**/*.ts": [
+      "yarn lint"
+    ]
   }
 }
