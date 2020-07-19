@@ -92,11 +92,7 @@
     }
   },
   "lint-staged": {
-    "lib/**/*.tsx": [
-      "yarn lint"
-    ],
-    "lib/**/*.ts": [
-      "yarn lint"
-    ]
+    "lib/**/*.tsx": [],
+    "lib/**/*.ts": []
   }
 }

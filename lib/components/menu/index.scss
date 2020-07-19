@@ -1,3 +1,48 @@
 .f-menu {
-  
+  display: flex;
+  position: relative;
+  margin: 0 -10px;
+  &-item {
+    padding: 10px;
+    cursor: pointer;
+    &--group {
+      padding: 10px;
+      &-title {
+      }
+    }
+  }
+  .f-sub-menu {
+    padding: 10px;
+    position: relative;
+    cursor: pointer;
+    &--content {
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 300ms linear, opacity 300ms linear;
+      width: 100%;
+      left: 0;
+      right: 0;
+      position: absolute;
+      background-color: red;
+    }
+    &:hover {
+      .f-sub-menu--content {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+  .active {
+    position: relative;
+    &::after {
+      content: '';
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: #1890ff;
+    }
+  }
 }

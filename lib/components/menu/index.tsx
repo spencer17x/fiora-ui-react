@@ -1,32 +1,46 @@
-import React, { ReactNode } from 'react';
-import { isArray } from '../../utils';
+import React from 'react';
 import './index.scss';
 
-export interface MenuProps {
-  data: Array<MenuItem>;
-}
-
-interface MenuItem {
+interface BaseMenuProps {
   title?: string;
-  key: string;
-  children?: Array<MenuItem>
 }
 
-const Menu: React.FC<MenuProps> = props => {
-  const { data } = props;
-  const renderMenuChildren = (menuArray?: Array<MenuItem>): ReactNode => {
-    if (isArray(menuArray)) {
-      return menuArray.map(menuItem => {
-        return <ul className='f-menu-ul' key={menuItem.key}>
-          <div className='f-menu-title'>{menuItem.title}</div>
-          {renderMenuChildren(menuItem.children)}
-        </ul>;
-      });
-    }
-  };
-  return <div className='f-menu'>
-    {renderMenuChildren(data)}
-  </div>;
+const Menu: React.FC<BaseMenuProps> = (props) => {
+  const { children } = props;
+  return (
+    <div className="f-menu">
+      {children}
+    </div>
+  );
+};
+
+export const MenuItem: React.FC<BaseMenuProps> = (props) => {
+  const { children } = props;
+  return (
+    <div className="f-menu-item">
+      {children}
+    </div>
+  );
+};
+
+export const SubMenu: React.FC<BaseMenuProps> = (props) => {
+  const { children, title } = props;
+  return (
+    <div className="f-sub-menu">
+      <div className="f-sub-menu--title">{title}</div>
+      <div className="f-sub-menu--content">{children}</div>
+    </div>
+  );
+};
+
+export const MenuItemGroup: React.FC<BaseMenuProps> = (props) => {
+  const { children, title } = props;
+  return (
+    <div className="f-menu-item--group">
+      <div className="f-menu-item--group-title">{title}</div>
+      <div className="f-menu-item--group-content">{children}</div>
+    </div>
+  );
 };
 
 export default Menu;
