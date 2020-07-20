@@ -1,17 +1,19 @@
 import React from 'react';
 import CodeShow from '../../components/CodeCard';
-import { Menu, MenuItem, SubMenu, MenuItemGroup } from '../../../../lib';
+import {
+  Menu, MenuItem, SubMenu, MenuItemGroup,
+} from '../../../../lib';
 
-const MenuDemo = () => {
-  return <div>
+const MenuDemo = () => (
+  <div>
     <CodeShow
-      title='基本用法'
+      title="基本用法"
     >
       <Menu>
         <MenuItem>
           Navigation One
         </MenuItem>
-        <MenuItem>
+        <MenuItem disabled>
           Navigation Two
         </MenuItem>
         <SubMenu title="Navigation Three - Submenu">
@@ -31,7 +33,7 @@ const MenuDemo = () => {
         </MenuItem>
       </Menu>
     </CodeShow>
-  </div>;
-};
+  </div>
+);
 
 export default MenuDemo;

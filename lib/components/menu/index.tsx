@@ -1,8 +1,10 @@
 import React from 'react';
+import classNames from 'classnames';
 import './index.scss';
 
 interface BaseMenuProps {
   title?: string;
+  disabled?: boolean;
 }
 
 const Menu: React.FC<BaseMenuProps> = (props) => {
@@ -15,9 +17,11 @@ const Menu: React.FC<BaseMenuProps> = (props) => {
 };
 
 export const MenuItem: React.FC<BaseMenuProps> = (props) => {
-  const { children } = props;
+  const { children, disabled } = props;
   return (
-    <div className="f-menu-item">
+    <div className={classNames('f-menu-item', {
+      ['f-menu-item--disabled']: disabled
+    })}>
       {children}
     </div>
   );
