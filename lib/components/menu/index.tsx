@@ -12,9 +12,12 @@ interface MenuProps extends BaseMenuProps{
 }
 
 const Menu: React.FC<MenuProps> = (props) => {
-  const { children } = props;
+  const { children, layout } = props;
   return (
-    <div className="f-menu">
+    <div className={classNames('f-menu', {
+      [`f-menu--${layout}`]: layout,
+    })}
+    >
       {children}
     </div>
   );
