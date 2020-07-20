@@ -8,6 +8,7 @@ const MenuDemo = () => (
   <div>
     <CodeShow
       title="基本用法"
+      style={{ marginBottom: 20 }}
     >
       <Menu>
         <MenuItem>
@@ -31,6 +32,45 @@ const MenuDemo = () => (
             Navigation Four - Link
           </a>
         </MenuItem>
+      </Menu>
+    </CodeShow>
+
+    <CodeShow
+      title="layout"
+    >
+      <Menu
+        layout="inline"
+      >
+        <SubMenu
+          key="sub1"
+          title="Navigation One"
+        >
+          <MenuItemGroup key="g1" title="Item 1">
+            <MenuItem key="1">Option 1</MenuItem>
+            <MenuItem key="2">Option 2</MenuItem>
+          </MenuItemGroup>
+          <MenuItemGroup key="g2" title="Item 2">
+            <MenuItem key="3">Option 3</MenuItem>
+            <MenuItem key="4">Option 4</MenuItem>
+          </MenuItemGroup>
+        </SubMenu>
+        <SubMenu key="sub2" title="Navigation Two">
+          <MenuItem key="5">Option 5</MenuItem>
+          <MenuItem key="6">Option 6</MenuItem>
+          <SubMenu key="sub3" title="Submenu">
+            <MenuItem key="7">Option 7</MenuItem>
+            <MenuItem key="8">Option 8</MenuItem>
+          </SubMenu>
+        </SubMenu>
+        <SubMenu
+          key="sub4"
+          title="Navigation Three"
+        >
+          <MenuItem key="9">Option 9</MenuItem>
+          <MenuItem key="10">Option 10</MenuItem>
+          <MenuItem key="11">Option 11</MenuItem>
+          <MenuItem key="12">Option 12</MenuItem>
+        </SubMenu>
       </Menu>
     </CodeShow>
   </div>

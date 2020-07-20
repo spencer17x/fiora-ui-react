@@ -7,7 +7,11 @@ interface BaseMenuProps {
   disabled?: boolean;
 }
 
-const Menu: React.FC<BaseMenuProps> = (props) => {
+interface MenuProps extends BaseMenuProps{
+  layout?: 'vertical' | 'inline' | 'horizontal';
+}
+
+const Menu: React.FC<MenuProps> = (props) => {
   const { children } = props;
   return (
     <div className="f-menu">
@@ -16,12 +20,17 @@ const Menu: React.FC<BaseMenuProps> = (props) => {
   );
 };
 
+Menu.defaultProps = {
+  layout: 'horizontal',
+};
+
 export const MenuItem: React.FC<BaseMenuProps> = (props) => {
   const { children, disabled } = props;
   return (
     <div className={classNames('f-menu-item', {
-      ['f-menu-item--disabled']: disabled
-    })}>
+      'f-menu-item--disabled': disabled,
+    })}
+    >
       {children}
     </div>
   );

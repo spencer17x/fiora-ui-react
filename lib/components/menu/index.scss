@@ -27,11 +27,13 @@
         height: 2px;
         background-color: #1890ff;
       }
-    }
 
-    &:hover {
-      &::after {
-        width: 100%;
+      &:hover {
+        color: #1890ff;
+
+        &::after {
+          width: 100%;
+        }
       }
     }
 
@@ -61,6 +63,8 @@
       }
 
       &:hover {
+        color: #1890ff;
+
         &::after {
           width: 100%;
         }
@@ -68,6 +72,7 @@
     }
 
     &--content {
+      z-index: 1;
       visibility: hidden;
       opacity: 0;
       transition: visibility 300ms linear, opacity 300ms linear;
