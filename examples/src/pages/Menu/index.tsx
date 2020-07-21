@@ -10,24 +10,24 @@ const MenuDemo = () => (
       title="基本用法"
       style={{ marginBottom: 20 }}
     >
-      <Menu>
-        <MenuItem>
+      <Menu selectedKey="nav1">
+        <MenuItem key="nav1">
           Navigation One
         </MenuItem>
-        <MenuItem disabled>
+        <MenuItem disabled key="nav2">
           Navigation Two
         </MenuItem>
-        <SubMenu title="Navigation Three - Submenu">
+        <SubMenu title="Navigation Three - Submenu" key="nav3">
           <MenuItemGroup title="Item 1">
-            <MenuItem key="setting:1">Option 1</MenuItem>
-            <MenuItem key="setting:2">Option 2</MenuItem>
+            <MenuItem key="nav3-option1">Option 1</MenuItem>
+            <MenuItem key="nav3-option2">Option 2</MenuItem>
           </MenuItemGroup>
           <MenuItemGroup title="Item 2">
-            <MenuItem key="setting:3">Option 3</MenuItem>
-            <MenuItem key="setting:4">Option 4</MenuItem>
+            <MenuItem key="nav3-option3">Option 3</MenuItem>
+            <MenuItem key="nav3-option4">Option 4</MenuItem>
           </MenuItemGroup>
         </SubMenu>
-        <MenuItem key="alipay">
+        <MenuItem key="nav4">
           <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
             Navigation Four - Link
           </a>
@@ -38,7 +38,7 @@ const MenuDemo = () => (
     <CodeShow
       title="layout"
     >
-      <Menu
+      {/* <Menu
         layout="inline"
         style={{ width: '280px', borderRight: '1px solid #ccc' }}
       >
@@ -72,7 +72,7 @@ const MenuDemo = () => (
           <MenuItem key="11">Option 11</MenuItem>
           <MenuItem key="12">Option 12</MenuItem>
         </SubMenu>
-      </Menu>
+      </Menu> */}
     </CodeShow>
   </div>
 );

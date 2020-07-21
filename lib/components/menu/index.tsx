@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, useContext } from 'react';
 import classNames from 'classnames';
 import './index.scss';
 
@@ -11,20 +11,37 @@ interface BaseMenuProps {
 
 interface MenuProps extends BaseMenuProps {
   layout?: 'vertical' | 'inline' | 'horizontal';
+  selectedKey?: string;
 }
+
+// eslint-disable-next-line @typescript-eslint/naming-convention
+interface defaultMenuContext {
+  selectedKey?: string;
+}
+
+const MenuContext = React.createContext<defaultMenuContext>({});
 
 const Menu: React.FC<MenuProps> = (props) => {
   const {
-    children, layout, className, ...restProps
+    children, layout, className,
+    selectedKey, style,
   } = props;
   return (
     <div
-      {...restProps}
-      className={classNames('f-menu', {
-        [`f-menu--${layout}`]: layout,
-      }, className)}
+      style={style}
+      className={
+        classNames('f-menu', {
+          [`f-menu--${layout}`]: layout,
+        }, className)
+      }
     >
-      {children}
+      <MenuContext.Provider
+        value={{
+          selectedKey,
+        }}
+      >
+        {children}
+      </MenuContext.Provider>
     </div>
   );
 };
@@ -35,10 +52,12 @@ Menu.defaultProps = {
 
 export const MenuItem: React.FC<BaseMenuProps> = (props) => {
   const { children, disabled } = props;
+  const context = useContext<defaultMenuContext>(MenuContext);
   return (
-    <div className={classNames('f-menu-item', {
-      'f-menu-item--disabled': disabled,
-    })}
+    <div
+      className={classNames('f-menu-item', {
+        'f-menu-item--disabled': disabled
+      })}
     >
       {children}
     </div>

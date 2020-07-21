@@ -1,91 +1,53 @@
-
-
 .f-menu {
-
   &--horizontal {
     display: flex;
-    position: relative;
-    margin: 0 -10px;
-    border-bottom: 1px solid #f0f0f0;
 
     .f-menu-item {
       position: relative;
-      padding: 10px 0 10px 10px;
+      padding: 10px;
       cursor: pointer;
-      color: #000000a6;
+      color: rgba(0, 0, 0, 0.65);
 
       &--disabled {
-        cursor: not-allowed;
         color: rgba(0, 0, 0, 0.25);
-      }
-
-      &:not(.f-menu-item--disabled) {
-        &::after {
-          content: '';
-          transition: width 300ms linear;
-          width: 0;
-          position: absolute;
-          bottom: 0;
-          left: 50%;
-          transform: translateX(-50%);
-          height: 2px;
-          background-color: #1890ff;
-        }
-
-        &:hover {
-          color: #1890ff;
-
-          &::after {
-            width: 100%;
-          }
-        }
+        cursor: not-allowed;
       }
 
       &--group {
-        padding: 10px 0 10px 10px;
+        &-title {
+          padding: 10px;
+        }
+      }
+    }
+
+    > .f-menu-item {
+      &:not(.f-menu-item--disabled) {
+        @include menu-hover();
       }
     }
 
     .f-sub-menu {
       position: relative;
 
-      &--title {
-        color: #000000a6;
-        padding: 10px 0 10px 10px;
-        cursor: pointer;
-
-        &::after {
-          content: '';
-          transition: width 300ms linear;
-          width: 0;
-          position: absolute;
-          bottom: 0;
-          left: 50%;
-          transform: translateX(-50%);
-          height: 2px;
-          background-color: #1890ff;
-        }
-
-        &:hover {
-          color: #1890ff;
-
-          &::after {
-            width: 100%;
-          }
-        }
-      }
-
       &--content {
-        z-index: 1;
         visibility: hidden;
         opacity: 0;
-        transition: visibility 300ms linear, opacity 300ms linear;
+        background-color: #fff;
         width: 100%;
+        position: absolute;
         left: 0;
         right: 0;
-        position: absolute;
-        background-color: #fff;
-        box-shadow: 0 3px 6px -4px rgba(0, 0, 0, .12), 0 6px 16px 0 rgba(0, 0, 0, .08), 0 9px 28px 8px rgba(0, 0, 0, .05);
+        transition: visibility 300ms, opacity 300ms;
+        box-shadow: 0 3px 6px -4px rgba(0, 0, 0, .12),
+        0 6px 16px 0 rgba(0, 0, 0, .08),
+        0 9px 28px 8px rgba(0, 0, 0, .05);
+      }
+
+      &--title {
+        color: rgba(0, 0, 0, 0.65);
+        padding: 10px;
+        cursor: pointer;
+        @include menu-hover();
       }
 
       &:hover {
@@ -94,48 +56,14 @@
           opacity: 1;
         }
       }
-    }
-  }
 
-  &--inline {
-    flex-direction: column;
-    .f-menu-item {
-      cursor: pointer;
-      padding: 10px 0 10px 10px;
-      position: relative;
-      &--group {
-        &-title {
-          color: #000000a6;
-        }
-      }
-      &::after {
-        content: '';
-        position: absolute;
-        height: 0;
-        width: 2px;
-        color: #1890ff;
-        background-color: #1890ff;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        transition: height 300ms;
-      }
-      &:hover {
-        &::after {
-          height: 100%;
-        }
-      }
-    }
+      .f-menu-item {
+        padding: 10px 20px;
 
-    .f-sub-menu {
-      &--title {
-        cursor: pointer;
-      }
-      &--content {
-        padding: 10px 0;
-      }
-      .f-sub-menu {
-        padding: 10px 0 10px 10px;
+        &:hover {
+          background-color: #e6f7ff;
+          color: #1890ff;
+        }
       }
     }
   }
