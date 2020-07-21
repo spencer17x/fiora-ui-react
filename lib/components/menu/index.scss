@@ -10,7 +10,7 @@
 
     .f-menu-item {
       position: relative;
-      padding: 10px;
+      padding: 10px 0 10px 10px;
       cursor: pointer;
       color: #000000a6;
 
@@ -19,7 +19,7 @@
         color: rgba(0, 0, 0, 0.25);
       }
 
-      &:not(&--disabled) {
+      &:not(.f-menu-item--disabled) {
         &::after {
           content: '';
           transition: width 300ms linear;
@@ -42,7 +42,7 @@
       }
 
       &--group {
-        padding: 10px;
+        padding: 10px 0 10px 10px;
       }
     }
 
@@ -51,7 +51,7 @@
 
       &--title {
         color: #000000a6;
-        padding: 10px;
+        padding: 10px 0 10px 10px;
         cursor: pointer;
 
         &::after {
@@ -89,7 +89,7 @@
       }
 
       &:hover {
-        .f-sub-menu--content {
+        > .f-sub-menu--content {
           visibility: visible;
           opacity: 1;
         }
@@ -100,12 +100,42 @@
   &--inline {
     flex-direction: column;
     .f-menu-item {
-      padding: 10px;
+      cursor: pointer;
+      padding: 10px 0 10px 10px;
+      position: relative;
+      &--group {
+        &-title {
+          color: #000000a6;
+        }
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        height: 0;
+        width: 2px;
+        color: #1890ff;
+        background-color: #1890ff;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: height 300ms;
+      }
+      &:hover {
+        &::after {
+          height: 100%;
+        }
+      }
     }
 
     .f-sub-menu {
+      &--title {
+        cursor: pointer;
+      }
       &--content {
-        padding: 10px;
+        padding: 10px 0;
+      }
+      .f-sub-menu {
+        padding: 10px 0 10px 10px;
       }
     }
   }

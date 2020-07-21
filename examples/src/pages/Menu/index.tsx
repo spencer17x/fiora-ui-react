@@ -40,6 +40,7 @@ const MenuDemo = () => (
     >
       <Menu
         layout="inline"
+        style={{ width: '280px', borderRight: '1px solid #ccc' }}
       >
         <SubMenu
           key="sub1"

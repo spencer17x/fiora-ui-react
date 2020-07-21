@@ -1,22 +1,28 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import classNames from 'classnames';
 import './index.scss';
 
 interface BaseMenuProps {
   title?: string;
   disabled?: boolean;
+  style?: CSSProperties;
+  className?: string;
 }
 
-interface MenuProps extends BaseMenuProps{
+interface MenuProps extends BaseMenuProps {
   layout?: 'vertical' | 'inline' | 'horizontal';
 }
 
 const Menu: React.FC<MenuProps> = (props) => {
-  const { children, layout } = props;
+  const {
+    children, layout, className, ...restProps
+  } = props;
   return (
-    <div className={classNames('f-menu', {
-      [`f-menu--${layout}`]: layout,
-    })}
+    <div
+      {...restProps}
+      className={classNames('f-menu', {
+        [`f-menu--${layout}`]: layout,
+      }, className)}
     >
       {children}
     </div>
