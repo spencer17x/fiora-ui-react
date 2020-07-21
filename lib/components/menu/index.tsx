@@ -18,7 +18,7 @@ interface MenuProps extends BaseMenuProps {
 
 interface defaultMenuContext {
   selectedKey?: string;
-  onClick?: (curKey: string) => void;
+  onClick?: (curKey?: string) => void;
 }
 
 const MenuContext = React.createContext<defaultMenuContext>({});
@@ -55,15 +55,18 @@ Menu.defaultProps = {
 
 export const MenuItem: React.FC<BaseMenuProps> = (props) => {
   const { children, disabled, curKey } = props;
-  const context = useContext<defaultMenuContext>(MenuContext);
-  console.log(context)
+  const { onClick, selectedKey } = useContext<defaultMenuContext>(MenuContext);
   return (
     <div
       className={classNames('f-menu-item', {
         'f-menu-item--disabled': disabled,
-        active: context.selectedKey === curKey,
+        active: selectedKey === curKey,
       })}
-      onClick={context.onClick && context.onClick(curKey)}
+      onClick={() => {
+        if (!disabled) {
+          onClick && onClick(curKey);
+        }
+      }}
     >
       {children}
     </div>
@@ -71,10 +74,20 @@ export const MenuItem: React.FC<BaseMenuProps> = (props) => {
 };
 
 export const SubMenu: React.FC<BaseMenuProps> = (props) => {
-  const { children, title } = props;
+  const { children, title, curKey } = props;
+  const { onClick, selectedKey } = useContext<defaultMenuContext>(MenuContext);
   return (
     <div className="f-sub-menu">
-      <div className="f-sub-menu--title">{title}</div>
+      <div
+        className={classNames('f-sub-menu--title', {
+          active: selectedKey === curKey,
+        })}
+        onClick={() => {
+          onClick && onClick(curKey);
+        }}
+      >
+        {title}
+      </div>
       <div className="f-sub-menu--content">{children}</div>
     </div>
   );

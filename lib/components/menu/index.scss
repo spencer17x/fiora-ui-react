@@ -26,13 +26,15 @@
         @include menu-hover();
       }
       &.active {
-        &::after {
-          content: '';
-          position: absolute;
-          width: 100%;
-          height: 2px;
-          background-color: #1890ff;
-          bottom: 0;
+        &:not(.f-menu-item--disabled) {
+          &::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #1890ff;
+            bottom: 0;
+          }
         }
       }
     }
@@ -59,6 +61,16 @@
         padding: 10px;
         cursor: pointer;
         @include menu-hover();
+        &.active {
+          &::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #1890ff;
+            bottom: 0;
+          }
+        }
       }
 
       &:hover {
@@ -72,8 +84,13 @@
         padding: 10px 20px;
 
         &:hover {
+          color: #1890ff;
+        }
+
+        &.active {
           background-color: #e6f7ff;
           color: #1890ff;
+          transition: background-color 300ms;
         }
       }
     }

@@ -14,9 +14,7 @@ const MenuDemo = () => {
       >
         <Menu
           selectedKey={menuKey}
-          onClick={(v) => {
-            console.log(v);
-          }}
+          onClick={setMenuKey}
         >
           <MenuItem curKey="nav1">
             Navigation One
