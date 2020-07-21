@@ -1,4 +1,5 @@
 .f-menu {
+  margin: 0 -10px;
   &--horizontal {
     display: flex;
 
@@ -23,6 +24,16 @@
     > .f-menu-item {
       &:not(.f-menu-item--disabled) {
         @include menu-hover();
+      }
+      &.active {
+        &::after {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 2px;
+          background-color: #1890ff;
+          bottom: 0;
+        }
       }
     }
 

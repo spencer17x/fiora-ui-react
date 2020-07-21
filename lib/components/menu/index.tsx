@@ -7,6 +7,8 @@ interface BaseMenuProps {
   disabled?: boolean;
   style?: CSSProperties;
   className?: string;
+  curKey?: string;
+  onClick?: (curKey: string) => void;
 }
 
 interface MenuProps extends BaseMenuProps {
@@ -14,9 +16,9 @@ interface MenuProps extends BaseMenuProps {
   selectedKey?: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 interface defaultMenuContext {
   selectedKey?: string;
+  onClick?: (curKey: string) => void;
 }
 
 const MenuContext = React.createContext<defaultMenuContext>({});
@@ -24,7 +26,7 @@ const MenuContext = React.createContext<defaultMenuContext>({});
 const Menu: React.FC<MenuProps> = (props) => {
   const {
     children, layout, className,
-    selectedKey, style,
+    selectedKey, style, onClick,
   } = props;
   return (
     <div
@@ -38,6 +40,7 @@ const Menu: React.FC<MenuProps> = (props) => {
       <MenuContext.Provider
         value={{
           selectedKey,
+          onClick,
         }}
       >
         {children}
@@ -51,13 +54,16 @@ Menu.defaultProps = {
 };
 
 export const MenuItem: React.FC<BaseMenuProps> = (props) => {
-  const { children, disabled } = props;
+  const { children, disabled, curKey } = props;
   const context = useContext<defaultMenuContext>(MenuContext);
+  console.log(context)
   return (
     <div
       className={classNames('f-menu-item', {
-        'f-menu-item--disabled': disabled
+        'f-menu-item--disabled': disabled,
+        active: context.selectedKey === curKey,
       })}
+      onClick={context.onClick && context.onClick(curKey)}
     >
       {children}
     </div>
