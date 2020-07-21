@@ -1,5 +1,6 @@
 .f-menu {
   margin: 0 -10px;
+
   &--horizontal {
     display: flex;
 
@@ -25,6 +26,7 @@
       &:not(.f-menu-item--disabled) {
         @include menu-hover();
       }
+
       &.active {
         &:not(.f-menu-item--disabled) {
           &::after {
@@ -61,6 +63,7 @@
         padding: 10px;
         cursor: pointer;
         @include menu-hover();
+
         &.active {
           &::after {
             content: '';
@@ -92,6 +95,60 @@
           color: #1890ff;
           transition: background-color 300ms;
         }
+      }
+    }
+  }
+
+  &--inline {
+    .f-menu-item {
+      padding: 10px;
+      color: rgba(0, 0, 0, 0.65);
+      cursor: pointer;
+      position: relative;
+
+      &--title {
+        padding: 10px 0;
+      }
+
+      &--group {
+        &-title {
+          padding: 10px;
+        }
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        height: 0;
+        width: 2px;
+        background-color: #1890ff;
+        top: 50%;
+        right: 0;
+        transition: height 300ms;
+        transform: translateY(-50%);
+      }
+
+      &.active {
+        background-color: #e6f7ff;
+        color: #1890ff;
+        transition: background-color 300ms, height 2s;
+        position: relative;
+
+        &::after {
+          height: 100%;
+        }
+      }
+    }
+
+    .f-sub-menu {
+      &--title {
+        color: rgba(0, 0, 0, 0.65);
+        padding: 10px 0;
+        cursor: pointer;
+      }
+
+      .f-menu-item {
+        padding: 10px 20px;
       }
     }
   }

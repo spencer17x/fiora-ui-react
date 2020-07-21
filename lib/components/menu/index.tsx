@@ -26,21 +26,21 @@ const MenuContext = React.createContext<defaultMenuContext>({});
 const Menu: React.FC<MenuProps> = (props) => {
   const {
     children, layout, className,
-    selectedKey, style, onClick,
+    selectedKey, style, onClick
   } = props;
   return (
     <div
       style={style}
       className={
         classNames('f-menu', {
-          [`f-menu--${layout}`]: layout,
+          [`f-menu--${layout}`]: layout
         }, className)
       }
     >
       <MenuContext.Provider
         value={{
           selectedKey,
-          onClick,
+          onClick
         }}
       >
         {children}
@@ -50,7 +50,7 @@ const Menu: React.FC<MenuProps> = (props) => {
 };
 
 Menu.defaultProps = {
-  layout: 'horizontal',
+  layout: 'horizontal'
 };
 
 export const MenuItem: React.FC<BaseMenuProps> = (props) => {
@@ -60,7 +60,7 @@ export const MenuItem: React.FC<BaseMenuProps> = (props) => {
     <div
       className={classNames('f-menu-item', {
         'f-menu-item--disabled': disabled,
-        active: selectedKey === curKey,
+        active: selectedKey === curKey
       })}
       onClick={() => {
         if (!disabled) {
@@ -75,16 +75,13 @@ export const MenuItem: React.FC<BaseMenuProps> = (props) => {
 
 export const SubMenu: React.FC<BaseMenuProps> = (props) => {
   const { children, title, curKey } = props;
-  const { onClick, selectedKey } = useContext<defaultMenuContext>(MenuContext);
+  const { selectedKey } = useContext<defaultMenuContext>(MenuContext);
   return (
     <div className="f-sub-menu">
       <div
         className={classNames('f-sub-menu--title', {
-          active: selectedKey === curKey,
+          active: selectedKey === curKey
         })}
-        onClick={() => {
-          onClick && onClick(curKey);
-        }}
       >
         {title}
       </div>
