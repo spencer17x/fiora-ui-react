@@ -150,6 +150,40 @@
       .f-menu-item {
         padding: 10px 20px;
       }
+
+      &--content {
+        .f-sub-menu--title {
+          padding-left: 20px;
+        }
+        .f-sub-menu {
+          &--content {
+            .f-menu-item {
+              padding-left: 40px;
+            }
+          }
+        }
+      }
     }
+  }
+}
+
+.sub-menu-enter {
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top left;
+  &-active {
+    opacity: 1;
+    transform: scaleY(1);
+    transition: opacity 300ms, transform 300ms;
+  }
+}
+.sub-menu-exit {
+  transform-origin: top left;
+  transform: scaleY(1);
+  opacity: 1;
+  &-active {
+    opacity: 0;
+    transform: scaleY(0);
+    transition: opacity 300ms, transform 300ms;
   }
 }

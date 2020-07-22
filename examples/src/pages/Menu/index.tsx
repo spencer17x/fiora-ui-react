@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import CodeShow from '../../components/CodeCard';
 import {
-  Menu, MenuItem, SubMenu, MenuItemGroup
+  Menu, MenuItem, SubMenu, MenuItemGroup,
 } from '../../../../lib';
 
 const MenuDemo = () => {
@@ -86,17 +86,17 @@ const MenuDemo = () => {
       </CodeShow>
 
       <CodeShow
-        title='示例3'
+        title="layout 2"
       >
         <Menu
-          style={{ width: 256 }}
-          layout='inline'
+          style={{ width: '256px', borderRight: '1px solid #ccc' }}
+          layout="inline"
           selectedKey={menuKey3}
           onClick={setMenuKey3}
         >
           <SubMenu
             curKey="sub1"
-            title='sub1'
+            title="sub1"
           >
             <MenuItem curKey="1">Option 1</MenuItem>
             <MenuItem curKey="2">Option 2</MenuItem>
