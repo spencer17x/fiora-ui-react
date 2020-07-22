@@ -17,6 +17,7 @@
   "footer": "./lib/components/layout/footer.tsx",
   "header": "./lib/components/layout/header.tsx",
   "layout": "./lib/components/layout/layout.tsx",
+  "menu": "./lib/components/menu/index.tsx",
   "message": "./lib/components/message/index.tsx",
   "steps": "./lib/components/steps/steps.tsx",
   "steps-item": "./lib/components/steps/step-item.tsx",
