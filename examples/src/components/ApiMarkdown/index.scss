@@ -1,0 +1,29 @@
+.api-markdown {
+  > h1 {
+    color: rgba(0, 0, 0, .85);
+    font-weight: 500;
+    margin-bottom: 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th, td {
+      padding: 12px;
+      font-size: 14px;
+      color: #5c6b77;
+      border: 1px solid #f0f0f0;
+    }
+
+    th {
+      background-color: #00000005;
+    }
+
+    tr {
+      &:hover {
+        background-color: #00000005;
+      }
+    }
+  }
+}

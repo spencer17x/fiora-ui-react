@@ -50,7 +50,11 @@ module.exports = {
 				test: /\.(png|jpg|gif)$/,
 				use: ['file-loader'],
 				exclude: /node_modules/
-			}
+			},
+			{
+				test: /\.md$/,
+				use: "raw-loader"
+			},
 		]
 	},
 	plugins: [
