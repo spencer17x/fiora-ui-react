@@ -9,7 +9,6 @@ import './button.scss';
 const ButtonTypes = tuple(
   'default',
   'primary',
-  'ghost',
   'dashed',
   'danger',
   'link'
@@ -18,7 +17,7 @@ export type ButtonType = typeof ButtonTypes[number];
 const ButtonHTMLTypes = tuple('submit', 'button', 'reset');
 export type ButtonHTMLType = typeof ButtonHTMLTypes[number];
 
-export type SizeType = 'small' | 'default' | 'large';
+export type SizeType = 'small' | 'middle' | 'large';
 
 export type Shape = 'circle';
 
