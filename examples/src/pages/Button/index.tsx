@@ -55,7 +55,7 @@ const DemoButton = () => {
         <Button size="small">
           Default
         </Button>
-        <Button size="default" type="primary">
+        <Button type="primary">
           Primary
         </Button>
         <Button size="large">

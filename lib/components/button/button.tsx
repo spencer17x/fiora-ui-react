@@ -100,7 +100,7 @@ Button.propTypes = {
   className: PropTypes.string,
   type: PropTypes.oneOf(ButtonTypes),
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  size: PropTypes.oneOf(['small', 'default', 'large']),
+  size: PropTypes.oneOf(['small', 'middle', 'large']),
   disabled: PropTypes.bool,
   loading: PropTypes.bool
 };
