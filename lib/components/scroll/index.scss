@@ -1,0 +1,14 @@
+.f-scroll {
+  border: 1px solid red;
+  overflow: hidden;
+  position: relative;
+
+  &--inner {
+    border: 1px solid blue;
+    overflow: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
