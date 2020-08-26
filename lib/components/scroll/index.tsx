@@ -12,13 +12,16 @@ const Scroll: React.FC<ScrollProps> = props => {
   const [barScrollTop, setBarScrollTop] = useState(0);
   const move = useRef(false);
   const startY = useRef(0);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const cacheBarTop = useRef(0);
+  const cacheBarHeight = useRef(0);
+  const barContainerRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLDivElement>(null);
   const onScroll: UIEventHandler = event => {
-    const dom = containerRef.current;
-    if (dom) {
+    const innerDom = innerRef.current;
+    if (innerDom) {
       const { scrollTop } = event.currentTarget;
-      const { height } = dom.getBoundingClientRect();
-      const scrollHeight = dom.scrollHeight;
+      const { height } = innerDom.getBoundingClientRect();
+      const scrollHeight = innerDom.scrollHeight;
       const barScrollTop = scrollTop * height / scrollHeight;
       setBarScrollTop(barScrollTop);
     }
@@ -27,11 +30,19 @@ const Scroll: React.FC<ScrollProps> = props => {
     const { clientY } = event;
     move.current = true;
     startY.current = clientY;
+    cacheBarTop.current = barScrollTop;
   }
   const onMouseMove = (event: MouseEvent) => {
     const { clientY } = event;
+    const barContainerDom = barContainerRef.current;
+    const scrollHeight = barContainerDom && barContainerDom.scrollHeight || 0;
+    const maxBarScrollTop = scrollHeight - barHeight;
+    const diffValue = clientY - startY.current;
+    let barScrollTop = cacheBarTop.current + diffValue;
+    if (barScrollTop <= 0) barScrollTop = 0;
+    if (barScrollTop >= maxBarScrollTop) barScrollTop = maxBarScrollTop;
     if (move.current) {
-      setBarScrollTop(clientY - startY.current);
+      setBarScrollTop(barScrollTop);
     }
   }
   const onMouseUp = () => {
@@ -44,26 +55,27 @@ const Scroll: React.FC<ScrollProps> = props => {
       document.removeEventListener('mousemove', onMouseMove);
       document.removeEventListener('mouseup', onMouseUp);
     }
-  }, []);
+  }, [barHeight]);
   useEffect(() => {
-    const dom = containerRef.current;
-    if (dom) {
-      const scrollHeight = dom.scrollHeight;
-      const { height } = dom.getBoundingClientRect();
+    const innerDom = innerRef.current;
+    if (innerDom) {
+      const scrollHeight = innerDom.scrollHeight;
+      const { height } = innerDom.getBoundingClientRect();
       const barHeight = height * height / scrollHeight;
+      cacheBarHeight.current = barHeight;
       setBarHeight(barHeight);
     }
   }, []);
   return <div {...restProps} className='f-scroll'>
     <div
       onScroll={onScroll}
-      ref={containerRef}
+      ref={innerRef}
       className='f-scroll--inner'
       style={{ right: `-${scrollWidth}` }}
     >
       {children}
     </div>
-    <div className='f-scroll--container'>
+    <div ref={barContainerRef} className='f-scroll--container'>
       <div
         onMouseDown={onMouseDown}
         className='f-scroll--bar'
