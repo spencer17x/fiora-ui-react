@@ -4,7 +4,6 @@
   position: relative;
 
   &--inner {
-    border: 1px solid blue;
     overflow: auto;
     position: absolute;
     top: 0;
@@ -15,13 +14,18 @@
   &--container {
     position: absolute;
     right: 0;
-    background-color: #ccc;
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
     height: 100%;
+    width: 12px;
   }
 
   &--bar {
     width: 100%;
+    border-radius: 10px;
     height: 50px;
-    background-color: red;
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
   }
 }
