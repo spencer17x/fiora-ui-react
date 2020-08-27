@@ -34,7 +34,8 @@ const Scroll: React.FC<ScrollProps> = props => {
   }
   const onMouseMove = (event: MouseEvent) => {
     const { clientY } = event;
-    const barContainerDom = barContainerRef.current;
+    const barContainerDom = barContainerRef.current!;
+    const innerDom = innerRef.current!;
     const scrollHeight = barContainerDom && barContainerDom.scrollHeight || 0;
     const maxBarScrollTop = scrollHeight - barHeight;
     const diffValue = clientY - startY.current;
@@ -42,18 +43,26 @@ const Scroll: React.FC<ScrollProps> = props => {
     if (barScrollTop <= 0) barScrollTop = 0;
     if (barScrollTop >= maxBarScrollTop) barScrollTop = maxBarScrollTop;
     if (move.current) {
+      innerRef.current!.scrollTop = barScrollTop / barContainerDom.clientHeight * innerDom.scrollHeight;
       setBarScrollTop(barScrollTop);
     }
   }
   const onMouseUp = () => {
     move.current = false;
   }
+  const onSelectStart = (e: Event) => {
+    if (move.current) {
+      e.preventDefault();
+    }
+  }
   useEffect(() => {
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
+    document.addEventListener('selectstart', onSelectStart);
     return () => {
       document.removeEventListener('mousemove', onMouseMove);
       document.removeEventListener('mouseup', onMouseUp);
+      document.removeEventListener('selectstart', onSelectStart);
     }
   }, [barHeight]);
   useEffect(() => {
