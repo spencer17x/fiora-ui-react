@@ -16,8 +16,15 @@ const Scroll: React.FC<ScrollProps> = props => {
   const cacheBarHeight = useRef(0);
   const barContainerRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
+  const [barVisible, setBarVisible] = useState(false);
+  const timer = useRef<number | null>(null);
   const onScroll: UIEventHandler = event => {
     const innerDom = innerRef.current;
+    setBarVisible(true);
+    if (timer.current) clearTimeout(timer.current);
+    timer.current = window.setTimeout(() => {
+      setBarVisible(false);
+    }, 1500)
     if (innerDom) {
       const { scrollTop } = event.currentTarget;
       const { height } = innerDom.getBoundingClientRect();
@@ -84,13 +91,15 @@ const Scroll: React.FC<ScrollProps> = props => {
     >
       {children}
     </div>
-    <div ref={barContainerRef} className='f-scroll--container'>
-      <div
-        onMouseDown={onMouseDown}
-        className='f-scroll--bar'
-        style={{height: barHeight, transform: `translateY(${barScrollTop}px)`}}
-      ></div>
-    </div>
+    {
+      barVisible && <div ref={barContainerRef} className='f-scroll--container'>
+				<div
+					onMouseDown={onMouseDown}
+					className='f-scroll--bar'
+					style={{height: barHeight, transform: `translateY(${barScrollTop}px)`}}
+				></div>
+			</div>
+    }
   </div>;
 };
 
