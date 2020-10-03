@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, UIEventHandler, useEffect, useRef, useState } from 'react';
+import React, { MouseEventHandler, TouchEventHandler, UIEventHandler, useEffect, useRef, useState } from 'react';
 import { getScrollbarWidth } from '../../utils';
 import './index.scss';
 
@@ -10,6 +10,7 @@ const Scroll: React.FC<ScrollProps> = props => {
   const scrollWidth = `${getScrollbarWidth() || 20}px`;
   const [barHeight, setBarHeight] = useState(0);
   const [barScrollTop, setBarScrollTop] = useState(0);
+  const [translateY, setTranslateY] = useState(0);
   const move = useRef(false);
   const startY = useRef(0);
   const cacheBarTop = useRef(0);
@@ -18,6 +19,7 @@ const Scroll: React.FC<ScrollProps> = props => {
   const innerRef = useRef<HTMLDivElement>(null);
   const [barVisible, setBarVisible] = useState(false);
   const timer = useRef<number | null>(null);
+  const touchStartY = useRef(0);
   const onScroll: UIEventHandler = event => {
     const innerDom = innerRef.current;
     setBarVisible(true);
@@ -82,12 +84,44 @@ const Scroll: React.FC<ScrollProps> = props => {
       setBarHeight(barHeight);
     }
   }, []);
+  const moveCount = useRef(0);
+  const pulling = useRef(false);
+  const onTouchStart: TouchEventHandler = e => {
+    if (barScrollTop !== 0) return;
+    touchStartY.current = e.touches[0].clientY;
+    moveCount.current = 0;
+    pulling.current = true;
+  }
+  const onTouchMove: TouchEventHandler = e => {
+    const deltaY = e.touches[0].clientY - touchStartY.current;
+    moveCount.current += 1;
+    if (moveCount.current === 1 && deltaY < 0) {
+      pulling.current = false;
+    }
+    if (pulling.current && translateY + deltaY < 0) {
+      setTranslateY(0);
+      return;
+    }
+    if (pulling.current) {
+      setTranslateY(translateY + deltaY);
+      touchStartY.current = e.touches[0].clientY;
+    }
+  }
+  const onTouchEnd: TouchEventHandler = e => {
+    if (pulling.current) {
+      setTranslateY(0);
+      pulling.current = false;
+    }
+  }
   return <div {...restProps} className='f-scroll'>
     <div
       onScroll={onScroll}
       ref={innerRef}
       className='f-scroll--inner'
-      style={{ right: `-${scrollWidth}` }}
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+      style={{ right: `-${scrollWidth}`, transform: `translateY(${translateY}px)` }}
     >
       {children}
     </div>
