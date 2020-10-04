@@ -1,12 +1,26 @@
-import React, { MouseEventHandler, TouchEventHandler, UIEventHandler, useEffect, useRef, useState } from 'react';
+import React, {
+  MouseEventHandler,
+  ReactNode,
+  TouchEventHandler,
+  UIEventHandler,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
 import { getScrollbarWidth } from '../../utils';
+import Icon from '../icon';
 import './index.scss';
 
 interface ScrollProps extends React.HTMLAttributes<HTMLDivElement> {
+  maxPullHeight?: number;
+  onPull?: () => Promise<any>;
+  pullLoadingContent?: ReactNode;
+  pullDownContent?: ReactNode;
+  pullDownMaxContent?: ReactNode;
 }
 
 const Scroll: React.FC<ScrollProps> = props => {
-  const { children, ...restProps } = props;
+  const { children, maxPullHeight = 160, pullLoadingContent, pullDownMaxContent, pullDownContent, onPull, ...restProps } = props;
   const scrollWidth = `${getScrollbarWidth() || 20}px`;
   const [barHeight, setBarHeight] = useState(0);
   const [barScrollTop, setBarScrollTop] = useState(0);
@@ -26,7 +40,7 @@ const Scroll: React.FC<ScrollProps> = props => {
     if (timer.current) clearTimeout(timer.current);
     timer.current = window.setTimeout(() => {
       setBarVisible(false);
-    }, 1500)
+    }, 1500);
     if (innerDom) {
       const { scrollTop } = event.currentTarget;
       const { height } = innerDom.getBoundingClientRect();
@@ -34,13 +48,13 @@ const Scroll: React.FC<ScrollProps> = props => {
       const barScrollTop = scrollTop * height / scrollHeight;
       setBarScrollTop(barScrollTop);
     }
-  }
+  };
   const onMouseDown: MouseEventHandler = event => {
     const { clientY } = event;
     move.current = true;
     startY.current = clientY;
     cacheBarTop.current = barScrollTop;
-  }
+  };
   const onMouseMove = (event: MouseEvent) => {
     const { clientY } = event;
     const barContainerDom = barContainerRef.current!;
@@ -55,15 +69,15 @@ const Scroll: React.FC<ScrollProps> = props => {
       innerRef.current!.scrollTop = barScrollTop / barContainerDom.clientHeight * innerDom.scrollHeight;
       setBarScrollTop(barScrollTop);
     }
-  }
+  };
   const onMouseUp = () => {
     move.current = false;
-  }
+  };
   const onSelectStart = (e: Event) => {
     if (move.current) {
       e.preventDefault();
     }
-  }
+  };
   useEffect(() => {
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
@@ -72,7 +86,7 @@ const Scroll: React.FC<ScrollProps> = props => {
       document.removeEventListener('mousemove', onMouseMove);
       document.removeEventListener('mouseup', onMouseUp);
       document.removeEventListener('selectstart', onSelectStart);
-    }
+    };
   }, [barHeight]);
   useEffect(() => {
     const innerDom = innerRef.current;
@@ -86,12 +100,13 @@ const Scroll: React.FC<ScrollProps> = props => {
   }, []);
   const moveCount = useRef(0);
   const pulling = useRef(false);
+  const [pullLoading, setPullLoading] = useState(false);
   const onTouchStart: TouchEventHandler = e => {
     if (barScrollTop !== 0) return;
     touchStartY.current = e.touches[0].clientY;
     moveCount.current = 0;
     pulling.current = true;
-  }
+  };
   const onTouchMove: TouchEventHandler = e => {
     const deltaY = e.touches[0].clientY - touchStartY.current;
     moveCount.current += 1;
@@ -102,17 +117,30 @@ const Scroll: React.FC<ScrollProps> = props => {
       setTranslateY(0);
       return;
     }
+    if (pulling.current && translateY + deltaY >= maxPullHeight) {
+      setTranslateY(maxPullHeight);
+      return;
+    }
     if (pulling.current) {
       setTranslateY(translateY + deltaY);
       touchStartY.current = e.touches[0].clientY;
     }
-  }
+  };
   const onTouchEnd: TouchEventHandler = e => {
     if (pulling.current) {
-      setTranslateY(0);
-      pulling.current = false;
+      const resetPull = () => {
+        pulling.current = false;
+        setTranslateY(0);
+        setPullLoading(false);
+      }
+      if (onPull && translateY >= maxPullHeight) {
+        setPullLoading(true);
+        onPull().then(resetPull, resetPull);
+      } else {
+        resetPull();
+      }
     }
-  }
+  };
   return <div {...restProps} className='f-scroll'>
     <div
       onScroll={onScroll}
@@ -130,11 +158,27 @@ const Scroll: React.FC<ScrollProps> = props => {
 				<div
 					onMouseDown={onMouseDown}
 					className='f-scroll--bar'
-					style={{height: barHeight, transform: `translateY(${barScrollTop}px)`}}
+					style={{ height: barHeight, transform: `translateY(${barScrollTop}px)` }}
 				></div>
 			</div>
     }
+    <div className='f-scroll--pulling' style={{ height: `${translateY}px` }}>
+      {
+        pullLoading ?
+          (pullLoadingContent ? pullLoadingContent : '数据加载中...') : <>
+            {
+              translateY >= maxPullHeight ?
+                (pullDownMaxContent ? pullDownMaxContent : '松开即可刷新') :
+                (pullDownContent ? pullDownContent : <Icon type="pull-down" className="f-scroll--pulling-icon"/>)
+            }
+          </>
+      }
+    </div>
   </div>;
+};
+
+Scroll.defaultProps = {
+  maxPullHeight: 220
 };
 
 export default Scroll;
