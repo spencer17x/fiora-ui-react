@@ -101,12 +101,13 @@ const DemoButton = () => {
           loading={buttonLoading}
           onClick={() => setButtonLoading(!buttonLoading)}
         >
-          loading:{`${buttonLoading}`}
+          loading:
+          {`${buttonLoading}`}
         </Button>
         <Button shape="circle">
           A
         </Button>
-        <Button icon="search" shape="circle"/>
+        <Button icon="search" shape="circle" />
         <Button type="primary" shape="circle">
           A
         </Button>
@@ -124,12 +125,12 @@ const DemoButton = () => {
           shape="circle"
           type="primary"
           loading
-        ></Button>
+        />
         <Button
           shape="circle"
           type="danger"
           loading
-        ></Button>
+        />
       </CodeCard>
 
       <CodeCard
@@ -205,12 +206,12 @@ const DemoButton = () => {
 
         <Button.Group>
           <Button type="primary">
-            <Icon type="add" fill="#fff"/>
+            <Icon type="add" fill="#fff" />
             Go back
           </Button>
           <Button type="primary">
             Go forward
-            <Icon type="add" fill="#fff"/>
+            <Icon type="add" fill="#fff" />
           </Button>
         </Button.Group>
 

@@ -1,7 +1,5 @@
 # API
 
-# Button
-
 |  属性   | 说明  |  类型   | 默认值  |
 |  :----  | :----  |  :----  | :----  |
 | type  | 设置按钮类型 | 'default' \| 'primary' \| 'dashed' \| 'danger' \| 'link' | 'default' |

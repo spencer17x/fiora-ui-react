@@ -6,12 +6,14 @@ interface ApiMarkdownProps {
   source: string;
 }
 
-const ApiMarkdown: React.FC<ApiMarkdownProps> = props => {
+const ApiMarkdown: React.FC<ApiMarkdownProps> = (props) => {
   const { source } = props;
-  return <ReactMarkdown
-    className='api-markdown'
-    source={source}
-  />;
+  return (
+    <ReactMarkdown
+      className="api-markdown"
+      source={source}
+    />
+  );
 };
 
 export default ApiMarkdown;
