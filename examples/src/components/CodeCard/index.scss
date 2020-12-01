@@ -21,31 +21,10 @@
 }
 
 .code-mirror_container {
+  transition: height 600ms;
+  overflow: hidden;
   .CodeMirror {
     z-index: 0;
     height: auto;
   }
-}
-
-.code-enter {
-  opacity: 0;
-  transform: scaleY(0);
-  transform-origin: top left;
-}
-
-.code-enter-active {
-  opacity: 1;
-  transform: scaleY(1);
-  transition: opacity 300ms, transform 300ms;
-}
-
-.code-exit {
-  opacity: 1;
-}
-
-.code-exit-active {
-  opacity: 0;
-  transform: scaleY(0.9);
-  transform-origin: top left;
-  transition: opacity 300ms, transform 300ms;
 }
