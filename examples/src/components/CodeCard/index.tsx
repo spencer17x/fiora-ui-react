@@ -38,13 +38,13 @@ const CodeShow: React.FC<CodeShowProps> = ({
         timeout={600}
         classNames="code"
         unmountOnExit
-        onEnter={(el: HTMLElement) => {
+        onEnter={(el: HTMLDivElement) => {
           const { height } = el.getBoundingClientRect();
           el.style.height = '0px';
           el.getBoundingClientRect();
           el.style.height = `${height}px`;
         }}
-        onExit={(el: HTMLElement) => {
+        onExit={(el: HTMLDivElement) => {
           el.style.height = '0px';
         }}
       >

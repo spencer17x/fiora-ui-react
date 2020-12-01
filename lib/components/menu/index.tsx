@@ -94,9 +94,20 @@ export const SubMenu: React.FC<BaseMenuProps> = (props) => {
         layout === 'inline' ? (
           <CSSTransition
             in={subShow}
-            timeout={300}
+            timeout={600}
             classNames="sub-menu"
             unmountOnExit
+            onEnter={(el) => {
+              console.log('enter', el);
+              const { height } = el.getBoundingClientRect();
+              console.log(height)
+              el.style.height = '0px';
+              el.getBoundingClientRect();
+              el.style.height = `${height}px`;
+            }}
+            onExit={(el) => {
+              el.style.height = '0px';
+            }}
           >
             <div className="f-sub-menu--content">{children}</div>
           </CSSTransition>
