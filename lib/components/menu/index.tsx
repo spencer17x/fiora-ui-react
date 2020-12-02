@@ -97,7 +97,7 @@ export const SubMenu: React.FC<BaseMenuProps> = (props) => {
             timeout={600}
             classNames="sub-menu"
             unmountOnExit
-            onEnter={(el) => {
+            onEnter={(el: HTMLDivElement) => {
               console.log('enter', el);
               const { height } = el.getBoundingClientRect();
               console.log(height)
