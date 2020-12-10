@@ -1,17 +1,41 @@
 @import "../../style/mixins";
 
-.f-sub-menu {
+$prefix: f-sub-menu;
+
+.#{$prefix} {
   &-horizontal {
     display: inline-block;
     position: relative;
-    &--title {
-      padding: 10px;
-      @include menu-hover();
-    }
+    width: 100%;
     &--children {
-      position: absolute;
-      top: 40px;
       width: 100%;
+    }
+    &--level-1 {
+      display: inline-block;
+      width: auto;
+      &:hover {
+        > .#{$prefix} {
+          &-horizontal {
+            &--children {
+              display: block;
+            }
+          }
+        }
+      }
+      > .#{$prefix} {
+        &-horizontal {
+          &--title {
+            @include menu-hover();
+          }
+          &--children {
+            position: absolute;
+            top: 50px;
+            display: none;
+            background-color: #fff;
+            box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+          }
+        }
+      }
     }
   }
 }

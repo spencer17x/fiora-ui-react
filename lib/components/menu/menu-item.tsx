@@ -5,18 +5,21 @@ import './menu-item.scss';
 
 interface MenuItemProps {
   disabled?: boolean;
-  isBlock?: boolean;
+  isDeep?: boolean;
+  level?: number;
 }
 
 const prefixCls = 'f-menu-item';
 
 const MenuItem: React.FC<MenuItemProps> = props => {
-  const { children, isBlock } = props;
+  const { children, isDeep, level = 1 } = props;
   const { mode } = useContext(MenuContext);
+  const newLevel = level > 1 ? level - 1 : level;
   return <div
     className={classNames(prefixCls, `${prefixCls}-${mode}`, {
-      [`${prefixCls}-${mode}--block`]: isBlock
+      [`${prefixCls}-${mode}--deep`]: isDeep
     })}
+    style={{padding: `10px ${newLevel * 10}px`}}
   >
     {children}
   </div>;
