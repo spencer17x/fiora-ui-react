@@ -28,6 +28,7 @@
 }
 
 @mixin menu-hover {
+  cursor: pointer;
   position: relative;
   &::after {
     content: '';

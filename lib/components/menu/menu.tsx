@@ -1,6 +1,7 @@
 import React  from 'react';
 import MenuContext from './store';
 import classNames from 'classnames';
+import './menu.scss';
 
 type MenuMode = 'vertical' | 'horizontal';
 

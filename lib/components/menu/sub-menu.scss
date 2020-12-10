@@ -1,0 +1,17 @@
+@import "../../style/mixins";
+
+.f-sub-menu {
+  &-horizontal {
+    display: inline-block;
+    position: relative;
+    &--title {
+      padding: 10px;
+      @include menu-hover();
+    }
+    &--children {
+      position: absolute;
+      top: 40px;
+      width: 100%;
+    }
+  }
+}
