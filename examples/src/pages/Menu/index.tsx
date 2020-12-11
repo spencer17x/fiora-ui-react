@@ -17,7 +17,7 @@ const MenuDemo = () => {
           <MenuItem key="mail">
             Navigation One
           </MenuItem>
-          <MenuItem key="app" disabled>
+          <MenuItem disabled key="app" disabled>
             Navigation Two
           </MenuItem>
           <SubMenu

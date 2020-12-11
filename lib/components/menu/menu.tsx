@@ -25,6 +25,7 @@ const Menu: React.FC<MenuProps> = props => {
               level: 1
             });
           }
+          return child;
         })
       }
     </div>
