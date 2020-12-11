@@ -1,30 +1,32 @@
 import React, { cloneElement, CSSProperties, isValidElement } from 'react';
 import MenuContext from './store';
 import classNames from 'classnames';
-import { isArray } from '../../utils';
 import './menu.scss';
 
-type MenuMode = 'vertical' | 'horizontal';
+type MenuMode = 'vertical' | 'horizontal' | 'inline';
 
 export interface MenuProps {
   mode: MenuMode;
-  className: string;
+  className?: string;
   style?: CSSProperties;
+  activatedKeys?: string[];
 }
 
 const prefixCls = 'f-menu';
 
 const Menu: React.FC<MenuProps> = props => {
-  const { children, mode, className, ...restProps } = props;
-  const childrenAsArray = isArray(children) ? children : [children];
-  return <MenuContext.Provider value={{ mode }}>
+  const { children, mode, className, activatedKeys = [], ...restProps } = props;
+  return <MenuContext.Provider value={{ mode, activatedKeys }}>
     <div className={classNames(prefixCls, `${prefixCls}-${mode}`, className)} {...restProps}>
       {
-        childrenAsArray.map((child, index) => {
-          if (isValidElement(child)) {
+        React.Children.map(children, (child, index) => {
+          if (
+            isValidElement(child)
+          ) {
             return cloneElement(child, {
-              key: index,
-              level: 1
+              key: child.key,
+              level: 1,
+              componentKey: child.key
             });
           }
           return child;

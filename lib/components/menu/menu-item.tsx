@@ -3,15 +3,17 @@ import MenuContext from './store';
 import classNames from 'classnames';
 import './menu-item.scss';
 
-interface MenuItemProps {
+export interface MenuItemProps {
   disabled?: boolean;
   level?: number;
+  key?: string;
+  componentKey?: string;
 }
 
 const prefixCls = 'f-menu-item';
 
 const MenuItem: React.FC<MenuItemProps> = props => {
-  const { children, level = 1, disabled = false } = props;
+  const { children, level = 1, disabled = false, componentKey } = props;
   const { mode } = useContext(MenuContext);
   const newLevel = level > 1 && mode === 'horizontal' ? level - 1 : level;
   return <div

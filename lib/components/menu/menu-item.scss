@@ -4,6 +4,7 @@ $prefix: f-menu-item;
 
 .#{$prefix} {
   cursor: pointer;
+  position: relative;
 
   &--disabled {
     cursor: not-allowed;
@@ -36,6 +37,22 @@ $prefix: f-menu-item;
       &:hover {
         color: #1890ff;
         background-color: #e6f7ff;
+      }
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      width: 3px;
+      right: 0;
+      background-color: #1890ff;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 0;
+      transition: transform 800ms;
+    }
+    &--active {
+      &:after {
+        height: 100%;
       }
     }
   }

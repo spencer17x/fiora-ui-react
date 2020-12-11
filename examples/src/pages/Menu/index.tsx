@@ -17,7 +17,7 @@ const MenuDemo = () => {
           <MenuItem key="mail">
             Navigation One
           </MenuItem>
-          <MenuItem disabled key="app" disabled>
+          <MenuItem disabled key="app">
             Navigation Two
           </MenuItem>
           <SubMenu
@@ -47,7 +47,8 @@ const MenuDemo = () => {
       >
         <Menu
           style={{ width: 256 }}
-          mode="inline"
+          mode='inline'
+          activatedKeys={['2']}
         >
           <SubMenu key="sub1" title="Navigation One">
             <SubMenu key="g1" title="Item 1">

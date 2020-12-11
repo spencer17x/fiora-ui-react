@@ -13,15 +13,6 @@ $prefix: f-sub-menu;
     &--level-1 {
       display: inline-block;
       width: auto;
-      &:hover {
-        > .#{$prefix} {
-          &-horizontal {
-            &--children {
-              display: block;
-            }
-          }
-        }
-      }
       > .#{$prefix} {
         &-horizontal {
           &--title {
@@ -30,9 +21,21 @@ $prefix: f-sub-menu;
           &--children {
             position: absolute;
             top: 42px;
-            display: none;
             background-color: #fff;
             box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+          }
+        }
+      }
+    }
+    &:not(&--level-1) {
+      .#{$prefix} {
+        &-horizontal {
+          &--title {
+            cursor: pointer;
+            &:hover {
+              color: #1890ff;
+              background-color: #e6f7ff;
+            }
           }
         }
       }
@@ -41,10 +44,26 @@ $prefix: f-sub-menu;
   &-inline {
     &--title {
       cursor: pointer;
+      position: relative;
+      &:after {
+        content: '';
+        position: absolute;
+        width: 3px;
+        background-color: transparent;
+        height: 100%;
+        right: 0;
+      }
       &:hover {
         color: #1890ff;
         background-color: #e6f7ff;
       }
+    }
+  }
+
+  &-inline, &-horizontal {
+    &--children {
+      overflow: hidden;
+      transition: height 500ms;
     }
   }
 }
