@@ -1,17 +1,42 @@
 @import "../../style/mixins";
 
-.f-menu-item {
+$prefix: f-menu-item;
+
+.#{$prefix} {
+  cursor: pointer;
+
+  &--disabled {
+    cursor: not-allowed;
+    color: rgba(0, 0, 0, .25);
+  }
+
   &-horizontal {
     display: inline-block;
-    &:not(&--disabled) {
-      @include menu-hover();
+
+    &--level-1 {
+      &:not(.#{$prefix}--disabled) {
+        @include menu-hover();
+      }
     }
-    &--deep {
+
+    &:not(&--level-1) {
       display: block;
+
+      &:not(.#{$prefix}--disabled) {
+        &:hover {
+          color: #1890ff;
+          background-color: #e6f7ff;
+        }
+      }
     }
-    &--disabled {
-      cursor: not-allowed;
-      color: rgba(0,0,0,.25);
+  }
+
+  &-inline {
+    &:not(.#{$prefix}--disabled) {
+      &:hover {
+        color: #1890ff;
+        background-color: #e6f7ff;
+      }
     }
   }
 }

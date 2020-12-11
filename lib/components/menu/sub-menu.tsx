@@ -15,7 +15,7 @@ const SubMenu: React.FC<SubMenuProps> = props => {
   const { children, title, level = 1 } = props;
   const { mode } = useContext(MenuContext);
   const childrenAsArray = isArray(children) ? children : [children];
-  const newLevel = level > 1 ? level - 1 : level;
+  const newLevel = level > 1 && mode === 'horizontal' ? level - 1 : level;
   return <div
     className={
       classNames(
@@ -40,7 +40,6 @@ const SubMenu: React.FC<SubMenuProps> = props => {
         childrenAsArray.map((child, index) => {
           if (isValidElement(child)) {
             return cloneElement(child, {
-              isDeep: true,
               key: index,
               level: level + 1
             })

@@ -29,12 +29,21 @@ $prefix: f-sub-menu;
           }
           &--children {
             position: absolute;
-            top: 40px;
+            top: 42px;
             display: none;
             background-color: #fff;
             box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
           }
         }
+      }
+    }
+  }
+  &-inline {
+    &--title {
+      cursor: pointer;
+      &:hover {
+        color: #1890ff;
+        background-color: #e6f7ff;
       }
     }
   }
