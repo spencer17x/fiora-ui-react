@@ -17,6 +17,12 @@ $prefix: f-menu-item;
     &--level-1 {
       &:not(.#{$prefix}--disabled) {
         @include menu-hover();
+        &.#{$prefix}-horizontal--active {
+          color: #1890ff;
+          &:after {
+            width: 100%;
+          }
+        }
       }
     }
 
@@ -26,6 +32,8 @@ $prefix: f-menu-item;
       &:not(.#{$prefix}--disabled) {
         &:hover {
           color: #1890ff;
+        }
+        &.#{$prefix}-horizontal--active {
           background-color: #e6f7ff;
         }
       }
@@ -36,7 +44,6 @@ $prefix: f-menu-item;
     &:not(.#{$prefix}--disabled) {
       &:hover {
         color: #1890ff;
-        background-color: #e6f7ff;
       }
     }
     &:after {
@@ -48,9 +55,11 @@ $prefix: f-menu-item;
       top: 50%;
       transform: translateY(-50%);
       height: 0;
-      transition: transform 800ms;
+      transition: height 500ms;
     }
     &--active {
+      color: #1890ff;
+      background-color: #e6f7ff;
       &:after {
         height: 100%;
       }

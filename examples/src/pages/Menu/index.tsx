@@ -1,10 +1,12 @@
-import React  from 'react';
+import React, { useState } from 'react';
 import CodeShow from '../../components/CodeCard';
 import {
   Menu, MenuItem, SubMenu
 } from '../../../../lib';
 
 const MenuDemo = () => {
+  const [activatedKeys1, setActivatedKeys1] = useState(['mail']);
+  const [activatedKeys2, setActivatedKeys2] = useState(['2']);
   return (
     <div>
       <CodeShow
@@ -13,6 +15,10 @@ const MenuDemo = () => {
       >
         <Menu
           mode='horizontal'
+          activatedKeys={activatedKeys1}
+          onChange={activatedKeys => {
+            setActivatedKeys1(activatedKeys);
+          }}
         >
           <MenuItem key="mail">
             Navigation One
@@ -48,7 +54,10 @@ const MenuDemo = () => {
         <Menu
           style={{ width: 256 }}
           mode='inline'
-          activatedKeys={['2']}
+          activatedKeys={activatedKeys2}
+          onChange={activatedKeys => {
+            setActivatedKeys2(activatedKeys);
+          }}
         >
           <SubMenu key="sub1" title="Navigation One">
             <SubMenu key="g1" title="Item 1">

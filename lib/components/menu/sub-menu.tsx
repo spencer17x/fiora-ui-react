@@ -46,14 +46,14 @@ const SubMenu: React.FC<SubMenuProps> = props => {
     <CSSTransition
       in={expanded}
       timeout={500}
-      onEnter={el => {
+      onEnter={(el: HTMLDivElement) => {
         el.style.height = 'auto';
         const { height } = el.getBoundingClientRect();
         el.style.height = '0px';
         el.getBoundingClientRect();
         el.style.height = `${height}px`;
       }}
-      onEntered={el => {
+      onEntered={(el: HTMLDivElement) => {
         el.style.height = 'auto';
       }}
       onExit={el => {
@@ -76,7 +76,8 @@ const SubMenu: React.FC<SubMenuProps> = props => {
             if (isValidElement(child)) {
               return cloneElement(child, {
                 key: index,
-                level: level + 1
+                level: level + 1,
+                componentKey: child.key
               });
             }
             return child;

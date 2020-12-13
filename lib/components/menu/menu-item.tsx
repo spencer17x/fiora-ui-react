@@ -13,14 +13,20 @@ export interface MenuItemProps {
 const prefixCls = 'f-menu-item';
 
 const MenuItem: React.FC<MenuItemProps> = props => {
-  const { children, level = 1, disabled = false, componentKey } = props;
-  const { mode } = useContext(MenuContext);
+  const { children, level = 1, disabled = false, componentKey = "" } = props;
+  const { mode, activatedKeys, onChange } = useContext(MenuContext);
   const newLevel = level > 1 && mode === 'horizontal' ? level - 1 : level;
   return <div
     className={classNames(prefixCls, `${prefixCls}-${mode}`,`${prefixCls}-${mode}--level-${level}`, {
-      [`${prefixCls}--disabled`]: disabled
+      [`${prefixCls}--disabled`]: disabled,
+      [`${prefixCls}-${mode}--active`]: activatedKeys.includes(componentKey)
     })}
     style={{padding: `10px ${newLevel * 10}px`}}
+    onClick={() => {
+      if (!disabled) {
+        onChange([componentKey])
+      }
+    }}
   >
     {children}
   </div>;
