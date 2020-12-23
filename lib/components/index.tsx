@@ -5,7 +5,6 @@ export * from './breadcrumb';
 export * from './steps';
 export * from './message';
 export { default as dialog } from './dialog';
-export { default as Affix } from './affix';
 export { default as Icon } from './icon';
 export { default as Dialog } from './dialog';
 export { default as Input } from './input';

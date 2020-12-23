@@ -1,6 +1,5 @@
 {
   "index": "./lib/components/index.tsx",
-  "affix": "./lib/components/affix/index.tsx",
   "breadcrumb": "./lib/components/breadcrumb/breadcrumb.tsx",
   "breadcrumb-item": "./lib/components/breadcrumb/breadcrumb-item.tsx",
   "breadcrumb-separator": "./lib/components/breadcrumb/breadcrumb-separator.tsx",

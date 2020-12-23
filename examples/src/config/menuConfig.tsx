@@ -9,7 +9,6 @@ const menuConfig: Array<MenuItem> = [
   { component: 'Layout', title: 'Layout 布局' },
   { component: 'Grid', title: 'Grid 栅格' },
   { component: 'Breadcrumb', title: 'Breadcrumb 面包屑' },
-  { component: 'Affix', title: 'Affix 固钉' },
   { component: 'Steps', title: 'Steps 步骤条' },
   { component: 'Message', title: 'Message 全局提示' },
   { component: 'Dialog', title: 'Dialog 对话框' },

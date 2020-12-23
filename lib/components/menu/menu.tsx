@@ -3,7 +3,7 @@ import MenuContext from './store';
 import classNames from 'classnames';
 import './menu.scss';
 
-type MenuMode = 'vertical' | 'horizontal' | 'inline';
+export type MenuMode = 'vertical' | 'horizontal' | 'inline';
 
 export interface MenuProps {
   mode: MenuMode;
