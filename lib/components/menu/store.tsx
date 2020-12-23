@@ -1,12 +1,7 @@
 import React, { createContext } from 'react';
-import { MenuMode } from './menu';
+import { MenuProps } from './menu';
 
-interface IContext {
-  mode: MenuMode;
-  activatedKeys?: string[];
-}
-
-const MenuContext = createContext<IContext>({
+const MenuContext = createContext<MenuProps>({
   mode: 'vertical',
   activatedKeys: []
 });

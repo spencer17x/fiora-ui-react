@@ -10,13 +10,13 @@ export interface MenuProps {
   className?: string;
   style?: CSSProperties;
   activatedKeys?: string[];
-  onChange: (activatedKeys: string[]) => void;
+  onChange?: (activatedKeys: string[]) => void;
 }
 
 const prefixCls = 'f-menu';
 
 const Menu: React.FC<MenuProps> = props => {
-  const { children, mode, className, activatedKeys = [], onChange, ...restProps } = props;
+  const { children, mode, className, activatedKeys, onChange, ...restProps } = props;
   return <MenuContext.Provider value={{ mode, activatedKeys, onChange }}>
     <div className={classNames(prefixCls, `${prefixCls}-${mode}`, className)} {...restProps}>
       {
