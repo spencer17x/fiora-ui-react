@@ -27,6 +27,7 @@ const ButtonGroup: React.FC<ButtonGroupProps> = props => {
         if (React.isValidElement(child)) {
           return React.cloneElement(child, classes);
         }
+        return child
       })
     }
   </div>;
