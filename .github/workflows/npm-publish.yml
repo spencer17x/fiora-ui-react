@@ -44,6 +44,13 @@ jobs:
         run: |
           yarn install
           yarn run build:components
+      - name: publish package
+        run: |
+          cp package.json README.md ./dist
+          cd dist
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
       - name: Read package.json
         uses: tyankatsu0105/read-package-version-actions@v1
         id: package-version
@@ -57,11 +64,4 @@ jobs:
           tag_name: v${{ steps.package-version.outputs.version }}
           release_name: v${{ steps.package-version.outputs.version }}
           prerelease: false # 是否为预发布版本
-      - name: publish package
-        run: |
-          cp package.json README.md ./dist
-          cd dist
-          npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
