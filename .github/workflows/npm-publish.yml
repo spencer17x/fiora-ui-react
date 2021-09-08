@@ -28,14 +28,21 @@ jobs:
     needs: prebuild
     runs-on: ubuntu-latest
     steps:
-      - name: Create a GitHub release
+      - name: Read package.json
+        uses: tyankatsu0105/read-package-version-actions@v1
+        with:
+          path: './package.json'
+        id: package-version
+      # 关于创建 release 的更多参数，可以查看 actions/create-release@v1
+      - name: Create Release for Tag
+        id: release_tag
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # 这块需要用到 github的token，因为需要对分之进行代码推送
         with:
-          tag_name: ${{ steps.tag_version.outputs.new_tag }}
-          release_name: Release ${{ steps.tag_version.outputs.new_tag }}
-          body: ${{ steps.tag_version.outputs.changelog }}
+          tag_name: v${{ steps.package-version.outputs.version }}
+          release_name: v${{ steps.package-version.outputs.version }}
+          prerelease: false # 是否为预发布版本
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
@@ -52,3 +59,4 @@ jobs:
           npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+
