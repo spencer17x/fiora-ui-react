@@ -2,7 +2,7 @@
   "name": "fiora-ui-react",
   "version": "4.0.1",
   "main": "lib/index",
-  "types": "@types/components/index.d.ts",
+  "types": "@types/lib/components/index.d.ts",
   "author": "Code.X <1253478653@qq.com>",
   "license": "MIT",
   "homepage": "https://xuzpeng.github.io/fiora-ui-react/doc",
