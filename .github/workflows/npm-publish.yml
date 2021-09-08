@@ -30,8 +30,6 @@ jobs:
     steps:
       - name: Read package.json
         uses: tyankatsu0105/read-package-version-actions@v1
-        with:
-          path: './package.json'
         id: package-version
       # 关于创建 release 的更多参数，可以查看 actions/create-release@v1
       - name: Create Release for Tag
