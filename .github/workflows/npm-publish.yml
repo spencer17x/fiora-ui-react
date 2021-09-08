@@ -28,6 +28,15 @@ jobs:
     needs: prebuild
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+          registry-url: https://registry.npmjs.org/
+      - name: build components
+        run: |
+          yarn install
+          yarn run build:components
       - name: Read package.json
         uses: tyankatsu0105/read-package-version-actions@v1
         id: package-version
@@ -41,15 +50,6 @@ jobs:
           tag_name: v${{ steps.package-version.outputs.version }}
           release_name: v${{ steps.package-version.outputs.version }}
           prerelease: false # 是否为预发布版本
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '10.x'
-          registry-url: https://registry.npmjs.org/
-      - name: build components
-        run: |
-          yarn install
-          yarn run build:components
       - name: publish package
         run: |
           cp package.json README.md ./dist
