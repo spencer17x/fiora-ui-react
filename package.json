@@ -6,6 +6,16 @@
   "author": "Code.X <1253478653@qq.com>",
   "license": "MIT",
   "homepage": "https://xuzpeng.github.io/fiora-ui-react/doc",
+  "keywords": [
+    "react",
+    "react-component",
+    "component",
+    "components",
+    "design",
+    "framework",
+    "frontend",
+    "ui"
+  ],
   "bugs": {
     "url": "https://github.com/xuzpeng/fiora-ui-react/issues"
   },
