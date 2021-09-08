@@ -24,7 +24,9 @@ const ButtonGroup: React.FC<ButtonGroupProps> = props => {
             'border-right-reset': index < children.length - 1
           })
         };
-        return React.cloneElement(child, classes);
+        if (React.isValidElement(child)) {
+          return React.cloneElement(child, classes);
+        }
       })
     }
   </div>;
